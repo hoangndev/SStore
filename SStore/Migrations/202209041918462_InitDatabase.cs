@@ -17,42 +17,6 @@
                 .PrimaryKey(t => t.BrandId);
             
             CreateTable(
-                "dbo.ProductCategories",
-                c => new
-                    {
-                        CategoryId = c.Int(nullable: false, identity: true),
-                        CategoryName = c.String(nullable: false, maxLength: 100),
-                        Description = c.String(maxLength: 255),
-                    })
-                .PrimaryKey(t => t.CategoryId);
-            
-            CreateTable(
-                "dbo.Products",
-                c => new
-                    {
-                        Id = c.Int(nullable: false, identity: true),
-                        ProductName = c.String(nullable: false, maxLength: 255),
-                        CategoryId = c.Int(nullable: false),
-                        Price = c.Decimal(nullable: false, precision: 18, scale: 2),
-                        Weight = c.Double(nullable: false),
-                        Size = c.String(maxLength: 20),
-                        Color = c.String(maxLength: 100),
-                        BrandId = c.Int(nullable: false),
-                        Status = c.Boolean(nullable: false),
-                        Description = c.String(maxLength: 255),
-                        Image = c.String(maxLength: 255),
-                        CreatedDate = c.DateTime(nullable: false),
-                        ModifiedDate = c.DateTime(nullable: false),
-                        Hot = c.Boolean(nullable: false),
-                        View = c.Int(nullable: false),
-                    })
-                .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.ProductBrands", t => t.BrandId, cascadeDelete: true)
-                .ForeignKey("dbo.ProductCategories", t => t.CategoryId, cascadeDelete: true)
-                .Index(t => t.CategoryId)
-                .Index(t => t.BrandId);
-            
-            CreateTable(
                 "dbo.AspNetRoles",
                 c => new
                     {
@@ -128,23 +92,17 @@
             DropForeignKey("dbo.AspNetUserLogins", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserClaims", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserRoles", "RoleId", "dbo.AspNetRoles");
-            DropForeignKey("dbo.Products", "CategoryId", "dbo.ProductCategories");
-            DropForeignKey("dbo.Products", "BrandId", "dbo.ProductBrands");
             DropIndex("dbo.AspNetUserLogins", new[] { "UserId" });
             DropIndex("dbo.AspNetUserClaims", new[] { "UserId" });
             DropIndex("dbo.AspNetUsers", "UserNameIndex");
             DropIndex("dbo.AspNetUserRoles", new[] { "RoleId" });
             DropIndex("dbo.AspNetUserRoles", new[] { "UserId" });
             DropIndex("dbo.AspNetRoles", "RoleNameIndex");
-            DropIndex("dbo.Products", new[] { "BrandId" });
-            DropIndex("dbo.Products", new[] { "CategoryId" });
             DropTable("dbo.AspNetUserLogins");
             DropTable("dbo.AspNetUserClaims");
             DropTable("dbo.AspNetUsers");
             DropTable("dbo.AspNetUserRoles");
             DropTable("dbo.AspNetRoles");
-            DropTable("dbo.Products");
-            DropTable("dbo.ProductCategories");
             DropTable("dbo.ProductBrands");
         }
     }

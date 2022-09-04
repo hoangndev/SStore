@@ -7,13 +7,13 @@ namespace SStore.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.4.4")]
-    public sealed partial class InitDatabase : IMigrationMetadata
+    public sealed partial class AddUserInfosTable : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(InitDatabase));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(AddUserInfosTable));
         
         string IMigrationMetadata.Id
         {
-            get { return "202209041304456_InitDatabase"; }
+            get { return "202209041922058_AddUserInfosTable"; }
         }
         
         string IMigrationMetadata.Source

@@ -21,7 +21,7 @@ namespace SStore.Models
         public ProductCategory ProductCategory { get; set; }
         [Required]
         public decimal Price { get; set; }
-        public double Weight { get; set; }
+        public Nullable<double> Weight { get; set; }
         [StringLength(20)]
         public string Size { get; set; }
         [StringLength(100)]
@@ -34,9 +34,9 @@ namespace SStore.Models
         public string Description { get; set; }
         [StringLength(255)]
         public string Image { get; set; }
-        public DateTime CreatedDate { get; set; }
-        public DateTime ModifiedDate { get; set; }
-        public bool Hot { get; set; }
-        public int View { get; set; }
+        public Nullable<DateTime> CreatedDate { get; set; }
+        public Nullable<DateTime> ModifiedDate { get; set; }
+        public Nullable<bool> Hot { get; set; }
+        public Nullable<int> View { get; set; }
     }
 }
