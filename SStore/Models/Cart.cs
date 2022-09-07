@@ -13,7 +13,6 @@ namespace SStore.Models
         [Column(Order = 0)]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int CardId { get; set; }
-        [Key]
         [Column(Order = 1)]
         [ForeignKey("UserInfo")]
         public string UserId { get; set; }

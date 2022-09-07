@@ -11,7 +11,7 @@ namespace SStore.Models
     {
         [Key]
         public int OrderId { get; set; }
-        public DateTime FirstName { get; set; }
+        public DateTime OrderDate { get; set; }
         public bool Status { get; set; }
         public bool Delivered { get; set; }
         public Nullable<DateTime> DeliveredDate { get; set; }

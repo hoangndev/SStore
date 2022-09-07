@@ -10,14 +10,15 @@ namespace SStore.Models
     public class CartDetail
     {
         [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
-        [Column(Order = 1)]
         [ForeignKey("Cart")]
         public int CartId { get; set; }
         public Cart Cart { get; set; }
-        [Column(Order = 2)]
         [ForeignKey("Product")]
         public int ProductId { get; set; }
         public Product Product { get; set; }
+        public int Quantity { get; set; }
+        public decimal TotalPrice { get; set; }
     }
 }

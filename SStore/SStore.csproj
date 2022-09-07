@@ -227,6 +227,42 @@
     <Compile Include="Migrations\202209041945353_AddOrderDetailsTable.designer.cs">
       <DependentUpon>202209041945353_AddOrderDetailsTable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202209051904523_FixOrderTable.cs" />
+    <Compile Include="Migrations\202209051904523_FixOrderTable.designer.cs">
+      <DependentUpon>202209051904523_FixOrderTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202209051912532_UpdateOrderDetailTable.cs" />
+    <Compile Include="Migrations\202209051912532_UpdateOrderDetailTable.designer.cs">
+      <DependentUpon>202209051912532_UpdateOrderDetailTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202209061725420_FixColumnPosition.cs" />
+    <Compile Include="Migrations\202209061725420_FixColumnPosition.designer.cs">
+      <DependentUpon>202209061725420_FixColumnPosition.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202209070258440_UpdatePKCartTable.cs" />
+    <Compile Include="Migrations\202209070258440_UpdatePKCartTable.designer.cs">
+      <DependentUpon>202209070258440_UpdatePKCartTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202209070259383_AddCartDetailTable.cs" />
+    <Compile Include="Migrations\202209070259383_AddCartDetailTable.designer.cs">
+      <DependentUpon>202209070259383_AddCartDetailTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202209070322188_UpdateColumnNameDb.cs" />
+    <Compile Include="Migrations\202209070322188_UpdateColumnNameDb.designer.cs">
+      <DependentUpon>202209070322188_UpdateColumnNameDb.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202209070324528_DropCartDetailAndOrderDetailTable.cs" />
+    <Compile Include="Migrations\202209070324528_DropCartDetailAndOrderDetailTable.designer.cs">
+      <DependentUpon>202209070324528_DropCartDetailAndOrderDetailTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202209070326333_AddCartDetailTableAgain.cs" />
+    <Compile Include="Migrations\202209070326333_AddCartDetailTableAgain.designer.cs">
+      <DependentUpon>202209070326333_AddCartDetailTableAgain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202209070327129_AddOrderDetailTableAgain.cs" />
+    <Compile Include="Migrations\202209070327129_AddOrderDetailTableAgain.designer.cs">
+      <DependentUpon>202209070327129_AddOrderDetailTableAgain.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Cart.cs" />
@@ -390,6 +426,33 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202209041945353_AddOrderDetailsTable.resx">
       <DependentUpon>202209041945353_AddOrderDetailsTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202209051904523_FixOrderTable.resx">
+      <DependentUpon>202209051904523_FixOrderTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202209051912532_UpdateOrderDetailTable.resx">
+      <DependentUpon>202209051912532_UpdateOrderDetailTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202209061725420_FixColumnPosition.resx">
+      <DependentUpon>202209061725420_FixColumnPosition.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202209070258440_UpdatePKCartTable.resx">
+      <DependentUpon>202209070258440_UpdatePKCartTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202209070259383_AddCartDetailTable.resx">
+      <DependentUpon>202209070259383_AddCartDetailTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202209070322188_UpdateColumnNameDb.resx">
+      <DependentUpon>202209070322188_UpdateColumnNameDb.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202209070324528_DropCartDetailAndOrderDetailTable.resx">
+      <DependentUpon>202209070324528_DropCartDetailAndOrderDetailTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202209070326333_AddCartDetailTableAgain.resx">
+      <DependentUpon>202209070326333_AddCartDetailTableAgain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202209070327129_AddOrderDetailTableAgain.resx">
+      <DependentUpon>202209070327129_AddOrderDetailTableAgain.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
