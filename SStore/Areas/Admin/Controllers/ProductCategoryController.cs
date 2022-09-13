@@ -17,21 +17,8 @@ namespace SStore.Areas.Admin.Controllers
         // GET: Admin/ProductCategory
         public ActionResult Index()
         {
-            return View(db.ProductCategories.ToList());
-        }
+            var productCategory = db.ProductCategories.ToList();
 
-        // GET: Admin/ProductCategory/Details/5
-        public ActionResult Details(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            ProductCategory productCategory = db.ProductCategories.Find(id);
-            if (productCategory == null)
-            {
-                return HttpNotFound();
-            }
             return View(productCategory);
         }
 
@@ -42,11 +29,8 @@ namespace SStore.Areas.Admin.Controllers
         }
 
         // POST: Admin/ProductCategory/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "CategoryId,CategoryName,Description")] ProductCategory productCategory)
+        public ActionResult Create(ProductCategory productCategory)
         {
             if (ModelState.IsValid)
             {

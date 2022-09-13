@@ -5,10 +5,10 @@
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<h2 class="text-center my-3">LIST OF PRODUCT CATEGORIES</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Add new", "Create")
 </p>
 <table class="table">
     <tr>
@@ -31,7 +31,6 @@
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.CategoryId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.CategoryId }) |
             @Html.ActionLink("Delete", "Delete", new { id=item.CategoryId })
         </td>
     </tr>

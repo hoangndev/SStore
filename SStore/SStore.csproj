@@ -350,7 +350,6 @@
     <Content Include="Areas\Admin\Views\Product\Index.cshtml" />
     <Content Include="Areas\Admin\Views\ProductCategory\Create.cshtml" />
     <Content Include="Areas\Admin\Views\ProductCategory\Delete.cshtml" />
-    <Content Include="Areas\Admin\Views\ProductCategory\Details.cshtml" />
     <Content Include="Areas\Admin\Views\ProductCategory\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\ProductCategory\Index.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />

@@ -74,12 +74,12 @@
                             </a>
                         </li>
                         <li class="me-4">
-                            <a class="nav-link text-white" href="@Url.Action("Index", "Dashboard", new { area = "Admin" }, null)">
+                            <a class="nav-link text-white" href="@Url.Action("Index", "Home", new { area = "" }, null)">
                                 Feedback
                             </a>
                         </li>
                         <li class="me-4">
-                            <a class="nav-link text-white" href="@Url.Action("Index", "Table", new { area = "Admin" }, null)">
+                            <a class="nav-link text-white" href="@Url.Action("Index", "Dashboard", new { area = "Admin" }, null)">
                                 Dashboard
                             </a>
                         </li>
@@ -90,11 +90,13 @@
         </div>
     </section>
     <!--Section End Navigation Bar-->
+
     <!--Section Content-->
     <section class="content bg-white">
         @RenderBody()
     </section>
     <!--Section End Content-->
+
     <!--Section Footer-->
     <section class="footer bg-black mt-auto">
         <div class="container">
@@ -241,7 +243,7 @@
             <div class="container bg-dark py-3">
                 <div class="row">
                     <div class="col-4 align-self-start mb-0 text-muted p-1">
-                        © 2022 SStore. All rights reserved.
+                        Copyright &copy; SStore 2022. All rights reserved.
                     </div>
                     <div class="col"></div>
                     <div class="col align-self-center mb-0 text-muted fs-5">
