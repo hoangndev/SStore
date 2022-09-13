@@ -36,7 +36,6 @@
         </div>
     </section>
     <!--Section End Header-->
-
     <!--Section Navigation Bar-->
     <section class="navigation-bar bg-black sticky-top">
         <div class="container">
@@ -91,13 +90,11 @@
         </div>
     </section>
     <!--Section End Navigation Bar-->
-
     <!--Section Content-->
     <section class="content bg-white">
         @RenderBody()
     </section>
     <!--Section End Content-->
-
     <!--Section Footer-->
     <section class="footer bg-black mt-auto">
         <div class="container">
@@ -240,8 +237,33 @@
                 </div>
             </footer>
         </div>
-        <div class="bg-dark py-2">
-            <p class="text-center mb-0 text-muted">&copy; @DateTime.Now - My ASP.NET Application</p>
+        <div class="bg-dark">
+            <div class="container bg-dark py-3">
+                <div class="row">
+                    <div class="col-4 align-self-start mb-0 text-muted p-1">
+                        © 2022 SStore. All rights reserved.
+                    </div>
+                    <div class="col"></div>
+                    <div class="col align-self-center mb-0 text-muted fs-5">
+                        <a href="https://www.facebook.com/NG.nguyenhoang/" class="text-muted text-decoration-none mx-2" target="_blank">
+                            <i class="bi bi-facebook"></i>
+                        </a>
+                        <a href="https://www.instagram.com/nh.hoangnguyen/" class="text-muted text-decoration-none mx-2" target="_blank">
+                            <i class="bi bi-instagram"></i>
+                        </a>
+                        <a href="#" class="text-muted text-decoration-none mx-2">
+                            <i class="bi bi-twitter"></i>
+                        </a>
+                        <a href="https://www.youtube.com/channel/UCVQhPuumdi48fPIlxdPOnrw" class="text-muted text-decoration-none mx-2" target="_blank">
+                            <i class="bi bi-youtube"></i>
+                        </a>
+                        <a href="https://www.youtube.com/channel/UCVQhPuumdi48fPIlxdPOnrw" class="text-muted text-decoration-none mx-2" target="_blank">
+                            <i class="bi bi-google"></i>
+                        </a>
+                    </div>
+                    <div class="col"></div>
+                </div>
+            </div>
         </div>
     </section>
     <!--Section End Footer-->
