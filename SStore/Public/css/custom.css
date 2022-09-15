@@ -1,0 +1,19 @@
+﻿.home-partial-title {
+    background-image: linear-gradient(to bottom, #0d6efd, #e64fd3, #ff5789, #ff9946, #f2d935);
+    background-clip: text;
+    -webkit-background-clip: text;
+    text-fill-color: transparent;
+    -webkit-text-fill-color: transparent;
+}
+
+.buy-now-button {
+    background-image: linear-gradient(to left top, #ff5889, #ff7971, #ffa060, #ffc85d, #ffee70);
+    color: white;
+    border: none;
+}
+
+.add-to-cart-button {
+    background-image: linear-gradient(to right bottom, #ff5889, #ff7971, #ffa060, #ffc85d, #ffee70);
+    color: white;
+    border: none;
+}

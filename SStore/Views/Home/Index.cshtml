@@ -4,7 +4,6 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-
 <!--Slider-->
 <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-inner">
@@ -15,7 +14,6 @@
                 <div class="carousel-caption text-start">
                     <h1>Example headline.</h1>
                     <p>Some representative placeholder content for the first slide of the carousel.</p>
-                    <p><a class="btn btn-lg btn-primary" href="#">Buy Now</a></p>
                 </div>
             </div>
         </div>
@@ -26,7 +24,6 @@
                 <div class="carousel-caption">
                     <h1>Another example headline.</h1>
                     <p>Some representative placeholder content for the second slide of the carousel.</p>
-                    <p><a class="btn btn-lg btn-primary" href="#">Buy Now</a></p>
                 </div>
             </div>
         </div>
@@ -37,7 +34,6 @@
                 <div class="carousel-caption text-end">
                     <h1>One more for good measure.</h1>
                     <p>Some representative placeholder content for the third slide of this carousel.</p>
-                    <p><a class="btn btn-lg btn-primary" href="#">Buy Now</a></p>
                 </div>
             </div>
         </div>
@@ -56,67 +52,12 @@
 <!--New product-->
 <div class="container my-5">
     <div class="text-center">
-        <h2>NEW PRODUCT</h2>
+        <h1 class="home-partial-title">NEW PRODUCT</h1>
         <hr />
     </div>
     <div class="d-flex flex-wrap justify-content-center">
-        <div class="card m-3" style="width: 18rem;">
-            <img src="~/Image/wp2461125.jpg" class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <a href="#" class="btn btn-primary">Add to cart</a>
-                <a href="#" class="btn btn-primary align-bottom">Buy now</a>
-            </div>
-        </div>
-        <div class="card m-3" style="width: 18rem;">
-            <img src="~/Image/wp2461125.jpg" class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
-            </div>
-        </div>
-        <div class="card m-3" style="width: 18rem;">
-            <img src="~/Image/wp2461125.jpg" class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
-            </div>
-        </div>
-        <div class="card m-3" style="width: 18rem;">
-            <img src="~/Image/wp2461125.jpg" class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
-            </div>
-        </div>
-        <div class="card m-3" style="width: 18rem;">
-            <img src="~/Image/wp2461125.jpg" class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
-            </div>
-        </div>
-        <div class="card m-3" style="width: 18rem;">
-            <img src="~/Image/wp2461125.jpg" class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
-            </div>
-        </div>
-        <div class="card m-3" style="width: 18rem;">
-            <img src="~/Image/wp2461125.jpg" class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
-            </div>
-        </div>
+        @Html.Action("NewProductListPartial", "Home")
+        @Html.Action("NewProductListPartial", "Home")
     </div>
     <hr />
 </div>
@@ -124,51 +65,11 @@
 <!--Hot product-->
 <div class="container my-5">
     <div class="text-center">
-        <h2>HOT PRODUCT</h2>
+        <h1 class="home-partial-title">HOT PRODUCT</h1>
         <hr />
     </div>
     <div class="d-flex flex-wrap justify-content-center">
-        <div class="card m-3" style="width: 18rem;">
-            <img src="~/Image/wp2461125.jpg" class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <a href="#" class="btn btn-primary">Add to cart</a>
-                <a href="#" class="btn btn-primary align-bottom">Buy now</a>
-            </div>
-        </div>
-        <div class="card m-3" style="width: 18rem;">
-            <img src="~/Image/wp2461125.jpg" class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
-            </div>
-        </div>
-        <div class="card m-3" style="width: 18rem;">
-            <img src="~/Image/wp2461125.jpg" class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
-            </div>
-        </div>
-        <div class="card m-3" style="width: 18rem;">
-            <img src="~/Image/wp2461125.jpg" class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
-            </div>
-        </div>
-        <div class="card m-3" style="width: 18rem;">
-            <img src="~/Image/wp2461125.jpg" class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
-            </div>
-        </div>
+        @Html.Action("HotProductListPartial", "Home")
     </div>
     <hr />
 </div>
@@ -176,51 +77,11 @@
 <!--Fashion-->
 <div class="container my-5">
     <div class="text-center">
-        <h2>FASHION</h2>
+        <h1 class="home-partial-title">FASHION</h1>
         <hr />
     </div>
     <div class="d-flex flex-wrap justify-content-center">
-        <div class="card m-3" style="width: 18rem;">
-            <img src="~/Image/wp2461125.jpg" class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <a href="#" class="btn btn-primary">Add to cart</a>
-                <a href="#" class="btn btn-primary align-bottom">Buy now</a>
-            </div>
-        </div>
-        <div class="card m-3" style="width: 18rem;">
-            <img src="~/Image/wp2461125.jpg" class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
-            </div>
-        </div>
-        <div class="card m-3" style="width: 18rem;">
-            <img src="~/Image/wp2461125.jpg" class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
-            </div>
-        </div>
-        <div class="card m-3" style="width: 18rem;">
-            <img src="~/Image/wp2461125.jpg" class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
-            </div>
-        </div>
-        <div class="card m-3" style="width: 18rem;">
-            <img src="~/Image/wp2461125.jpg" class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
-            </div>
-        </div>
+        @Html.Action("FashionProductListPartial", "Home")
     </div>
     <hr />
 </div>
