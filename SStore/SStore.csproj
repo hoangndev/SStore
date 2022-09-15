@@ -308,6 +308,8 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Image\storelogo.png" />
+    <Content Include="Image\storelogo2.png" />
     <Content Include="Image\wp2461125.jpg" />
     <Content Include="Public\css\Style.css" />
     <Content Include="Scripts\bootstrap.bundle.js" />
