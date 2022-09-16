@@ -14,8 +14,9 @@
     <section class="header clearfix bg-white">
         <div class="container">
             <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-2">
-                <a href="/" class="d-flex align-items-center col-md-auto mb-2 mb-md-0 text-dark text-decoration-none">
-                    <h1 class="me-3">SStore</h1>
+                <!---LOGO-->
+                <a href="@Url.Action("Index", "Home", new { area = "" })" class="d-flex align-items-center col-md-auto mb-2 mb-md-0 text-dark text-decoration-none">
+                    <h1 class="me-3 store-logo-homepage">SStore</h1>
                 </a>
                 <form class="d-flex col-md-auto mb-2 justify-content-center mb-md-0">
                     <input type="search" class="bd-search form-control me-2 form-control-dark" placeholder="search product..." />
@@ -38,8 +39,11 @@
     <!--Section End Header-->
     <!--Section Navigation Bar-->
     <section class="navigation-bar bg-black sticky-top">
-        <div class="container">
-            <nav class="navbar navbar-expand-lg bg-black">
+        <div class="container-fluid">
+            <nav class="navbar navbar-dark navbar-expand-lg bg-black">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav mx-auto">
                         <li class="me-4">
@@ -90,13 +94,11 @@
         </div>
     </section>
     <!--Section End Navigation Bar-->
-
     <!--Section Content-->
     <section class="content bg-white">
         @RenderBody()
     </section>
     <!--Section End Content-->
-
     <!--Section Footer-->
     <section class="footer bg-black mt-auto">
         <div class="container">

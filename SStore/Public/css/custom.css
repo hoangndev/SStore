@@ -1,4 +1,30 @@
-﻿.home-partial-title {
+﻿.store-logo-homepage {
+    background-image: linear-gradient(to right top, #0008FF, #3A6AD3, #ff5789, #ff9946, #f2d935);
+    background-clip: text;
+    -webkit-background-clip: text;
+    text-fill-color: transparent;
+    -webkit-text-fill-color: transparent;
+    letter-spacing: 4px;
+    cursor: pointer;
+    text-transform: uppercase;
+}
+
+/*    .store-logo-homepage:hover {
+        text-shadow: 0 0 1px #000, 0 0 5px #ff5789, 0 0 10px #f2d935;
+    }*/
+
+.store-logo-adminpage {
+    background-image: linear-gradient(to left bottom, #0008ff, #3A6AD3, #ff5789, #ff8b0f, #f2d935);
+    background-clip: text;
+    -webkit-background-clip: text;
+    text-fill-color: transparent;
+    -webkit-text-fill-color: transparent;
+    letter-spacing: 4px;
+    cursor: pointer;
+    text-transform: uppercase;
+}
+
+.home-partial-title {
     background-image: linear-gradient(to bottom, #0d6efd, #e64fd3, #ff5789, #ff9946, #f2d935);
     background-clip: text;
     -webkit-background-clip: text;

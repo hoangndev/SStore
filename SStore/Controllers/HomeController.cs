@@ -36,19 +36,5 @@ namespace SStore.Controllers
             var fashionProductList = db.Products.Include(p => p.productBrand).Include(p => p.ProductCategory).Where(p => p.BrandId.Equals(1)).OrderByDescending(p => p.Id).ToList();
             return PartialView(fashionProductList);
         }
-
-        public ActionResult About()
-        {
-            ViewBag.Message = "Your application description page.";
-
-            return View();
-        }
-
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
-        }
     }
 }

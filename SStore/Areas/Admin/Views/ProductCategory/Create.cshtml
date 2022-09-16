@@ -4,14 +4,17 @@
     ViewBag.Title = "Create";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
-<h2 class="text-center my-3">ADD A NEW PRODUCT CATEGORY</h2>
 
-
-@using (Html.BeginForm("Create", "ProductCategory", FormMethod.Post))
-{
-    <div class="container-fluid p-0">
+<div class="container-fluid">
+    <a class="text-decoration-none btn btn-secondary mt-3" href="@Url.Action("Index", "ProductCategory", new { area = "Admin" })">
+        <i class="bi bi-box-arrow-left"></i>
+        &nbsp; Back to List
+    </a>
+    <h2 class="my-3 text-center">ADD A NEW PRODUCT CATEGORY</h2>
+    @using (Html.BeginForm("Create", "ProductCategory", FormMethod.Post))
+    {
         <div class="d-flex justify-content-center">
-            <div class="col-4">
+            <div class="col-sm-4">
                 <form>
                     <div class="mb-3">
                         <label for="CategoryName" class="form-label">
@@ -32,10 +35,5 @@
                 </form>
             </div>
         </div>
-            <a class="text-decoration-none btn btn-secondary rounded-0" href="@Url.Action("Index", "ProductCategory", new { area = "Admin" })">
-                <i class="bi bi-box-arrow-left"></i>
-                &nbsp;&nbsp; Back to List
-            </a>
-    </div>
-}
-
+    }
+</div>
