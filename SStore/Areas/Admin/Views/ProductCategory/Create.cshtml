@@ -10,11 +10,11 @@
         <i class="bi bi-box-arrow-left"></i>
         &nbsp; Back to List
     </a>
-    <h2 class="my-3 text-center">ADD A NEW PRODUCT CATEGORY</h2>
+    <h2 class="my-3 text-center">ADD NEW PRODUCT CATEGORY</h2>
     @using (Html.BeginForm("Create", "ProductCategory", FormMethod.Post))
     {
         <div class="d-flex justify-content-center">
-            <div class="col-sm-4">
+            <div class="container-fluid" style="max-width:500px">
                 <form>
                     <div class="mb-3">
                         <label for="CategoryName" class="form-label">
