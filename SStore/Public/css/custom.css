@@ -1,4 +1,7 @@
-﻿.store-logo-homepage {
+﻿@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+/* Header */
+.store-logo-homepage {
     background-image: linear-gradient(to right top, #0008FF, #3A6AD3, #ff5789, #ff9946, #f2d935);
     background-clip: text;
     -webkit-background-clip: text;
@@ -24,6 +27,21 @@
     text-transform: uppercase;
 }
 
+
+/* Navigation Bar */
+.store-navigation-link-homepage {
+    letter-spacing: 1px;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: 0.1s;
+}
+
+    .store-navigation-link-homepage:hover {
+        -webkit-text-stroke: 1px #F7DC6F;
+        text-shadow: 0px 1px 5px #ff5789, 0px 1px 10px #ff5789, 0px 1px 12px #ff5789, 0px 1px 17px #ff5789;
+    }
+
+/* Body */
 .home-partial-title {
     background-image: linear-gradient(to bottom, #0d6efd, #e64fd3, #ff5789, #ff9946, #f2d935);
     background-clip: text;
@@ -33,13 +51,31 @@
 }
 
 .buy-now-button {
-    background-image: linear-gradient(to left top, #ff5889, #ff7971, #ffa060, #ffc85d, #ffee70);
-    color: white;
-    border: none;
+    color: #000;
+    box-shadow: 0 0 6px 0 rgba(157, 96, 212, 0.5);
+    border: solid 1px transparent;
+    background-image: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0)), linear-gradient(to left bottom, #78e4ff, #ff48fa);
+    background-origin: border-box;
+    background-clip: content-box, border-box;
+    box-shadow: 2px 1000px 1px #fff inset;
 }
 
+    .buy-now-button:hover {
+        box-shadow: none;
+        color: white;
+    }
+
 .add-to-cart-button {
-    background-image: linear-gradient(to right bottom, #ff5889, #ff7971, #ffa060, #ffc85d, #ffee70);
-    color: white;
-    border: none;
+    color: #000;
+    box-shadow: 0 0 6px 0 rgba(157, 96, 212, 0.5);
+    border: solid 1px transparent;
+    background-image: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0)), linear-gradient( to right bottom, #78e4ff, #ff48fa);
+    background-origin: border-box;
+    background-clip: content-box, border-box;
+    box-shadow: 2px 1000px 1px #fff inset;
 }
+
+    .add-to-cart-button:hover {
+        box-shadow: none;
+        color: white;
+    }
