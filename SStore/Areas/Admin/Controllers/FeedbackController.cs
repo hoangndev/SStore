@@ -17,7 +17,8 @@ namespace SStore.Areas.Admin.Controllers
         // GET: Admin/Feedback
         public ActionResult Index()
         {
-            return View(db.Feedbacks.ToList());
+            var feedbacks = db.Feedbacks.ToList();
+            return View(feedbacks);
         }
 
         // GET: Admin/Feedback/Details/5
@@ -42,11 +43,8 @@ namespace SStore.Areas.Admin.Controllers
         }
 
         // POST: Admin/Feedback/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Title,Description,Email,PhoneNumber")] Feedback feedback)
+        public ActionResult Create(Feedback feedback)
         {
             if (ModelState.IsValid)
             {
@@ -75,7 +73,6 @@ namespace SStore.Areas.Admin.Controllers
 
         // POST: Admin/Feedback/Delete/5
         [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
             Feedback feedback = db.Feedbacks.Find(id);

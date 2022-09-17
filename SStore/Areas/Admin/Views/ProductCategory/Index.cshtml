@@ -5,9 +5,9 @@
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 <div class="container-fluid">
-    <h2 class="text-center my-3">LIST OF PRODUCT CATEGORIES</h2>
+    <h1 class="text-center my-3 admin-page-title">LIST OF PRODUCT CATEGORIES</h1>
 
-    <a type="button" class="btn btn-secondary" href="@Url.Action("Create", "ProductCategory", new { area = "Admin" })">
+    <a type="button" class="btn sub-button" href="@Url.Action("Create", "ProductCategory", new { area = "Admin" })">
         Add New Category
     </a>
     <hr />

@@ -79,3 +79,56 @@
         box-shadow: none;
         color: white;
     }
+
+
+.page-title {
+    background-image: linear-gradient(to right bottom, #0008FF, #3A6AD3, #ff5789, #ff9946, #f2d935);
+    background-clip: text;
+    -webkit-background-clip: text;
+    text-fill-color: transparent;
+    -webkit-text-fill-color: transparent;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+}
+
+
+/* Admin area*/
+.sub-button {
+    color: #000;
+    box-shadow: 0 0 6px 0 rgba(157, 96, 212, 0.5);
+    border: solid 1px transparent;
+    background-image: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0)), linear-gradient( to left bottom, #ff8080, #ff9b71, #ffbb66, #ffdd67, #f3ff7a);
+    background-origin: border-box;
+    background-clip: content-box, border-box;
+    box-shadow: 2px 1000px 1px #fff inset;
+}
+
+    .sub-button:hover {
+        box-shadow: none;
+        color: white;
+    }
+
+.admin-page-title {
+    background-image: linear-gradient(to right bottom, #0008FF, #3A6AD3, #ff5789, #ff9946, #f2d935);
+    background-clip: text;
+    -webkit-background-clip: text;
+    text-fill-color: transparent;
+    -webkit-text-fill-color: transparent;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.back-page-button {
+    color: #000;
+    box-shadow: 0 0 6px 0 rgba(157, 96, 212, 0.5);
+    border: solid 1px transparent;
+    background-image: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0)), linear-gradient(to right bottom, #424242, #4b4a4d, #545259, #5e5964, #69616f, #766e7d, #847b8b, #928999, #a6a0ad, #bbb8c1, #d2d0d5, #e9e9e9);
+    background-origin: border-box;
+    background-clip: content-box, border-box;
+    box-shadow: 2px 1000px 1px #fff inset;
+}
+
+    .back-page-button:hover {
+        box-shadow: none;
+        color: white;
+    }

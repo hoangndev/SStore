@@ -6,31 +6,31 @@
 }
 
 <div class="container-fluid">
-    <a class="text-decoration-none btn btn-secondary mt-3" href="@Url.Action("Index", "ProductCategory", new { area = "Admin" })">
+    <a class="text-decoration-none btn back-page-button mt-3" href="@Url.Action("Index", "ProductCategory", new { area = "Admin" })">
         <i class="bi bi-box-arrow-left"></i>
         &nbsp; Back to List
     </a>
-    <h2 class="my-3 text-center">ADD NEW PRODUCT CATEGORY</h2>
+    <h1 class="my-3 text-center admin-page-title">ADD NEW PRODUCT CATEGORY</h1>
     @using (Html.BeginForm("Create", "ProductCategory", FormMethod.Post))
     {
         <div class="d-flex justify-content-center">
             <div class="container-fluid" style="max-width:500px">
                 <form>
                     <div class="mb-3">
-                        <label for="CategoryName" class="form-label">
+                        <label for="CategoryName" class="form-label fw-bold">
                             @Html.LabelFor(c => c.CategoryName, "Category Name")
                         </label>
                         @Html.TextBoxFor(c => c.CategoryName, new { @class = "form-control", @placeholder = "Enter category name" })
                         @Html.ValidationMessageFor(c => c.CategoryName, "", new { @class = "text-danger" })
                     </div>
                     <div class="mb-3">
-                        <label for="CategoryName" class="form-label">
+                        <label for="CategoryName" class="form-label fw-bold">
                             @Html.LabelFor(c => c.Description, "Description")
                         </label>
                         @Html.TextBoxFor(c => c.Description, new { @class = "form-control", @placeholder = "Enter category description" })
                     </div>
                     <div class="mb-3">
-                        <button type="submit" class="btn btn-primary">Add</button>
+                        <button type="submit" class="btn sub-button">Add</button>
                     </div>
                 </form>
             </div>

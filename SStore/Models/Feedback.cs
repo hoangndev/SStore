@@ -17,6 +17,8 @@ namespace SStore.Models
         [StringLength(255)]
         public string Description { get; set; }
         [StringLength(255)]
+        public string FullName { get; set; }
+        [StringLength(255)]
         public string Email { get; set; }
         [StringLength(100)]
         public string PhoneNumber { get; set; }
