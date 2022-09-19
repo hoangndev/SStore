@@ -5,29 +5,42 @@
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<div class="container-fluid">
+    <h1 class="text-center my-3 admin-page-title">LIST OF PRODUCT CATEGORIES</h1>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.BrandName)
-        </th>
-        <th></th>
-    </tr>
+    <a type="button" class="btn sub-button" href="@Url.Action("Create", "ProductCategory", new { area = "Admin" })">
+        Add New Category
+    </a>
+    <hr />
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.BrandName)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.BrandId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.BrandId })
-        </td>
-    </tr>
-}
+    <table class="table">
+        <tr>
+            <th>
+                Brand Id
+            </th>
+            <th>
+                Brand Name
+            </th>
+            <th>
+                Action
+            </th>
+        </tr>
 
-</table>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @item.BrandId
+                </td>
+                <td>
+                    @item.BrandName
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.BrandId }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.BrandId })
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>
