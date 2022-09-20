@@ -108,6 +108,50 @@
         color: white;
     }
 
+.detail-button {
+    color: #000;
+    box-shadow: 0 0 6px 0 rgba(157, 96, 212, 0.5);
+    border: solid 1px transparent;
+    background-image: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0)), linear-gradient(to right top, #7aafff, #90baff, #a4c6ff, #b7d1ff, #caddff, #caddff, #caddff, #caddff, #b7d1ff, #a4c6ff, #90baff, #7aafff);
+    background-origin: border-box;
+    background-clip: content-box, border-box;
+    box-shadow: 2px 1000px 1px #fff inset;
+}
+
+    .detail-button:hover {
+        box-shadow: none;
+        color: white;
+    }
+
+.edit-button {
+    color: #000;
+    box-shadow: 0 0 6px 0 rgba(157, 96, 212, 0.5);
+    border: solid 1px transparent;
+    background-image: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0)), linear-gradient(to right bottom, #3cda80, #54e18a, #68e895, #7aef9f, #8af6aa, #8af6aa, #8af6aa, #8af6aa, #7aef9f, #68e895, #54e18a, #3cda80);
+    background-clip: content-box, border-box;
+    box-shadow: 2px 1000px 1px #fff inset;
+}
+
+    .edit-button:hover {
+        box-shadow: none;
+        color: white;
+    }
+
+.delete-button {
+    color: #000;
+    box-shadow: 0 0 6px 0 rgba(157, 96, 212, 0.5);
+    border: solid 1px transparent;
+    background-image: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0)), linear-gradient(to right bottom, #ff0000, #ff503e, #ff7a6b, #ff9f96, #ffc2be, #ffc2be, #ffc2be, #ffc2be, #ff9f96, #ff7a6b, #ff503e, #ff0000);
+    background-origin: border-box;
+    background-clip: content-box, border-box;
+    box-shadow: 2px 1000px 1px #fff inset;
+}
+
+    .delete-button:hover {
+        box-shadow: none;
+        color: white;
+    }
+
 .admin-page-title {
     background-image: linear-gradient(to right bottom, #0008FF, #3A6AD3, #ff5789, #ff9946, #f2d935);
     background-clip: text;

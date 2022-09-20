@@ -58,8 +58,6 @@ namespace SStore.Areas.Admin.Controllers
         }
 
         // POST: Admin/ProductCategory/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "CategoryId,CategoryName,Description")] ProductCategory productCategory)
@@ -85,20 +83,22 @@ namespace SStore.Areas.Admin.Controllers
             {
                 return HttpNotFound();
             }
-            return View(productCategory);
-        }
-
-        // POST: Admin/ProductCategory/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
-        {
-            ProductCategory productCategory = db.ProductCategories.Find(id);
             db.ProductCategories.Remove(productCategory);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
 
+        /*        // POST: Admin/ProductCategory/Delete/5
+                [HttpPost, ActionName("Delete")]
+                [ValidateAntiForgeryToken]
+                public ActionResult DeleteConfirmed(int id)
+                {
+                    ProductCategory productCategory = db.ProductCategories.Find(id);
+                    db.ProductCategories.Remove(productCategory);
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+        */
         protected override void Dispose(bool disposing)
         {
             if (disposing)

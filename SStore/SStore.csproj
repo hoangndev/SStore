@@ -357,7 +357,6 @@
     <Content Include="Areas\Admin\Views\Product\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Product\Index.cshtml" />
     <Content Include="Areas\Admin\Views\ProductCategory\Create.cshtml" />
-    <Content Include="Areas\Admin\Views\ProductCategory\Delete.cshtml" />
     <Content Include="Areas\Admin\Views\ProductCategory\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\ProductCategory\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Feedback\Delete.cshtml" />
@@ -368,6 +367,7 @@
     <Content Include="Areas\Admin\Views\ProductBrand\Delete.cshtml" />
     <Content Include="Areas\Admin\Views\ProductBrand\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\ProductBrand\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\ProductCategory\Delete.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />

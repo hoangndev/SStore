@@ -6,17 +6,17 @@
 }
 
 <div class="container-fluid">
-    <h1 class="text-center my-3 admin-page-title">LIST OF PRODUCT CATEGORIES</h1>
+    <h1 class="text-center my-3 admin-page-title">LIST PRODUCT BRANDS</h1>
 
-    <a type="button" class="btn sub-button" href="@Url.Action("Create", "ProductCategory", new { area = "Admin" })">
-        Add New Category
+    <a type="button" class="btn sub-button" href="@Url.Action("Create", "ProductBrand", new { area = "Admin" })">
+        Add New Brand
     </a>
     <hr />
 
     <table class="table">
         <tr>
             <th>
-                Brand Id
+                No
             </th>
             <th>
                 Brand Name
@@ -26,18 +26,18 @@
             </th>
         </tr>
 
-        @foreach (var item in Model)
+        @foreach (var item in Model.Select((d, i) => new { Data = d, Index = i + 1 }))
         {
             <tr>
                 <td>
-                    @item.BrandId
+                    @item.Index
                 </td>
                 <td>
-                    @item.BrandName
+                    @item.Data.BrandName
                 </td>
                 <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.BrandId }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.BrandId })
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Data.BrandId }, new { @class = "btn edit-button" })
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Data.BrandId }, new { @class = "btn delete-button" })
                 </td>
             </tr>
         }
