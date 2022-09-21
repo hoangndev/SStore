@@ -6,60 +6,74 @@
 }
 
 <div class="container-fluid">
-    <div class="mb-3">
-        <h1 class="text-center my-3 admin-page-title text-uppercase">Product Management</h1>
+    <h1 class="text-center my-3 admin-page-title text-uppercase">Product Management</h1>
 
-        <a type="button" class="btn sub-button" href="@Url.Action("Create", "Product", new { area = "Admin" })">
-            Add New Product
-        </a>
-    </div>
-    <table class="table">
-        <tr>
-            <th>
-                Image
-            </th>
-            <th>
-                Product Name
-            </th>
-            <th>
-                Category
-            </th>
-            <th>
-                Brand
-            </th>
-            <th>
-                Price
-            </th>
-            <th>
-                Action
-            </th>
-        </tr>
-
-        @foreach (var item in Model)
-        {
+    <a type="button" class="btn sub-button" href="@Url.Action("Create", "Product", new { area = "Admin" })">
+        Add New Product
+    </a>
+    <div class="table-responsive">
+        <table class="table table-bordered table-hover mt-3">
             <tr>
-                <td>
-                    @item.Image
-                </td>
-                <td>
-                    @item.ProductName
-                </td>
-                <td>
-                    @item.ProductCategory.CategoryName
-                </td>
-                <td>
-                    @item.productBrand.BrandName
-                </td>
-                <td>
-                    @item.Price
-                </td>
-                <td>
-                    @Html.ActionLink("Details", "Details", new { id = item.Id }, new { @class = "btn detail-button" })
-                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }, new { @class = "btn edit-button" })
-                    @Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "btn delete-button" })
-                </td>
+                <th class="text-truncate col-1">
+                    Image
+                </th>
+                <th class="text-truncate">
+                    Product Name
+                </th>
+                <th class="text-truncate">
+                    Category
+                </th>
+                <th class="text-truncate">
+                    Brand
+                </th>
+                <th class="text-truncate">
+                    Price
+                </th>
+                <th class="text-truncate">
+                    Description
+                </th>
+                <th class="text-truncate">
+                    Action
+                </th>
             </tr>
-        }
 
-    </table>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td class="align-middle my-1">
+                        <img src="~/Image/wp2461125.jpg" class="img-fluid product-image-management" style="width:100%" />
+                    </td>
+                    <td class="align-middle text-truncate">
+                        @item.ProductName
+                    </td>
+                    <td class="align-middle text-truncate">
+                        @item.ProductCategory.CategoryName
+                    </td>
+                    <td class="align-middle text-truncate">
+                        @item.productBrand.BrandName
+                    </td>
+                    <td class="align-middle text-truncate">
+                        @item.Price
+                    </td>
+                    <td>
+                        @item.Description
+                    </td>
+                    <td class="align-middle">
+                        <div class="d-flex flex-nowrap">
+                            <a href="@Url.Action("Details", "Product", new{ id = item.Id })" class="btn detail-button me-2 text-info">
+                                <i class="bi bi-info-circle"></i>
+                            </a>
+                            <a href="@Url.Action("Edit", "Product", new{ id = item.Id })" class="btn edit-button me-2 text-success">
+                                <i class="bi bi-pencil-square"></i>
+                            </a>
+                            <a href="@Url.Action("Delete", "Product", new{ id = item.Id })" class="btn delete-button text-danger">
+                                <i class="bi bi-trash"></i>
+                            </a>
+                        </div>
+                    </td>
+                </tr>
+            }
+
+        </table>
+    </div>
 </div>

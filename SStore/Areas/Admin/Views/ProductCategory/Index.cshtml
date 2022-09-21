@@ -5,46 +5,65 @@
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 <div class="container-fluid">
-    <h1 class="text-center my-3 admin-page-title">LIST PRODUCT CATEGORIES</h1>
+    <h1 class="text-center my-3 admin-page-title text-uppercase">Product Category Management</h1>
 
-    <a type="button" class="btn sub-button" href="@Url.Action("Create", "ProductCategory", new { area = "Admin" })">
-        Add New Category
-    </a>
-    <hr />
-    <table class="table">
-        <tr>
-            <th>
-                No
-            </th>
-            <th>
-                Category Name
-            </th>
-            <th>
-                Description
-            </th>
-            <th>
-                Action
-            </th>
-        </tr>
+    <div class="d-flex justify-content-center">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                </div>
+                <div class="col-7">
+                    <a type="button" class="btn sub-button" href="@Url.Action("Create", "ProductCategory", new { area = "Admin" })">
+                        Add New Category
+                    </a>
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-hover mt-3">
+                            <tr>
+                                <th class="text-truncate">
+                                    No
+                                </th>
+                                <th class="text-truncate">
+                                    Category Name
+                                </th>
+                                <th class="text-truncate">
+                                    Description
+                                </th>
+                                <th class="text-truncate">
+                                    Action
+                                </th>
+                            </tr>
 
-        @foreach (var item in Model.Select((d, i) => new { Data = d, Index = i + 1 }))
-        {
-            <tr>
-                <td>
-                    @item.Index
-                </td>
-                <td>
-                    @item.Data.CategoryName
-                </td>
-                <td>
-                    @item.Data.Description
-                </td>
-                <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.Data.CategoryId }, new { @class = "btn edit-button" })
-                    @Html.ActionLink("Delete", "Delete", new { id = item.Data.CategoryId }, new { @class = "btn delete-button" })
-                </td>
-            </tr>
-        }
+                            @foreach (var item in Model.Select((d, i) => new { Data = d, Index = i + 1 }))
+                            {
+                                <tr>
+                                    <td class="align-middle">
+                                        @item.Index
+                                    </td>
+                                    <td class="align-middle">
+                                        @item.Data.CategoryName
+                                    </td>
+                                    <td class="align-middle">
+                                        @item.Data.Description
+                                    </td>
+                                    <td class="align-middle">
+                                        <div class="d-flex flex-nowrap">
+                                            <a href="@Url.Action("Edit", "ProductCategory", new{ id = item.Data.CategoryId })" class="btn edit-button me-2">
+                                                <i class="bi bi-pencil-square"></i>
+                                            </a>
+                                            <a href="@Url.Action("Delete", "ProductCategory", new{ id = item.Data.CategoryId })" class="btn delete-button">
+                                                <i class="bi bi-trash"></i>
+                                            </a>
+                                        </div>
+                                    </td>
+                                </tr>
+                            }
 
-    </table>
+                        </table>
+                    </div>
+                </div>
+                <div class="col">
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

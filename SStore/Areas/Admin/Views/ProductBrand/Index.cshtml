@@ -6,41 +6,60 @@
 }
 
 <div class="container-fluid">
-    <h1 class="text-center my-3 admin-page-title">LIST PRODUCT BRANDS</h1>
+    <h1 class="text-center my-3 admin-page-title text-uppercase">Product Brand Management</h1>
 
-    <a type="button" class="btn sub-button" href="@Url.Action("Create", "ProductBrand", new { area = "Admin" })">
-        Add New Brand
-    </a>
-    <hr />
+    <div class="d-flex justify-content-center">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                </div>
+                <div class="col-6">
+                    <a type="button" class="btn sub-button" href="@Url.Action("Create", "ProductBrand", new { area = "Admin" })">
+                        Add New Brand
+                    </a>
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-hover mt-3">
+                            <tr>
+                                <th class="text-truncate">
+                                    No
+                                </th>
+                                <th class="text-truncate">
+                                    Brand Name
+                                </th>
+                                <th class="text-truncate">
+                                    Action
+                                </th>
+                            </tr>
 
-    <table class="table">
-        <tr>
-            <th>
-                No
-            </th>
-            <th>
-                Brand Name
-            </th>
-            <th>
-                Action
-            </th>
-        </tr>
+                            @foreach (var item in Model.Select((d, i) => new { Data = d, Index = i + 1 }))
+                            {
+                                <tr>
+                                    <td class="align-middle">
+                                        @item.Index
+                                    </td>
+                                    <td class="align-middle">
+                                        @item.Data.BrandName
+                                    </td>
+                                    <td class="align-middle">
+                                        <div class="d-flex flex-nowrap">
 
-        @foreach (var item in Model.Select((d, i) => new { Data = d, Index = i + 1 }))
-        {
-            <tr>
-                <td>
-                    @item.Index
-                </td>
-                <td>
-                    @item.Data.BrandName
-                </td>
-                <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.Data.BrandId }, new { @class = "btn edit-button" })
-                    @Html.ActionLink("Delete", "Delete", new { id = item.Data.BrandId }, new { @class = "btn delete-button" })
-                </td>
-            </tr>
-        }
+                                            <a href="@Url.Action("Edit", "ProductBrand", new{ id = item.Data.BrandId })" class="btn edit-button me-2 text-success">
+                                                <i class="bi bi-pencil-square"></i>
+                                            </a>
+                                            <a href="@Url.Action("Delete", "ProductBrand", new{ id = item.Data.BrandId })" class="btn delete-button text-danger">
+                                                <i class="bi bi-trash"></i>
+                                            </a>
+                                        </div>
+                                    </td>
+                                </tr>
+                            }
 
-    </table>
+                        </table>
+                    </div>
+                </div>
+                <div class="col">
+                </div>
+            </div>          
+        </div>
+    </div>
 </div>
