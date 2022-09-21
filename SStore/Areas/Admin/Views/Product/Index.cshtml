@@ -55,18 +55,18 @@
                     <td class="align-middle text-truncate">
                         @item.Price
                     </td>
-                    <td>
+                    <td class="align-middle text-truncate">
                         @item.Description
                     </td>
                     <td class="align-middle">
                         <div class="d-flex flex-nowrap">
-                            <a href="@Url.Action("Details", "Product", new{ id = item.Id })" class="btn detail-button me-2 text-info">
+                            <a href="@Url.Action("Details", "Product", new{ id = item.Id })" class="btn detail-button me-2">
                                 <i class="bi bi-info-circle"></i>
                             </a>
-                            <a href="@Url.Action("Edit", "Product", new{ id = item.Id })" class="btn edit-button me-2 text-success">
+                            <a href="@Url.Action("Edit", "Product", new{ id = item.Id })" class="btn edit-button me-2">
                                 <i class="bi bi-pencil-square"></i>
                             </a>
-                            <a href="@Url.Action("Delete", "Product", new{ id = item.Id })" class="btn delete-button text-danger">
+                            <a href="@Url.Action("Delete", "Product", new{ id = item.Id })" class="btn delete-button">
                                 <i class="bi bi-trash"></i>
                             </a>
                         </div>

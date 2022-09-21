@@ -28,7 +28,9 @@ namespace SStore.Areas.Admin.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Product product = db.Products.Find(id);
+            Product product = db.Products.Include(p => p.productBrand).Include(p => p.ProductCategory).SingleOrDefault(p => p.Id == id);
+
+
             if (product == null)
             {
                 return HttpNotFound();
@@ -48,11 +50,12 @@ namespace SStore.Areas.Admin.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,ProductName,CategoryId,Price,Weight,Size,Color,BrandId,Status,Description,Image,CreatedDate,ModifiedDate,Hot,View")] Product product)
+        public ActionResult Create(Product product)
         {
             if (ModelState.IsValid)
             {
+                product.CreatedDate = DateTime.Now;
+                product.View = 0;
                 db.Products.Add(product);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -84,12 +87,26 @@ namespace SStore.Areas.Admin.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,ProductName,CategoryId,Price,Weight,Size,Color,BrandId,Status,Description,Image,CreatedDate,ModifiedDate,Hot,View")] Product product)
+        public ActionResult Edit(Product product)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(product).State = EntityState.Modified;
+                var productdb = db.Products.SingleOrDefault(p => p.Id.Equals(product.Id));
+
+                productdb.ProductName = product.ProductName;
+                productdb.CategoryId = product.CategoryId;
+                productdb.Price = product.Price;
+                productdb.Weight = product.Weight;
+                productdb.Size = product.Size;
+                productdb.Color = product.Color;
+                productdb.BrandId = product.BrandId;
+                productdb.Status = product.Status;
+                productdb.Description = product.Description;
+                productdb.Image = product.Image;
+                productdb.Hot = product.Hot;
+                productdb.ModifiedDate = DateTime.Now;
+                /*                db.Entry(product).State = EntityState.Modified;
+                */
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
