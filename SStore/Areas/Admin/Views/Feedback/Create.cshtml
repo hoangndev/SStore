@@ -5,7 +5,13 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div class="container my-4">
+<div class="container mt-2 mb-3">
+    <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="@Url.Action("Index", "Home", new {area = ""})" class="breadcrumb-client"><i class="bi bi-house-door"></i> Home</a></li>
+            <li class="breadcrumb-item breadcrumb-client-active">Feedback</li>
+        </ol>
+    </nav>
     <h2 class="text-uppercase text-center page-title">Feedback Us!!!</h2>
     <div class="d-flex justify-content-center">
         <div class="container-fluid" style="max-width:500px">
@@ -13,49 +19,49 @@
             {
                 @Html.AntiForgeryToken()
 
-            <div class="form-horizontal">
-                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                <div class="mb-3">
-                    <label for="Title" class="form-label fw-bold">
-                        @Html.LabelFor(b => b.Title, "Title")
-                    </label>
-                    @Html.TextBoxFor(b => b.Title, new { @class = "form-control"})
-                    @Html.ValidationMessageFor(b => b.Title, "", new { @class = "text-danger" })
-                </div>
-                <div class="mb-3">
-                    <label for="Fullname" class="form-label">
-                        @Html.LabelFor(b => b.FullName, "FullName")
-                    </label>
-                    @Html.TextBoxFor(b => b.FullName, new { @class = "form-control"})
-                    @Html.ValidationMessageFor(b => b.FullName, "", new { @class = "text-danger" })
-                </div>
-                <div class="mb-3">
-                    <label for="Email" class="form-label">
-                        @Html.LabelFor(b => b.Email, "Email")
-                    </label>
-                    @Html.TextBoxFor(b => b.Email, new { @class = "form-control"})
-                    @Html.ValidationMessageFor(b => b.Email, "", new { @class = "text-danger" })
-                </div>
-                <div class="mb-3">
-                    <label for="PhoneNumber" class="form-label">
-                        @Html.LabelFor(b => b.PhoneNumber, "Phone")
-                    </label>
-                    @Html.TextBoxFor(b => b.PhoneNumber, new { @class = "form-control"})
-                    @Html.ValidationMessageFor(b => b.PhoneNumber, "", new { @class = "text-danger" })
-                </div>
-                <div class="mb-3">
-                    <label for="Description" name="Description" class="form-label">
-                        @Html.LabelFor(b => b.Description, "Description")
-                    </label>
-                    <textarea class="form-control" name="Description" rows="4" placeholder="Tell us the problem you are having ..."></textarea>
-                    @Html.ValidationMessageFor(b => b.Description, "", new { @class = "text-danger" })
-                </div>
-                <div class="form-group">
-                    <div class="col-md-offset-2 col-md-10">
-                        <input type="submit" value="Submit" class="btn sub-button" />
+                <div class="form-horizontal">
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <div class="mb-3">
+                        <label for="Title" class="form-label fw-bold">
+                            @Html.LabelFor(b => b.Title, "Title")
+                        </label>
+                        @Html.TextBoxFor(b => b.Title, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(b => b.Title, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="mb-3">
+                        <label for="Fullname" class="form-label">
+                            @Html.LabelFor(b => b.FullName, "FullName")
+                        </label>
+                        @Html.TextBoxFor(b => b.FullName, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(b => b.FullName, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="mb-3">
+                        <label for="Email" class="form-label">
+                            @Html.LabelFor(b => b.Email, "Email")
+                        </label>
+                        @Html.TextBoxFor(b => b.Email, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(b => b.Email, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="mb-3">
+                        <label for="PhoneNumber" class="form-label">
+                            @Html.LabelFor(b => b.PhoneNumber, "Phone")
+                        </label>
+                        @Html.TextBoxFor(b => b.PhoneNumber, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(b => b.PhoneNumber, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="mb-3">
+                        <label for="Description" name="Description" class="form-label">
+                            @Html.LabelFor(b => b.Description, "Description")
+                        </label>
+                        <textarea class="form-control" name="Description" rows="4" placeholder="Tell us the problem you are having ..."></textarea>
+                        @Html.ValidationMessageFor(b => b.Description, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="Submit" class="btn sub-button" />
+                        </div>
                     </div>
                 </div>
-            </div>
             }
         </div>
     </div>
