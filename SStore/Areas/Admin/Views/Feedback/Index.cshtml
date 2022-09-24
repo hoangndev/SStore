@@ -48,8 +48,12 @@
                     @item.Data.Email
                 </td>
                 <td>
-                    @Html.ActionLink("Details", "Details", new { id = item.Data.Id }, new { @class = "btn detail-button" })
-                    @Html.ActionLink("Delete", "Delete", new { id = item.Data.Id }, new { @class = "btn delete-button" })
+                    <a href="@Url.Action("Details", "Feedback", new{ id = item.Data.Id })" class="btn detail-button me-2">
+                        <i class="bi bi-info-circle"></i>
+                    </a>
+                    <a href="@Url.Action("Delete", "Feedback", new{ id = item.Data.Id })" class="btn delete-button">
+                        <i class="bi bi-trash"></i>
+                    </a>
                 </td>
             </tr>
         }

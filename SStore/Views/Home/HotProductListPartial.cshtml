@@ -3,7 +3,16 @@
 @foreach (var item in Model)
 {
     <div class="card m-3 shadow" style="width: 18rem;">
-        <img src="@Url.Content("~/Image/wp2461125.jpg")" class="card-img-top" alt="...">
+        <div class="image-hover img-overlay">
+            <a href="@Url.Action("Details", "Product",  new { area = "admin", id = item.Id })" class="text-decoration-none">
+                <figure>
+                    <img src="@Url.Content("~/Image/wp2461125.jpg")" class="card-img-top" alt="...">
+                    <div class="overlay">
+                        <div class="img-overlay-text">See details</div>
+                    </div>
+                </figure>
+            </a>
+        </div>
         <div class="card-body">
             <h5 class="card-title">@item.ProductName</h5>
             <p class="card-text">@item.Price $</p>

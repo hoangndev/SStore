@@ -4,12 +4,15 @@
     ViewBag.Title = "Details";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
-<div class="container-fluid">
-    <a class="text-decoration-none btn back-page-button mt-3" href="@Url.Action("Index", "Feedback", new { area = "Admin" })">
-        <i class="bi bi-box-arrow-left"></i>
-        &nbsp; Back to List
-    </a>
-    <h1 class="my-3 text-center text-uppercase admin-page-title">Feedback</h1>
+<div class="container-fluid my-2">
+    <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="@Url.Action("Index", "Dashboard", new { area = "Admin" })" class="breadcrumb-client">Dashboard</a></li>
+            <li class="breadcrumb-item"><a href="@Url.Action("Index", "Feedback", new { area = "Admin" })" class="breadcrumb-client">Feedbacks</a></li>
+            <li class="breadcrumb-item breadcrumb-client-active">Details</li>
+        </ol>
+    </nav>
+    <h1 class="text-center text-uppercase admin-page-title">Feedback</h1>
     <hr />
     <div class="d-flex justify-content-center">
         <div class="container-fluid" style="max-width:700px">

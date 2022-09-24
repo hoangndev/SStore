@@ -83,22 +83,20 @@ namespace SStore.Areas.Admin.Controllers
             {
                 return HttpNotFound();
             }
+            return View(productCategory);
+        }
+
+        // POST: Admin/ProductCategory/Delete/5
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteConfirmed(int id)
+        {
+            ProductCategory productCategory = db.ProductCategories.Find(id);
             db.ProductCategories.Remove(productCategory);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
 
-        /*        // POST: Admin/ProductCategory/Delete/5
-                [HttpPost, ActionName("Delete")]
-                [ValidateAntiForgeryToken]
-                public ActionResult DeleteConfirmed(int id)
-                {
-                    ProductCategory productCategory = db.ProductCategories.Find(id);
-                    db.ProductCategories.Remove(productCategory);
-                    db.SaveChanges();
-                    return RedirectToAction("Index");
-                }
-        */
         protected override void Dispose(bool disposing)
         {
             if (disposing)
