@@ -16,12 +16,20 @@ namespace SStore.Controllers
         // GET: AllProduct
         public ActionResult Index(string searchProduct)
         {
-            var allProduct = db.Products.Include(p => p.productBrand).Include(p => p.ProductCategory).ToList();
+            var allProduct = db.Products.Include(p => p.productBrand).Include(p => p.ProductCategory);
             if (!String.IsNullOrEmpty(searchProduct))
             {
-                allProduct = allProduct.Where(p => p.ProductName.Contains(searchProduct)).ToList();
+                allProduct = allProduct.Where(p => p.ProductName.Contains(searchProduct));
+                if (allProduct.Count() > 0)
+                {
+                    return View(allProduct.ToList());
+                }
+                else
+                {
+                    return RedirectToAction("NotFound");
+                }
             }
-            return View(allProduct);
+            return View(allProduct.ToList());
         }
         public ActionResult Shoes()
         {
@@ -42,6 +50,10 @@ namespace SStore.Controllers
         {
             var Accessories = db.Products.Include(p => p.productBrand).Include(p => p.ProductCategory).Where(p => p.ProductCategory.CategoryName.Equals("Accessories")).ToList();
             return View(Accessories);
+        }
+        public ActionResult NotFound()
+        {
+            return View();
         }
     }
 }

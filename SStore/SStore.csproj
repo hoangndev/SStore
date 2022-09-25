@@ -425,6 +425,7 @@
     <Content Include="Views\AllProduct\Shirt.cshtml" />
     <Content Include="Views\AllProduct\Hat.cshtml" />
     <Content Include="Views\AllProduct\Accessories.cshtml" />
+    <Content Include="Views\AllProduct\NotFound.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
