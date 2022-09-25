@@ -193,6 +193,8 @@
     <Compile Include="Areas\Admin\Controllers\ProductController.cs" />
     <Compile Include="Areas\Admin\Controllers\TableController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AllProductController.cs" />
+    <Compile Include="Controllers\FeedbackClientController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Global.asax.cs">
@@ -269,6 +271,10 @@
     <Compile Include="Migrations\202209170245204_AddColumnFeedbackTable.cs" />
     <Compile Include="Migrations\202209170245204_AddColumnFeedbackTable.designer.cs">
       <DependentUpon>202209170245204_AddColumnFeedbackTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202209251028109_AddFeedbackTableErrorMessage.cs" />
+    <Compile Include="Migrations\202209251028109_AddFeedbackTableErrorMessage.designer.cs">
+      <DependentUpon>202209251028109_AddFeedbackTableErrorMessage.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -362,7 +368,6 @@
     <Content Include="Areas\Admin\Views\Feedback\Delete.cshtml" />
     <Content Include="Areas\Admin\Views\Feedback\Details.cshtml" />
     <Content Include="Areas\Admin\Views\Feedback\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\Feedback\Create.cshtml" />
     <Content Include="Areas\Admin\Views\ProductBrand\Create.cshtml" />
     <Content Include="Areas\Admin\Views\ProductBrand\Delete.cshtml" />
     <Content Include="Areas\Admin\Views\ProductBrand\Edit.cshtml" />
@@ -414,6 +419,12 @@
     <Content Include="Views\Home\NewProductListPartial.cshtml" />
     <Content Include="Views\Home\HotProductListPartial.cshtml" />
     <Content Include="Views\Home\FashionProductListPartial.cshtml" />
+    <Content Include="Views\AllProduct\Index.cshtml" />
+    <Content Include="Views\FeedbackClient\Create.cshtml" />
+    <Content Include="Views\AllProduct\Shoes.cshtml" />
+    <Content Include="Views\AllProduct\Shirt.cshtml" />
+    <Content Include="Views\AllProduct\Hat.cshtml" />
+    <Content Include="Views\AllProduct\Accessories.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -478,6 +489,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202209170245204_AddColumnFeedbackTable.resx">
       <DependentUpon>202209170245204_AddColumnFeedbackTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202209251028109_AddFeedbackTableErrorMessage.resx">
+      <DependentUpon>202209251028109_AddFeedbackTableErrorMessage.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

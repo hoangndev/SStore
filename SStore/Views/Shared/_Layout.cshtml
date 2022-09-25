@@ -19,10 +19,15 @@
                 <a href="@Url.Action("Index", "Home", new { area = "" })" class="d-flex align-items-center col-md-auto mb-2 mb-md-0 text-dark text-decoration-none">
                     <h1 class="me-3 store-logo-homepage">SStore</h1>
                 </a>
-                <form class="d-flex col-md-auto mb-2 justify-content-center mb-md-0">
-                    <input type="search" class="bd-search form-control me-2 form-control-dark" placeholder="search product..." />
-                    <button class="btn btn-outline-success" type="submit">Search</button>
-                </form>
+                @using (Html.BeginForm("Index", "allProduct", FormMethod.Get))
+                {
+                    <form class="d-flex col-md-auto mb-2 justify-content-center mb-md-0">
+                        <div class="d-flex align-items-center mb-2 mb-sm-0">
+                            <input type="search" name="searchProduct" class="bd-search form-control me-2 form-control-dark" placeholder="search product..." />
+                            <button class="btn btn-outline-success" type="submit">Search</button>
+                        </div>
+                    </form>
+                }
                 <div class="d-flex col-md-auto text-end">
                     <a href="#" class="btn btn-outline-dark me-2">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart me-1" viewBox="0 0 16 16">
@@ -54,32 +59,32 @@
                             </a>
                         </li>
                         <li class="me-4">
-                            <a class="nav-link text-white store-navigation-link-homepage" href="@Url.Action("About", "Home", new { area = "" })">
+                            <a class="nav-link text-white store-navigation-link-homepage" href="@Url.Action("Index", "AllProduct", new { area = "" })">
                                 All Product
                             </a>
                         </li>
                         <li class="me-4">
-                            <a class="nav-link text-white store-navigation-link-homepage" href="@Url.Action("Contact", "Home", new { area = "" })">
+                            <a class="nav-link text-white store-navigation-link-homepage" href="@Url.Action("Shoes", "AllProduct", new { area = "" })">
                                 Shoes
                             </a>
                         </li>
                         <li class="me-4">
-                            <a class="nav-link text-white store-navigation-link-homepage" href="@Url.Action("Contact", "Home", new { area = "" })">
+                            <a class="nav-link text-white store-navigation-link-homepage" href="@Url.Action("Hat", "AllProduct", new { area = "" })">
                                 Hat
                             </a>
                         </li>
                         <li class="me-4">
-                            <a class="nav-link text-white store-navigation-link-homepage" href="@Url.Action("Contact", "Home", new { area = "" })">
+                            <a class="nav-link text-white store-navigation-link-homepage" href="@Url.Action("Shirt", "AllProduct", new { area = "" })">
                                 Shirt
                             </a>
                         </li>
                         <li class="me-4">
-                            <a class="nav-link text-white store-navigation-link-homepage" href="@Url.Action("Contact", "Home", new { area = "" })">
+                            <a class="nav-link text-white store-navigation-link-homepage" href="@Url.Action("Accessories", "AllProduct", new { area = "" })">
                                 Accessories
                             </a>
                         </li>
                         <li class="me-4">
-                            <a class="nav-link text-white store-navigation-link-homepage" href="@Url.Action("Create", "Feedback", new { area = "Admin" }, null)">
+                            <a class="nav-link text-white store-navigation-link-homepage" href="@Url.Action("Create", "FeedbackClient", new { area = "" }, null)">
                                 Feedback
                             </a>
                         </li>

@@ -13,7 +13,11 @@
             <li class="breadcrumb-item breadcrumb-client-active">Delete</li>
         </ol>
     </nav>
-    <h3>Are you sure you want to delete this category?</h3>
+    @* Header display responsive *@
+    <h3 class="mb-1 d-none d-sm-block">Are you sure you want to delete this category?</h3>
+    <p class="fs-6 fw-lighter align-middle text-danger d-none d-sm-block"><i class="bi bi-exclamation-triangle"></i> Products under this category will also be deleted</p>
+    <h4 class="mb-1 d-block d-sm-none">Are you sure you want to delete this category?</h4>
+    <p class="fw-lighter align-middle text-danger d-block d-sm-none" style="font-size: 13px"><i class="bi bi-exclamation-triangle"></i> Products under this category will also be deleted</p>
     <div>
         <hr />
         <dl class="dl-horizontal">
@@ -40,8 +44,8 @@
             @Html.AntiForgeryToken()
 
             <div class="form-actions no-color">
-                <input type="submit" value="Delete" class="btn btn-default" /> |
-                @Html.ActionLink("Back to List", "Index")
+                <input type="submit" value="Delete" class="btn delete-button" />
+                <a href="@Url.Action("Index", "ProductCategory", new { area = "Admin"})" class="btn back-page-button">Back to list</a>
             </div>
         }
     </div>

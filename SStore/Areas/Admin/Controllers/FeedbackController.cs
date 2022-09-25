@@ -36,26 +36,6 @@ namespace SStore.Areas.Admin.Controllers
             return View(feedback);
         }
 
-        // GET: Admin/Feedback/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
-
-        // POST: Admin/Feedback/Create
-        [HttpPost]
-        public ActionResult Create(Feedback feedback)
-        {
-            if (ModelState.IsValid)
-            {
-                db.Feedbacks.Add(feedback);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-
-            return View(feedback);
-        }
-
         // GET: Admin/Feedback/Delete/5
         public ActionResult Delete(int? id)
         {
