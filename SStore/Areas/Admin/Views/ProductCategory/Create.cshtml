@@ -13,7 +13,7 @@
             <li class="breadcrumb-item breadcrumb-client-active">Create</li>
         </ol>
     </nav>
-    <h1 class="my-3 text-center admin-page-title">ADD NEW PRODUCT CATEGORY</h1>
+    <h1 class="my-3 text-center admin-page-title">ADD NEW CATEGORY</h1>
     @using (Html.BeginForm("Create", "ProductCategory", FormMethod.Post))
     {
         <div class="d-flex justify-content-center">
@@ -23,8 +23,7 @@
                         <label for="CategoryName" class="form-label fw-bold">
                             @Html.LabelFor(c => c.CategoryName, "Category Name")
                         </label>
-                        @Html.TextBoxFor(c => c.CategoryName, new { @class = "form-control", @placeholder = "Enter category name" })
-                        @Html.ValidationMessageFor(c => c.CategoryName, "", new { @class = "text-danger" })
+                        @Html.TextBoxFor(c => c.CategoryName, new { @class = "form-control", @placeholder = "Enter category name", required = "required" })
                     </div>
                     <div class="mb-3">
                         <label for="CategoryName" class="form-label fw-bold">

@@ -13,50 +13,62 @@
         </ol>
     </nav>
     <h1 class="text-uppercase text-center admin-page-title">Customer Feedbacks</h1>
-    <table class="table">
-        <tr>
-            <th>
-                No
-            </th>
-            <th>
-                Title
-            </th>
-            <th>
-                FullName
-            </th>
-            <th>
-                Email
-            </th>
-            <th>
-                Action
-            </th>
-        </tr>
+    <div class="row">
+        <div class="col">
+        </div>
+        <div class="col-xxl-9 col-xl-10 col-lg-11 col-md-12">
+            <div class="table-responsive">
+                <table class="table table-bordered table-hover mt-3">
+                    <tr>
+                        <th class="text-truncate">
+                            No
+                        </th>
+                        <th class="text-truncate">
+                            Title
+                        </th>
+                        <th class="text-truncate">
+                            FullName
+                        </th>
+                        <th class="text-truncate">
+                            Email
+                        </th>
+                        <th class="text-truncate">
+                            Action
+                        </th>
+                    </tr>
 
-        @foreach (var item in Model.Select((d, i) => new { Data = d, Index = i + 1 }))
-        {
-            <tr>
-                <td>
-                    @item.Index
-                </td>
-                <td>
-                    @item.Data.Title
-                </td>
-                <td>
-                    @item.Data.FullName
-                </td>
-                <td>
-                    @item.Data.Email
-                </td>
-                <td>
-                    <a href="@Url.Action("Details", "Feedback", new{ id = item.Data.Id })" class="btn detail-button me-2">
-                        <i class="bi bi-info-circle"></i>
-                    </a>
-                    <a href="@Url.Action("Delete", "Feedback", new{ id = item.Data.Id })" class="btn delete-button">
-                        <i class="bi bi-trash"></i>
-                    </a>
-                </td>
-            </tr>
-        }
+                    @foreach (var item in Model.Select((d, i) => new { Data = d, Index = i + 1 }))
+                    {
+                        <tr>
+                            <td class="align-middle text-truncate">
+                                @item.Index
+                            </td>
+                            <td class="align-middle text-truncate">
+                                @item.Data.Title
+                            </td>
+                            <td class="align-middle text-truncate">
+                                @item.Data.FullName
+                            </td>
+                            <td class="align-middle text-truncate">
+                                @item.Data.Email
+                            </td>
+                            <td class="align-middle">
+                                <div class="d-flex flex-nowrap">
+                                    <a href="@Url.Action("Details", "Feedback", new{ id = item.Data.Id })" class="btn detail-button me-2">
+                                        <i class="bi bi-info-circle"></i>
+                                    </a>
+                                    <a href="@Url.Action("Delete", "Feedback", new{ id = item.Data.Id })" class="btn delete-button">
+                                        <i class="bi bi-trash"></i>
+                                    </a>
+                                </div>
+                            </td>
+                        </tr>
+                    }
 
-    </table>
+                </table>
+            </div>
+        </div>
+        <div class="col">
+        </div>
+    </div>
 </div>

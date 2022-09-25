@@ -14,23 +14,11 @@
         </ol>
     </nav>
     @* Header display responsive *@
-    <h3 class="mb-1 d-none d-sm-block">Are you sure you want to delete this brand?</h3>
+    <h3 class="mb-1 d-none d-sm-block">Are you sure you want to delete "@Model.BrandName" brand?</h3>
     <p class="fs-6 fw-lighter align-middle text-danger d-none d-sm-block"><i class="bi bi-exclamation-triangle"></i> Products under this brand will also be deleted</p>
-    <h4 class="mb-1 d-block d-sm-none">Are you sure you want to delete this brand?</h4>
+    <h4 class="mb-1 d-block d-sm-none">Are you sure you want to delete "@Model.BrandName" brand?</h4>
     <p class="fw-lighter align-middle text-danger d-block d-sm-none" style="font-size: 13px"><i class="bi bi-exclamation-triangle"></i> Products under this brand will also be deleted</p>
     <div>
-        <hr />
-        <dl class="dl-horizontal">
-            <dt>
-                @Html.DisplayNameFor(model => model.BrandName)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.BrandName)
-            </dd>
-
-        </dl>
-
         @using (Html.BeginForm())
         {
             @Html.AntiForgeryToken()

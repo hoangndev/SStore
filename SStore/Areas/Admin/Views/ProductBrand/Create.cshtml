@@ -13,27 +13,25 @@
             <li class="breadcrumb-item breadcrumb-client-active">Create</li>
         </ol>
     </nav>
-    <h1 class="my-3 text-center admin-page-title text-uppercase">Add New Product Brand</h1>
+    <h1 class="my-3 text-center admin-page-title text-uppercase">Add New Brand</h1>
 
     @using (Html.BeginForm())
     {
         @Html.AntiForgeryToken()
 
-        <div class="form-horizontal">
-            <hr />
-            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-            <div class="form-group mb-2">
-                @Html.LabelFor(model => model.BrandName, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.BrandName, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.BrandName, "", new { @class = "text-danger" })
-                </div>
-            </div>
-
-            <div class="form-group mb-2">
-                <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" value="Create" class="btn sub-button" />
-                </div>
+        <div class="d-flex justify-content-center">
+            <div class="container-fluid" style="max-width:500px">
+                <form>
+                    <div class="mb-3">
+                        <label for="CategoryName" class="form-label fw-bold">
+                            @Html.LabelFor(b => b.BrandName, "Category Name")
+                        </label>
+                        @Html.TextBoxFor(b => b.BrandName, new { @class = "form-control", @placeholder = "Enter brand name", required = "required" })
+                    </div>
+                    <div class="mb-3">
+                        <button type="submit" class="btn sub-button">Add</button>
+                    </div>
+                </form>
             </div>
         </div>
     }
