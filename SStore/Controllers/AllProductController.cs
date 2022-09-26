@@ -7,6 +7,7 @@ using System.Web.Mvc;
 using System.Data;
 using System.Data.Entity;
 using Microsoft.Ajax.Utilities;
+using System.Net;
 
 namespace SStore.Controllers
 {
@@ -54,6 +55,22 @@ namespace SStore.Controllers
         public ActionResult NotFound()
         {
             return View();
+        }
+
+        // GET: Admin/Product/Details/5
+        public ActionResult Details(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Product product = db.Products.Include(p => p.productBrand).Include(p => p.ProductCategory).SingleOrDefault(p => p.Id == id);
+
+            if (product == null)
+            {
+                return RedirectToAction("NotFound");
+            }
+            return View(product);
         }
     }
 }
