@@ -13,7 +13,7 @@ namespace SStore.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int BrandId { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Please input brand name")]
         [StringLength(100)]
         public string BrandName { get; set; }
     }

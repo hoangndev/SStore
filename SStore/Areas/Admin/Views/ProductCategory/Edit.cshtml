@@ -27,6 +27,7 @@
                             @Html.LabelFor(c => c.CategoryName, "Category Name")
                         </label>
                         @Html.EditorFor(model => model.CategoryName, new { htmlAttributes = new { @class = "form-control", required = "required" } })
+                        @Html.ValidationMessageFor(model => model.CategoryName, "", new { @class = "text-danger" })
                     </div>
                     <div class="mb-3">
                         <label for="CategoryName" class="form-label fw-bold">

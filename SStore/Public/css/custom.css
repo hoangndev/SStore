@@ -332,6 +332,10 @@ figure {
 }
 
 
+a:any-link {
+    text-decoration: none;
+}
+
 @media screen and (max-width: 575px) {
     .product-detail-button-hidden {
         display: inline-block;

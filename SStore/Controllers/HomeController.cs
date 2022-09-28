@@ -18,22 +18,20 @@ namespace SStore.Controllers
             return View();
         }
 
-
-        // GET: /Product
         public PartialViewResult NewProductListPartial()
         {
-            var newProductList = db.Products.Include(p => p.productBrand).Include(p => p.ProductCategory).Where(p => p.BrandId.Equals(1)).ToList();
+            var newProductList = db.Products.Include(p => p.productBrand).Include(p => p.ProductCategory).OrderByDescending(p => p.CreatedDate).Take(8).ToList();
             return PartialView(newProductList);
         }
 
         public PartialViewResult HotProductListPartial()
         {
-            var hotProductList = db.Products.Include(p => p.productBrand).Include(p => p.ProductCategory).Where(p => p.BrandId.Equals(2)).ToList();
+            var hotProductList = db.Products.Include(p => p.productBrand).Include(p => p.ProductCategory).OrderByDescending(p => p.View).Take(8).ToList();
             return PartialView(hotProductList);
         }
         public PartialViewResult FashionProductListPartial()
         {
-            var fashionProductList = db.Products.Include(p => p.productBrand).Include(p => p.ProductCategory).Where(p => p.BrandId.Equals(1)).OrderByDescending(p => p.Id).ToList();
+            var fashionProductList = db.Products.Include(p => p.productBrand).Include(p => p.ProductCategory).Where(p => p.Hot == true).OrderByDescending(p => p.ModifiedDate).Take(4).ToList();
             return PartialView(fashionProductList);
         }
     }

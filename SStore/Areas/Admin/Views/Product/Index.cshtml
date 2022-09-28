@@ -1,8 +1,11 @@
-﻿@model IEnumerable<SStore.Models.Product>
+﻿@model PagedList.IPagedList<SStore.Models.Product>
+@using PagedList.Mvc;
+@using PagedList;
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Products";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    
 }
 
 <div class="container-fluid my-2">
@@ -14,17 +17,30 @@
     </nav>
     <h1 class="text-center my-3 admin-page-title text-uppercase">Product Management</h1>
 
-    <a type="button" class="btn sub-button" href="@Url.Action("Create", "Product", new { area = "Admin" })">
+    <a type="button" class="btn sub-button mb-2" href="@Url.Action("Create", "Product", new { area = "Admin" })">
         Add New Product
     </a>
+    <div class="d-flex justify-content-between align-items-center">
+        @using (Html.BeginForm("Index", "Product", FormMethod.Get))
+        {
+            <form class="d-flex col-md-auto mb-2 justify-content-center mb-md-0">
+                <div class="d-flex align-items-center mb-2 mb-sm-0">
+                    <input type="search" name="searchString" class="bd-search form-control me-2 form-control-dark" placeholder="search product..." />
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                </div>
+            </form>
+        }
+        <p class="mb-0 d-none d-sm-block">Showing @Model.FirstItemOnPage - @Model.LastItemOnPage of @Model.TotalItemCount products</p>
+    </div>
+    <p class="d-block d-sm-none mb-0">Showing @Model.FirstItemOnPage - @Model.LastItemOnPage of @Model.TotalItemCount products</p>
     <div class="table-responsive">
-        <table class="table table-bordered table-hover mt-3">
+        <table class="table table-bordered table-hover my-2">
             <tr>
                 <th class="text-truncate col-1">
                     Image
                 </th>
                 <th class="text-truncate">
-                    Product Name
+                    @Html.ActionLink("Product Name", "Index", new { sortOrder = ViewBag.NameSortParm })
                 </th>
                 <th class="text-truncate">
                     Category
@@ -33,7 +49,7 @@
                     Brand
                 </th>
                 <th class="text-truncate">
-                    Price
+                    @Html.ActionLink("Price", "Index", new { sortOrder  = ViewBag.PriceSortParm})
                 </th>
                 <th class="text-truncate">
                     Description
@@ -81,5 +97,36 @@
             }
 
         </table>
+    </div>
+
+    <p class="mb-2">Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount</p>
+    <div class="d-none d-lg-block">
+        @Html.PagedListPager(Model, page => Url.Action("Index", new { page, sortOrder = ViewBag.CurrentSort, searchString = Request.QueryString["searchString"] }),
+                  new PagedListRenderOptions()
+                  {
+                      LiElementClasses = new List<string> { "page-link" },
+                      UlElementClasses = new List<string> { "pagination", "d-flex", "flex-wrap" },
+                      MaximumPageNumbersToDisplay = 8,
+                  })
+    </div>
+    <div class="d-none d-sm-block d-lg-none">
+        @Html.PagedListPager(Model, page => Url.Action("Index", new { page, sortOrder = ViewBag.CurrentSort, searchString = Request.QueryString["searchString"] }),
+                  new PagedListRenderOptions()
+                  {
+                      LiElementClasses = new List<string> { "page-link" },
+                      UlElementClasses = new List<string> { "pagination", "d-flex", "flex-wrap" },
+                      MaximumPageNumbersToDisplay = 5,
+                  })
+    </div>
+    <div class="d-block d-sm-none">
+        @Html.PagedListPager(Model, page => Url.Action("Index", new { page, sortOrder = ViewBag.CurrentSort, searchString = Request.QueryString["searchString"] }),
+                  new PagedListRenderOptions()
+                  {
+                      LiElementClasses = new List<string> { "page-link" },
+                      UlElementClasses = new List<string> { "pagination pagination-sm", "d-flex", "flex-wrap" },
+                      MaximumPageNumbersToDisplay = 3,
+                      DisplayEllipsesWhenNotShowingAllPageNumbers = false,
+                      ItemSliceAndTotalFormat = "Showing items {0} through {1} of {2}.",
+                  })
     </div>
 </div>

@@ -27,7 +27,7 @@
                             Title
                         </th>
                         <th class="text-truncate">
-                            FullName
+                            Full Name
                         </th>
                         <th class="text-truncate">
                             Email
@@ -43,14 +43,28 @@
                             <td class="align-middle text-truncate">
                                 @item.Index
                             </td>
-                            <td class="align-middle text-truncate">
+                            <td class="align-middle text-truncate" style="max-width:200px">
                                 @item.Data.Title
                             </td>
-                            <td class="align-middle text-truncate">
-                                @item.Data.FullName
+                            <td class="align-middle text-truncate" style="max-width:120px">
+                                @if (@item.Data.FullName == null)
+                                {
+                                    <p class="fst-italic m-0 text-secondary">No information</p>
+                                }
+                                else
+                                {
+                                    @item.Data.FullName
+                                }
                             </td>
-                            <td class="align-middle text-truncate">
-                                @item.Data.Email
+                            <td class="align-middle text-truncate" style="max-width: 180px">
+                                @if (@item.Data.Email == null)
+                                {
+                                    <p class="fst-italic m-0 text-secondary">No information</p>
+                                }
+                                else
+                                {
+                                    <p class="m-0 text-truncate">@item.Data.Email</p>
+                                }
                             </td>
                             <td class="align-middle">
                                 <div class="d-flex flex-nowrap">

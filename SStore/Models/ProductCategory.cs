@@ -13,7 +13,7 @@ namespace SStore.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int CategoryId { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Please input category name")]
         [StringLength(100)]
         public string CategoryName { get; set; }
         [StringLength(255)]

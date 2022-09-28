@@ -41,110 +41,120 @@
                 </a>
             </div>
             <div class="col">
-                <dt>
-                    Product Brand
-                </dt>
-
-                <dd>
-                    @Model.productBrand.BrandName
-                </dd>
-
-                <dt>
-                    Product Category
-                </dt>
-
-                <dd>
-                    @Model.ProductCategory.CategoryName
-                </dd>
-
-                <dt>
-                    @Html.DisplayNameFor(model => model.Price)
-                </dt>
-
-                <dd>
-                    @Html.DisplayFor(model => model.Price)
-                </dd>
-
-                <dt>
-                    Total price
-                </dt>
-
-                <dd>
-                    @Sum(Model.Price, 2)
-                </dd>
-
-                <dt>
-                    @Html.DisplayNameFor(model => model.Weight)
-                </dt>
-
-                <dd>
-                    @Html.DisplayFor(model => model.Weight)
-                </dd>
-
-                <dt>
-                    @Html.DisplayNameFor(model => model.Size)
-                </dt>
-
-                <dd>
-                    @Html.DisplayFor(model => model.Size)
-                </dd>
-
-                <dt>
-                    @Html.DisplayNameFor(model => model.Color)
-                </dt>
-
-                <dd>
-                    @Html.DisplayFor(model => model.Color)
-                </dd>
-
-                <dt>
-                    @Html.DisplayNameFor(model => model.Status)
-                </dt>
-
-                <dd>
-                    @Html.DisplayFor(model => model.Status)
-                </dd>
-
-                <dt>
-                    @Html.DisplayNameFor(model => model.Description)
-                </dt>
-
-                <dd>
-                    @Html.DisplayFor(model => model.Description)
-                </dd>
-
-                <dt>
-                    @Html.DisplayNameFor(model => model.CreatedDate)
-                </dt>
-
-                <dd>
-                    @Html.DisplayFor(model => model.CreatedDate)
-                </dd>
-
-                <dt>
-                    @Html.DisplayNameFor(model => model.ModifiedDate)
-                </dt>
-
-                <dd>
-                    @Html.DisplayFor(model => model.ModifiedDate)
-                </dd>
-
-                <dt>
-                    @Html.DisplayNameFor(model => model.Hot)
-                </dt>
-
-                <dd>
-                    @Html.DisplayFor(model => model.Hot)
-                </dd>
-
-                <dt>
-                    @Html.DisplayNameFor(model => model.View)
-                </dt>
-
-                <dd>
-                    @Html.DisplayFor(model => model.View)
-                </dd>
-
+                <div class="table-responsive">
+                    <table class="table table-bordered table-hover mt-3">
+                        <tr>
+                            <th>
+                                Category
+                            </th>
+                            <td>
+                                @Model.ProductCategory.CategoryName
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                Brand
+                            </th>
+                            <td>
+                                @Model.productBrand.BrandName
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                Weight
+                            </th>
+                            <td>
+                                @Model.Weight
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                Size
+                            </th>
+                            <td>
+                                @Model.Size
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                Color
+                            </th>
+                            <td>
+                                @Model.Color
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                Price
+                            </th>
+                            <td>
+                                @Model.Price
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                Description
+                            </th>
+                            <td>
+                                @Model.Description
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                Status
+                            </th>
+                            <td>
+                                @if (@Model.Status == true)
+                                {
+                                    <p class="m-0">in stock</p>
+                                }
+                                else
+                                {
+                                    <p class="m-0">out of stock</p>
+                                }
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                CreatedDate
+                            </th>
+                            <td>
+                                @Model.CreatedDate
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                ModifiedDate
+                            </th>
+                            <td>
+                                @Model.ModifiedDate
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                Hot
+                            </th>
+                            <td>
+                                @if (@Model.Hot == true)
+                                {
+                                    <p class="m-0">Yes</p>
+                                }
+                                else
+                                {
+                                    <p class="m-0">No</p>
+                                }
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                View
+                            </th>
+                            <td>
+                                @Model.View
+                            </td>
+                        </tr>
+                    </table>
+                </div>
             </div>
         </div>
     </div>

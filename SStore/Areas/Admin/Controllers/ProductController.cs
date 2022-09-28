@@ -7,6 +7,8 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using SStore.Models;
+using PagedList;
+using PagedList.Mvc;
 
 namespace SStore.Areas.Admin.Controllers
 {
@@ -15,10 +17,35 @@ namespace SStore.Areas.Admin.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Admin/Product
-        public ActionResult Index()
+        [HttpGet]
+        public ActionResult Index(int? page, string sortOrder, string searchString)
         {
+            ViewBag.CurrentSort = sortOrder;
+            ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "Name_Desc" : "";
+            ViewBag.PriceSortParm = sortOrder == "Price" ? "Price_Desc" : "Price";
+            /*            var products = db.Products.Include(p => p.productBrand).Include(p => p.ProductCategory).OrderBy(p => p.ProductName).ToList();
+            */
             var products = db.Products.Include(p => p.productBrand).Include(p => p.ProductCategory);
-            return View(products.ToList());
+
+            switch (sortOrder)
+            {
+                case "Name_Desc":
+                    products = db.Products.Include(p => p.productBrand).Include(p => p.ProductCategory).OrderByDescending(p => p.ProductName);
+                    break;
+                case "Price":
+                    products = db.Products.Include(p => p.productBrand).Include(p => p.ProductCategory).OrderBy(p => p.Price);
+                    break;
+                case "Price_Desc":
+                    products = db.Products.Include(p => p.productBrand).Include(p => p.ProductCategory).OrderByDescending(p => p.Price);
+                    break;
+                default:
+                    products = db.Products.Include(p => p.productBrand).Include(p => p.ProductCategory).OrderBy(p => p.ProductName);
+                    break;
+            }
+            int pageSize = 8;
+            int pageNumber = (page ?? 1);
+            return View(products.Where(p => p.ProductName.Contains(searchString) || searchString == null).ToList().ToPagedList(pageNumber, pageSize));
+
         }
 
         // GET: Admin/Product/Details/5
@@ -38,6 +65,7 @@ namespace SStore.Areas.Admin.Controllers
             return View(product);
         }
 
+
         // GET: Admin/Product/Create
         public ActionResult Create()
         {
@@ -53,6 +81,7 @@ namespace SStore.Areas.Admin.Controllers
             if (ModelState.IsValid)
             {
                 product.CreatedDate = DateTime.Now;
+                product.ModifiedDate = DateTime.Now;
                 product.View = 0;
                 db.Products.Add(product);
                 db.SaveChanges();

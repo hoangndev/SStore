@@ -13,7 +13,6 @@
         </ol>
     </nav>
     <h1 class="text-center text-uppercase admin-page-title">Feedback</h1>
-    <hr />
     <div class="d-flex justify-content-center">
         <div class="container-fluid" style="max-width:700px">
             <div class="card mt-2 mt-sm-4 mb-2 mb-sm-3 border-dark">
@@ -21,48 +20,50 @@
                     <h4 class="card-title">Title</h4>
                     <p class="card-text">@Model.Title</p>
                 </div>
-                <div class="card-body pt-2 d-block d-sm-none">
-                    <h4 class="card-title">Feedbacker</h4>
+                <div class="card-body pt-2">
+                    <h4 class="card-title">Customer</h4>
                     <ul class="list-group">
                         <li class="list-group-item align-items-center">
+                            <p class="fw-bold mb-0 me-3 text-break">Name</p>
+                            @if (Model.FullName == null)
+                            {
+                                <p class="fst-italic m-0 text-secondary">No information</p>
+                            }
+                            else
+                            {
+                                <p class="mb-0 text-wrap">@Model.FullName</p>
 
-                            <p class="fw-bold mb-0 me-3 text-break">Customer Name:</p>
-                            <p class="mb-0 text-wrap">@Model.FullName</p>
+                            }
                         </li>
                         <li class="list-group-item align-items-center">
 
-                            <p class="fw-bold mb-0 me-4">Email:</p>
-                            <p class="mb-0 text-wrap">@Model.Email</p>
+                            <p class="fw-bold mb-0 me-4">Email</p>
+                            @if (Model.Email == null)
+                            {
+                                <p class="fst-italic m-0 text-secondary">No information</p>
+                            }
+                            else
+                            {
+                                <p class="mb-0 text-wrap">@Model.Email</p>
+
+                            }
                         </li>
                         <li class="list-group-item align-items-center">
 
-                            <p class="fw-bold mb-0 text-break me-3">Phone Number:</p>
-                            <p class="mb-0 text-wrap">
-                                @Model.PhoneNumber
-                            </p>
+                            <p class="fw-bold mb-0 text-break me-3">Phone Number</p>
+                            @if (Model.PhoneNumber == null)
+                            {
+                                <p class="fst-italic m-0 text-secondary">No information</p>
+                            }
+                            else
+                            {
+                                <p class="mb-0 text-wrap">@Model.PhoneNumber</p>
+
+                            }
                         </li>
                     </ul>
                 </div>
-                <div class="card-body pt-2 d-none d-sm-block">
-                    <h4 class="card-title">Feedbacker</h4>
-                    <ul class="list-group">
-                        <li class="list-group-item d-flex justify-content-between align-items-center">
-                            <p class="fw-bold mb-0 me-3 text-break">Customer Name:</p>
-                            <p class="mb-0 text-truncate">@Model.FullName</p>
-                        </li>
-                        <li class="list-group-item d-flex justify-content-between align-items-center">
-                            <p class="fw-bold mb-0 me-4">Email:</p>
-                            <p class="mb-0 text-break text-truncate">@Model.Email</p>
-                        </li>
-                        <li class="list-group-item d-flex justify-content-between align-items-center">
-                            <p class="fw-bold mb-0 text-break me-3">Phone Number:</p>
-                            <p class="mb-0 text-truncate">
-                                @Model.PhoneNumber
-                            </p>
-                        </li>
-                    </ul>
-                </div>
-                <div class="card-footer bg-transparent border-dark">
+                <div class="card-footer bg-transparent border-dark overflow-auto" style="max-height: 200px">
                     <h4 class="card-title">Description</h4>
                     <p class="card-text">@Model.Description</p>
                 </div>

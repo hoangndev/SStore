@@ -50,6 +50,12 @@
       <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.1.1.0\lib\net461\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList.Mvc, Version=4.5.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
+    </Reference>
     <Reference Include="Stripe.net, Version=40.6.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Stripe.net.40.6.0\lib\net461\Stripe.net.dll</HintPath>
     </Reference>
@@ -276,6 +282,14 @@
     <Compile Include="Migrations\202209251028109_AddFeedbackTableErrorMessage.designer.cs">
       <DependentUpon>202209251028109_AddFeedbackTableErrorMessage.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202209271705302_EditErrorMessageBrandAndCategoryTable.cs" />
+    <Compile Include="Migrations\202209271705302_EditErrorMessageBrandAndCategoryTable.designer.cs">
+      <DependentUpon>202209271705302_EditErrorMessageBrandAndCategoryTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202209271737352_EditDatatypeAndErrorMessageForFeedbackTable.cs" />
+    <Compile Include="Migrations\202209271737352_EditDatatypeAndErrorMessageForFeedbackTable.designer.cs">
+      <DependentUpon>202209271737352_EditDatatypeAndErrorMessageForFeedbackTable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Cart.cs" />
@@ -317,6 +331,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\bootstrap.rtl.css" />
     <Content Include="Content\bootstrap.rtl.min.css" />
+    <Content Include="Content\PagedList.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
@@ -494,6 +509,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202209251028109_AddFeedbackTableErrorMessage.resx">
       <DependentUpon>202209251028109_AddFeedbackTableErrorMessage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202209271705302_EditErrorMessageBrandAndCategoryTable.resx">
+      <DependentUpon>202209271705302_EditErrorMessageBrandAndCategoryTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202209271737352_EditDatatypeAndErrorMessageForFeedbackTable.resx">
+      <DependentUpon>202209271737352_EditDatatypeAndErrorMessageForFeedbackTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

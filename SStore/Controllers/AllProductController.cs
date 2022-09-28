@@ -17,7 +17,7 @@ namespace SStore.Controllers
         // GET: AllProduct
         public ActionResult Index(string searchProduct)
         {
-            var allProduct = db.Products.Include(p => p.productBrand).Include(p => p.ProductCategory);
+            var allProduct = db.Products.Include(p => p.productBrand).OrderBy(p => p.ProductName).Include(p => p.ProductCategory);
             if (!String.IsNullOrEmpty(searchProduct))
             {
                 allProduct = allProduct.Where(p => p.ProductName.Contains(searchProduct));
@@ -34,22 +34,22 @@ namespace SStore.Controllers
         }
         public ActionResult Shoes()
         {
-            var Shoes = db.Products.Include(p => p.productBrand).Include(p => p.ProductCategory).Where(p => p.ProductCategory.CategoryName.Equals("Shoes")).ToList();
+            var Shoes = db.Products.Include(p => p.productBrand).Include(p => p.ProductCategory).Where(p => p.ProductCategory.CategoryName.Equals("Shoes")).OrderBy(p => p.ProductName).ToList();
             return View(Shoes);
         }
         public ActionResult Shirt()
         {
-            var Shirt = db.Products.Include(p => p.productBrand).Include(p => p.ProductCategory).Where(p => p.ProductCategory.CategoryName.Equals("Shirt")).ToList();
+            var Shirt = db.Products.Include(p => p.productBrand).Include(p => p.ProductCategory).Where(p => p.ProductCategory.CategoryName.Equals("Shirt")).OrderBy(p => p.ProductName).ToList();
             return View(Shirt);
         }
         public ActionResult Hat()
         {
-            var Hat = db.Products.Include(p => p.productBrand).Include(p => p.ProductCategory).Where(p => p.ProductCategory.CategoryName.Equals("Hat")).ToList();
+            var Hat = db.Products.Include(p => p.productBrand).Include(p => p.ProductCategory).Where(p => p.ProductCategory.CategoryName.Equals("Hat")).OrderBy(p => p.ProductName).ToList();
             return View(Hat);
         }
         public ActionResult Accessories()
         {
-            var Accessories = db.Products.Include(p => p.productBrand).Include(p => p.ProductCategory).Where(p => p.ProductCategory.CategoryName.Equals("Accessories")).ToList();
+            var Accessories = db.Products.Include(p => p.productBrand).Include(p => p.ProductCategory).Where(p => p.ProductCategory.CategoryName.Equals("Accessories")).OrderBy(p => p.ProductName).ToList();
             return View(Accessories);
         }
         public ActionResult NotFound()
@@ -64,8 +64,10 @@ namespace SStore.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Product product = db.Products.Include(p => p.productBrand).Include(p => p.ProductCategory).SingleOrDefault(p => p.Id == id);
 
+            Product product = db.Products.Include(p => p.productBrand).Include(p => p.ProductCategory).SingleOrDefault(p => p.Id == id);
+            product.View++;
+            db.SaveChanges();
             if (product == null)
             {
                 return RedirectToAction("NotFound");

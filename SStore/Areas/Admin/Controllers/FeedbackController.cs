@@ -17,7 +17,7 @@ namespace SStore.Areas.Admin.Controllers
         // GET: Admin/Feedback
         public ActionResult Index()
         {
-            var feedbacks = db.Feedbacks.ToList();
+            var feedbacks = db.Feedbacks.OrderByDescending(f => f.Id).ToList();
             return View(feedbacks);
         }
 

@@ -26,16 +26,16 @@
                     <div class="table-responsive">
                         <table class="table table-bordered table-hover mt-3">
                             <tr>
-                                <th class="text-truncate">
+                                <th class="text-nowrap">
                                     No
                                 </th>
-                                <th class="text-truncate">
+                                <th class="text-nowrap">
                                     Category Name
                                 </th>
-                                <th class="text-truncate">
+                                <th class="text-nowrap">
                                     Description
                                 </th>
-                                <th class="text-truncate">
+                                <th class="text-nowrap">
                                     Action
                                 </th>
                             </tr>
@@ -46,11 +46,18 @@
                                     <td class="align-middle">
                                         @item.Index
                                     </td>
-                                    <td class="align-middle text-nowrap">
-                                        @item.Data.CategoryName
+                                    <td class="align-middle text-truncate" style="max-width: 150px">
+                                        <p class="m-0 text-truncate" title="@item.Data.CategoryName">@item.Data.CategoryName</p>
                                     </td>
-                                    <td class="align-middle text-nowrap">
-                                        @item.Data.Description
+                                    <td class="align-middle text-truncate" style="max-width: 300px">
+                                        @if (@item.Data.Description == null)
+                                        {
+                                            <p class="fst-italic m-0 text-secondary">No description</p>
+                                        }
+                                        else
+                                        {
+                                            <p class="m-0 text-truncate" title="@item.Data.Description">@item.Data.Description</p>
+                                        }
                                     </td>
                                     <td class="align-middle">
                                         <div class="d-flex flex-nowrap">

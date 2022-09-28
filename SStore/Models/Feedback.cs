@@ -12,10 +12,10 @@ namespace SStore.Models
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
-        [StringLength(150)]
+        [StringLength(150, ErrorMessage = "Please input title with less than 150 characters")]
         [Required(ErrorMessage = "Please input title")]
         public string Title { get; set; }
-        [StringLength(255)]
+        [StringLength(550, ErrorMessage = "Please describe with less than 550 characters")]
         [Required(ErrorMessage = "Please input description")]
         public string Description { get; set; }
         [StringLength(255)]

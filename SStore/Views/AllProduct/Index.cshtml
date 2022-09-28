@@ -5,7 +5,7 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<div class="container mt-2 mb-sm-5 mb-3">
+<div class="container-xl container-fluid mt-2 mb-sm-5 mb-3">
     <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="@Url.Action("Index", "Home", new {area = ""})" class="breadcrumb-client"><i class="bi bi-house-door"></i> Home</a></li>
@@ -52,5 +52,43 @@
                 </div>
             </div>
         }
+    </div>
+    <div class="position-fixed top-50 end-0 translate-middle-y d-block d-xl-none">
+        <button class="btn sub-button" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions">
+            <i class="bi bi-funnel"></i>
+        </button>
+
+    </div>
+    <div class="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions" aria-labelledby="offcanvasWithBothOptionsLabel">
+        <div class="offcanvas-header">
+            <h4 class="offcanvas-title" id="offcanvasWithBothOptionsLabel">Filter</h4>
+            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+            <h5 class="mt-2">Category</h5>
+            <hr />
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                <label class="form-check-label" for="flexCheckDefault">
+                    checkbox
+                </label>
+            </div>
+            <h5 class="mt-2">Brand</h5>
+            <hr />
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                <label class="form-check-label" for="flexCheckDefault">
+                    checkbox
+                </label>
+            </div>
+            <h5 class="mt-2">Size</h5>
+            <hr />
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                <label class="form-check-label" for="flexCheckDefault">
+                    checkbox
+                </label>
+            </div>
+        </div>
     </div>
 </div>
