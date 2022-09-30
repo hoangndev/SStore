@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using PagedList;
 using SStore.Models;
 
 namespace SStore.Areas.Admin.Controllers
@@ -15,10 +16,52 @@ namespace SStore.Areas.Admin.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Admin/Feedback
-        public ActionResult Index()
+        public ActionResult Index(int? page, string sortOrder, string searchString)
         {
-            var feedbacks = db.Feedbacks.OrderByDescending(f => f.Id).ToList();
-            return View(feedbacks);
+            ViewBag.CurrentSort = sortOrder;
+            /*            ViewBag.TitleSortParm = String.IsNullOrEmpty(sortOrder) ? "Name_Desc" : "";
+            */
+            ViewBag.TitleSortParm = sortOrder == "Title" ? "Title_Desc" : "Title";
+            ViewBag.NameSortParm = sortOrder == "Name" ? "Name_Desc" : "Name";
+            int pageSize = 8;
+            int pageNumber = (page ?? 1);
+            var feedbacks = db.Feedbacks.ToList();
+            switch (sortOrder)
+            {
+                case "Title_Desc":
+                    feedbacks = db.Feedbacks.OrderByDescending(f => f.Title).ToList();
+                    break;
+                case "Title":
+                    feedbacks = db.Feedbacks.OrderBy(f => f.Title).ToList();
+                    break;
+                case "Name_Desc":
+                    feedbacks = db.Feedbacks.OrderByDescending(f => f.FullName).ToList();
+                    break;
+                case "Name":
+                    feedbacks = db.Feedbacks.OrderBy(f => f.FullName).ToList();
+                    break;
+                default:
+                    feedbacks = db.Feedbacks.OrderByDescending(f => f.CreateDate).ToList();
+                    break;
+            }
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                feedbacks = feedbacks.Where(p => p.Title.ToUpper().Contains(searchString.ToUpper())).ToList();
+                if (feedbacks.Count() > 0)
+                {
+                    return View(feedbacks.ToPagedList(pageNumber, pageSize));
+                }
+                else
+                {
+                    return RedirectToAction("NotFound");
+                }
+
+            }
+            return View(feedbacks.ToPagedList(pageNumber, pageSize));
+        }
+        public ActionResult NotFound()
+        {
+            return View();
         }
 
         // GET: Admin/Feedback/Details/5

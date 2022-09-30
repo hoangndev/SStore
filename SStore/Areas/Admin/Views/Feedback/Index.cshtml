@@ -1,5 +1,6 @@
-﻿@model IEnumerable<SStore.Models.Feedback>
-
+﻿@model PagedList.IPagedList<SStore.Models.Feedback>
+@using PagedList.Mvc;
+@using PagedList;
 @{
     ViewBag.Title = "Index";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
@@ -17,6 +18,19 @@
         <div class="col">
         </div>
         <div class="col-xxl-9 col-xl-10 col-lg-11 col-md-12">
+            <div class="d-flex justify-content-between align-items-center">
+                @using (Html.BeginForm("Index", "Feedback", FormMethod.Get))
+                {
+                    <form class="d-flex col-md-auto mb-2 justify-content-center mb-md-0">
+                        <div class="d-flex align-items-center mb-2 mb-sm-0">
+                            <input type="search" name="searchString" class="bd-search form-control me-1 form-control-dark" placeholder="search ..." />
+                            <button class="btn btn-outline-success" type="submit">Search</button>
+                        </div>
+                    </form>
+                }
+                <p class="mb-0 d-none d-sm-block">Showing @Model.FirstItemOnPage - @Model.LastItemOnPage of @Model.TotalItemCount Feedbacks</p>
+            </div>
+            <p class="d-block d-sm-none mb-0">Showing @Model.FirstItemOnPage - @Model.LastItemOnPage of @Model.TotalItemCount Feedbacks</p>
             <div class="table-responsive">
                 <table class="table table-bordered table-hover mt-3">
                     <tr>
@@ -24,10 +38,14 @@
                             No
                         </th>
                         <th class="text-truncate">
-                            Title
+                            <a href="@Url.Action("Index", new { sortOrder = ViewBag.TitleSortParm })" class="text-dark">
+                                <i class="bi bi-sort-alpha-up"></i> Title
+                            </a>
                         </th>
                         <th class="text-truncate">
-                            Full Name
+                            <a href="@Url.Action("Index", new { sortOrder = ViewBag.NameSortParm })" class="text-dark">
+                                <i class="bi bi-sort-alpha-up"></i> Full Name
+                            </a>
                         </th>
                         <th class="text-truncate">
                             Email
@@ -80,6 +98,36 @@
                     }
 
                 </table>
+            </div>
+            <p class="mb-2">Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount</p>
+            <div class="d-none d-lg-block">
+                @Html.PagedListPager(Model, page => Url.Action("Index", new { page, sortOrder = ViewBag.CurrentSort, searchString = Request.QueryString["searchString"] }),
+                          new PagedListRenderOptions()
+                          {
+                              LiElementClasses = new List<string> { "page-link" },
+                              UlElementClasses = new List<string> { "pagination", "d-flex", "flex-wrap" },
+                              MaximumPageNumbersToDisplay = 8,
+                          })
+            </div>
+            <div class="d-none d-sm-block d-lg-none">
+                @Html.PagedListPager(Model, page => Url.Action("Index", new { page, sortOrder = ViewBag.CurrentSort, searchString = Request.QueryString["searchString"] }),
+                          new PagedListRenderOptions()
+                          {
+                              LiElementClasses = new List<string> { "page-link" },
+                              UlElementClasses = new List<string> { "pagination", "d-flex", "flex-wrap" },
+                              MaximumPageNumbersToDisplay = 5,
+                          })
+            </div>
+            <div class="d-block d-sm-none">
+                @Html.PagedListPager(Model, page => Url.Action("Index", new { page, sortOrder = ViewBag.CurrentSort, searchString = Request.QueryString["searchString"] }),
+                          new PagedListRenderOptions()
+                          {
+                              LiElementClasses = new List<string> { "page-link" },
+                              UlElementClasses = new List<string> { "pagination pagination-sm", "d-flex", "flex-wrap" },
+                              MaximumPageNumbersToDisplay = 3,
+                              DisplayEllipsesWhenNotShowingAllPageNumbers = false,
+                              ItemSliceAndTotalFormat = "Showing items {0} through {1} of {2}.",
+                          })
             </div>
         </div>
         <div class="col">

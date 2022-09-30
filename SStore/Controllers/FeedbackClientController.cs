@@ -27,6 +27,7 @@ namespace SStore.Controllers
             if (ModelState.IsValid)
             {
                 db.Feedbacks.Add(feedback);
+                feedback.CreateDate = DateTime.Now;
                 db.SaveChanges();
                 return RedirectToAction("Create");
             }

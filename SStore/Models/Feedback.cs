@@ -24,5 +24,6 @@ namespace SStore.Models
         public string Email { get; set; }
         [StringLength(100)]
         public string PhoneNumber { get; set; }
+        public DateTime CreateDate { get; set; }
     }
 }

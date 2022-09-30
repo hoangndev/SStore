@@ -25,6 +25,8 @@ namespace SStore.Areas.Admin.Controllers
             ViewBag.PriceSortParm = sortOrder == "Price" ? "Price_Desc" : "Price";
             ViewBag.BrandSortParm = sortOrder == "Brand" ? "Brand_Desc" : "Brand";
             ViewBag.CategorySortParm = sortOrder == "Category" ? "Category_Desc" : "Category";
+            int pageSize = 8;
+            int pageNumber = (page ?? 1);
             /*            var products = db.Products.Include(p => p.productBrand).Include(p => p.ProductCategory).OrderBy(p => p.ProductName).ToList();
             */
             var products = db.Products.Include(p => p.productBrand).Include(p => p.ProductCategory);
@@ -56,8 +58,6 @@ namespace SStore.Areas.Admin.Controllers
                     products = db.Products.Include(p => p.productBrand).Include(p => p.ProductCategory).OrderBy(p => p.ProductName);
                     break;
             }
-            int pageSize = 8;
-            int pageNumber = (page ?? 1);
             if (!String.IsNullOrEmpty(searchString))
             {
                 products = products.Where(p => p.ProductName.Contains(searchString));

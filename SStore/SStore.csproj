@@ -290,6 +290,10 @@
     <Compile Include="Migrations\202209271737352_EditDatatypeAndErrorMessageForFeedbackTable.designer.cs">
       <DependentUpon>202209271737352_EditDatatypeAndErrorMessageForFeedbackTable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202209301949443_AddCreateDateColumnTableFeedback.cs" />
+    <Compile Include="Migrations\202209301949443_AddCreateDateColumnTableFeedback.designer.cs">
+      <DependentUpon>202209301949443_AddCreateDateColumnTableFeedback.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Cart.cs" />
@@ -390,6 +394,7 @@
     <Content Include="Areas\Admin\Views\ProductCategory\Delete.cshtml" />
     <Content Include="Areas\Admin\Views\Product\NotFound.cshtml" />
     <Content Include="Areas\Admin\Views\Dashboard\GetProductView.cshtml" />
+    <Content Include="Areas\Admin\Views\Feedback\NotFound.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\chart.js" />
     <Content Include="Scripts\chart.min.js" />
@@ -519,6 +524,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202209271737352_EditDatatypeAndErrorMessageForFeedbackTable.resx">
       <DependentUpon>202209271737352_EditDatatypeAndErrorMessageForFeedbackTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202209301949443_AddCreateDateColumnTableFeedback.resx">
+      <DependentUpon>202209301949443_AddCreateDateColumnTableFeedback.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
