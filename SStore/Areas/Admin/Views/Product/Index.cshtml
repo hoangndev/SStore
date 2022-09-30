@@ -5,27 +5,123 @@
 @{
     ViewBag.Title = "Products";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
-    
+
 }
 
 <div class="container-fluid my-2">
+    @* Breadcrumb *@
     <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="@Url.Action("Index", "Dashboard", new { area = "Admin" })" class="breadcrumb-client">Dashboard</a></li>
             <li class="breadcrumb-item breadcrumb-client-active">Products</li>
         </ol>
     </nav>
+    @* Page Title *@
     <h1 class="text-center my-3 admin-page-title text-uppercase">Product Management</h1>
 
-    <a type="button" class="btn sub-button mb-2" href="@Url.Action("Create", "Product", new { area = "Admin" })">
-        Add New Product
-    </a>
+    @* Add new product and filter button *@
+    <div class="mb-2 d-flex justify-content-between">
+        <a type="button" class="btn sub-button" href="@Url.Action("Create", "Product", new { area = "Admin" })">
+            Add New Product
+        </a>
+        <button class="btn sub-button" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions">
+            <i class="bi bi-funnel"></i>
+        </button>
+    </div>
+
+    @* Offcanvas *@
+    <div class="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions" aria-labelledby="offcanvasWithBothOptionsLabel">
+        <div class="offcanvas-header">
+            <h4 class="offcanvas-title" id="offcanvasWithBothOptionsLabel">Filter</h4>
+            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+
+        @using (Html.BeginForm("Index", "Product", FormMethod.Get))
+        {
+            <div class="offcanvas-body">
+                <h5 class="mt-2">Category</h5>
+                <hr />
+                <div class="d-flex justify-content-between flex-wrap">
+
+                    <div class="form-check me-3">
+                        <input class="form-check-input" type="checkbox" onchange="this.form.submit()" name="CategoryFilter" value="Shoes" id="flexCheckDefault">
+                        <label class="form-check-label" for="flexCheckDefault">
+                            Shoes
+                        </label>
+                    </div>
+                    <div class="form-check me-3">
+                        <input class="form-check-input" type="checkbox" onchange="this.form.submit()" name="CategoryFilter" value="Shirt" id="flexCheckDefault">
+                        <label class="form-check-label" for="flexCheckDefault">
+                            Shirt
+                        </label>
+                    </div>
+                    <div class="form-check me-3">
+                        <input class="form-check-input" type="checkbox" onchange="this.form.submit()" name="CategoryFilter" value="Hat" id="flexCheckDefault">
+                        <label class="form-check-label" for="flexCheckDefault">
+                            Hat
+                        </label>
+                    </div>
+                    <div class="form-check me-3">
+                        <input class="form-check-input" type="checkbox" onchange="this.form.submit()" name="CategoryFilter" value="Accessories" id="flexCheckDefault">
+                        <label class="form-check-label" for="flexCheckDefault">
+                            Accessories
+                        </label>
+                    </div>
+                </div>
+                <h5 class="mt-2">Brand</h5>
+                <hr />
+                <div class="d-flex justify-content-between flex-wrap">
+                    <div class="form-check me-3">
+                        <input class="form-check-input" type="checkbox" onchange="this.form.submit()" name="BrandFilter" value="Nike" id="flexCheckDefault">
+                        <label class="form-check-label" for="flexCheckDefault">
+                            Nike
+                        </label>
+                    </div>
+                    <div class="form-check me-3">
+                        <input class="form-check-input" type="checkbox" onchange="this.form.submit()" name="BrandFilter" value="Adidas" id="flexCheckDefault">
+                        <label class="form-check-label" for="flexCheckDefault">
+                            Adidas
+                        </label>
+                    </div>
+                    <div class="form-check me-3">
+                        <input class="form-check-input" type="checkbox" onchange="this.form.submit()" name="BrandFilter" value="Converse" id="flexCheckDefault">
+                        <label class="form-check-label" for="flexCheckDefault">
+                            Converse
+                        </label>
+                    </div>
+                    <div class="form-check me-3">
+                        <input class="form-check-input" type="checkbox" onchange="this.form.submit()" name="BrandFilter" value="Vans" id="flexCheckDefault">
+                        <label class="form-check-label" for="flexCheckDefault">
+                            Vans
+                        </label>
+                    </div>
+                </div>
+                <h5 class="mt-2">Price</h5>
+                <hr />
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" onchange="this.form.submit()" name="HighPrice" value="2000" id="flexCheckDefault">
+                    <label class="form-check-label" for="flexCheckDefault">
+                        Price ≥ 2000$
+                    </label>
+                </div>
+                <div class="form-check">
+
+                    <input class="form-check-input" type="checkbox" onchange="this.form.submit()" name="LowPrice" value="2000" id="flexCheckDefault">
+                    <label class="form-check-label" for="flexCheckDefault">
+                        Price ≤ 2000$
+                    </label>
+                </div>
+            </div>
+        }
+    </div>
+@* End Offcanvas *@
+
     <div class="d-flex justify-content-between align-items-center">
         @using (Html.BeginForm("Index", "Product", FormMethod.Get))
         {
             <form class="d-flex col-md-auto mb-2 justify-content-center mb-md-0">
                 <div class="d-flex align-items-center mb-2 mb-sm-0">
-                    <input type="search" name="searchString" class="bd-search form-control me-2 form-control-dark" placeholder="search product..." />
+                    <input type="search" name="searchString" class="bd-search form-control me-1 form-control-dark" placeholder="search product..." />
                     <button class="btn btn-outline-success" type="submit">Search</button>
                 </div>
             </form>
@@ -40,16 +136,24 @@
                     Image
                 </th>
                 <th class="text-truncate">
-                    @Html.ActionLink("Product Name", "Index", new { sortOrder = ViewBag.NameSortParm })
+                    <a href="@Url.Action("Index", new { sortOrder = ViewBag.NameSortParm })" class="text-dark">
+                        <i class="bi bi-sort-alpha-up"></i> Product Name
+                    </a>
                 </th>
                 <th class="text-truncate">
-                    Category
+                    <a href="@Url.Action("Index", new { sortOrder = ViewBag.CategorySortParm })" class="text-dark">
+                        <i class="bi bi-sort-alpha-up"></i> Category
+                    </a>
                 </th>
                 <th class="text-truncate">
-                    Brand
+                    <a href="@Url.Action("Index", new { sortOrder = ViewBag.BrandSortParm })" class="text-dark">
+                        <i class="bi bi-sort-alpha-up"></i> Brand
+                    </a>
                 </th>
                 <th class="text-truncate">
-                    @Html.ActionLink("Price", "Index", new { sortOrder  = ViewBag.PriceSortParm})
+                    <a href="@Url.Action("Index", new { sortOrder = ViewBag.PriceSortParm })" class="text-dark">
+                        <i class="bi bi-sort-up"></i> Price
+                    </a>
                 </th>
                 <th class="text-truncate">
                     Description
@@ -75,7 +179,7 @@
                         @item.productBrand.BrandName
                     </td>
                     <td class="align-middle text-truncate">
-                        @item.Price
+                        @item.Price $
                     </td>
                     <td class="align-middle text-truncate" style="max-width: 300px">
                         @item.Description
@@ -101,7 +205,7 @@
 
     <p class="mb-2">Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount</p>
     <div class="d-none d-lg-block">
-        @Html.PagedListPager(Model, page => Url.Action("Index", new { page, sortOrder = ViewBag.CurrentSort, searchString = Request.QueryString["searchString"] }),
+        @Html.PagedListPager(Model, page => Url.Action("Index", new { page, sortOrder = ViewBag.CurrentSort, searchString = Request.QueryString["searchString"], HighPrice = Request.QueryString["HighPrice"], LowPrice = Request.QueryString["LowPrice"], BrandFilter = Request.QueryString["BrandFilter"], CategoryFilter = Request.QueryString["CategoryFilter"] }),
                   new PagedListRenderOptions()
                   {
                       LiElementClasses = new List<string> { "page-link" },
@@ -110,7 +214,7 @@
                   })
     </div>
     <div class="d-none d-sm-block d-lg-none">
-        @Html.PagedListPager(Model, page => Url.Action("Index", new { page, sortOrder = ViewBag.CurrentSort, searchString = Request.QueryString["searchString"] }),
+        @Html.PagedListPager(Model, page => Url.Action("Index", new { page, sortOrder = ViewBag.CurrentSort, searchString = Request.QueryString["searchString"], HighPrice = Request.QueryString["HighPrice"], LowPrice = Request.QueryString["LowPrice"], BrandFilter = Request.QueryString["BrandFilter"], CategoryFilter = Request.QueryString["CategoryFilter"] }),
                   new PagedListRenderOptions()
                   {
                       LiElementClasses = new List<string> { "page-link" },
@@ -119,7 +223,7 @@
                   })
     </div>
     <div class="d-block d-sm-none">
-        @Html.PagedListPager(Model, page => Url.Action("Index", new { page, sortOrder = ViewBag.CurrentSort, searchString = Request.QueryString["searchString"] }),
+        @Html.PagedListPager(Model, page => Url.Action("Index", new { page, sortOrder = ViewBag.CurrentSort, searchString = Request.QueryString["searchString"], HighPrice = Request.QueryString["HighPrice"], LowPrice = Request.QueryString["LowPrice"], BrandFilter = Request.QueryString["BrandFilter"], CategoryFilter = Request.QueryString["CategoryFilter"] }),
                   new PagedListRenderOptions()
                   {
                       LiElementClasses = new List<string> { "page-link" },

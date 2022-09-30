@@ -388,7 +388,11 @@
     <Content Include="Areas\Admin\Views\ProductBrand\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\ProductBrand\Index.cshtml" />
     <Content Include="Areas\Admin\Views\ProductCategory\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\Product\NotFound.cshtml" />
+    <Content Include="Areas\Admin\Views\Dashboard\GetProductView.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
+    <Content Include="Scripts\chart.js" />
+    <Content Include="Scripts\chart.min.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
     <Content Include="Scripts\jquery-3.4.1.slim.js" />

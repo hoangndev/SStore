@@ -28,21 +28,21 @@
             @Html.DisplayFor(model => model.ProductName)
         </h2>
         <div class="row">
-            <div class="col-sm-8 mb-2">
+            <div class="col-md-7 mb-2">
                 <img src="~/Image/wp2461125.jpg" class="img-fluid img-thumbnail" />
                 @Html.DisplayFor(model => model.Image)
-                <a class="text-decoration-none btn edit-button mt-3 product-detail-button" href="@Url.Action("Edit", "Product", new { id = Model.Id })">
+                <a class="text-decoration-none btn edit-button mt-2 product-detail-button" href="@Url.Action("Edit", "Product", new { id = Model.Id })">
                     <i class="bi bi-pencil-square"></i>
                     &nbsp; Edit
                 </a>
-                <a class="text-decoration-none btn delete-button mt-3 product-detail-button" href="@Url.Action("Delete", "Product", new{ id = Model.Id })">
+                <a class="text-decoration-none btn delete-button mt-2 product-detail-button" href="@Url.Action("Delete", "Product", new{ id = Model.Id })">
                     <i class="bi bi-trash"></i>
                     &nbsp; Delete
                 </a>
             </div>
             <div class="col">
                 <div class="table-responsive">
-                    <table class="table table-bordered table-hover mt-3">
+                    <table class="table table-bordered table-hover">
                         <tr>
                             <th>
                                 Category
@@ -88,7 +88,7 @@
                                 Price
                             </th>
                             <td>
-                                @Model.Price
+                                @Model.Price $
                             </td>
                         </tr>
                         <tr>
@@ -106,11 +106,11 @@
                             <td>
                                 @if (@Model.Status == true)
                                 {
-                                    <p class="m-0">in stock</p>
+                                    <p class="m-0 text-success">In stock</p>
                                 }
                                 else
                                 {
-                                    <p class="m-0">out of stock</p>
+                                    <p class="m-0 text-warning">Out of stock</p>
                                 }
                             </td>
                         </tr>
@@ -118,7 +118,7 @@
                             <th>
                                 CreatedDate
                             </th>
-                            <td>
+                            <td class="fst-italic text-secondary">
                                 @Model.CreatedDate
                             </td>
                         </tr>
@@ -126,7 +126,7 @@
                             <th>
                                 ModifiedDate
                             </th>
-                            <td>
+                            <td class="fst-italic text-secondary">
                                 @Model.ModifiedDate
                             </td>
                         </tr>

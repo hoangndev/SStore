@@ -18,11 +18,13 @@ namespace SStore.Areas.Admin.Controllers
 
         // GET: Admin/Product
         [HttpGet]
-        public ActionResult Index(int? page, string sortOrder, string searchString)
+        public ActionResult Index(int? page, string sortOrder, string searchString, Nullable<decimal> HighPrice, Nullable<decimal> LowPrice, string BrandFilter, string CategoryFilter)
         {
             ViewBag.CurrentSort = sortOrder;
             ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "Name_Desc" : "";
             ViewBag.PriceSortParm = sortOrder == "Price" ? "Price_Desc" : "Price";
+            ViewBag.BrandSortParm = sortOrder == "Brand" ? "Brand_Desc" : "Brand";
+            ViewBag.CategorySortParm = sortOrder == "Category" ? "Category_Desc" : "Category";
             /*            var products = db.Products.Include(p => p.productBrand).Include(p => p.ProductCategory).OrderBy(p => p.ProductName).ToList();
             */
             var products = db.Products.Include(p => p.productBrand).Include(p => p.ProductCategory);
@@ -38,14 +40,64 @@ namespace SStore.Areas.Admin.Controllers
                 case "Price_Desc":
                     products = db.Products.Include(p => p.productBrand).Include(p => p.ProductCategory).OrderByDescending(p => p.Price);
                     break;
+                case "Brand":
+                    products = db.Products.Include(p => p.productBrand).Include(p => p.ProductCategory).OrderBy(p => p.productBrand.BrandName);
+                    break;
+                case "Brand_Desc":
+                    products = db.Products.Include(p => p.productBrand).Include(p => p.ProductCategory).OrderByDescending(p => p.productBrand.BrandName);
+                    break;
+                case "Category":
+                    products = db.Products.Include(p => p.productBrand).Include(p => p.ProductCategory).OrderBy(p => p.ProductCategory.CategoryName);
+                    break;
+                case "Category_Desc":
+                    products = db.Products.Include(p => p.productBrand).Include(p => p.ProductCategory).OrderByDescending(p => p.ProductCategory.CategoryName);
+                    break;
                 default:
                     products = db.Products.Include(p => p.productBrand).Include(p => p.ProductCategory).OrderBy(p => p.ProductName);
                     break;
             }
             int pageSize = 8;
             int pageNumber = (page ?? 1);
-            return View(products.Where(p => p.ProductName.Contains(searchString) || searchString == null).ToList().ToPagedList(pageNumber, pageSize));
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                products = products.Where(p => p.ProductName.Contains(searchString));
+                if (products.Count() > 0)
+                {
+                    return View(products.ToPagedList(pageNumber, pageSize));
+                }
+                else
+                {
+                    return RedirectToAction("NotFound");
+                }
+            }
+            if (HighPrice > 0)
+            {
+                products = products.Where(p => p.Price >= HighPrice);
+                return View(products.ToPagedList(pageNumber, pageSize));
+            }
+            if (LowPrice > 0)
+            {
+                products = products.Where(p => p.Price <= LowPrice);
+                return View(products.ToPagedList(pageNumber, pageSize));
+            }
 
+            var brands = db.ProductBrands;
+            ViewBag.Brands = brands;
+            if (!String.IsNullOrEmpty(BrandFilter))
+            {
+                products = products.Where(p => p.productBrand.BrandName.Equals(BrandFilter));
+                return View(products.ToPagedList(pageNumber, pageSize));
+            }
+            if (!String.IsNullOrEmpty(CategoryFilter))
+            {
+                products = products.Where(p => p.ProductCategory.CategoryName.Equals(CategoryFilter));
+                return View(products.ToPagedList(pageNumber, pageSize));
+            }
+            return View(products.ToList().ToPagedList(pageNumber, pageSize));
+        }
+        public ActionResult NotFound()
+        {
+            return View();
         }
 
         // GET: Admin/Product/Details/5
@@ -149,7 +201,7 @@ namespace SStore.Areas.Admin.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Product product = db.Products.Find(id);
+            Product product = db.Products.Include(p => p.productBrand).Include(p => p.ProductCategory).SingleOrDefault(p => p.Id == id);
             if (product == null)
             {
                 return HttpNotFound();
@@ -162,7 +214,7 @@ namespace SStore.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Product product = db.Products.Find(id);
+            Product product = db.Products.Include(p => p.productBrand).Include(p => p.ProductCategory).SingleOrDefault(p => p.Id == id);
             db.Products.Remove(product);
             db.SaveChanges();
             return RedirectToAction("Index");
