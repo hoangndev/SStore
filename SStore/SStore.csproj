@@ -197,7 +197,6 @@
     <Compile Include="Areas\Admin\Controllers\ProductBrandController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProductCategoryController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProductController.cs" />
-    <Compile Include="Areas\Admin\Controllers\TableController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AllProductController.cs" />
     <Compile Include="Controllers\FeedbackClientController.cs" />
@@ -294,6 +293,14 @@
     <Compile Include="Migrations\202209301949443_AddCreateDateColumnTableFeedback.designer.cs">
       <DependentUpon>202209301949443_AddCreateDateColumnTableFeedback.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202209302354460_UpdateUserInfoTable.cs" />
+    <Compile Include="Migrations\202209302354460_UpdateUserInfoTable.designer.cs">
+      <DependentUpon>202209302354460_UpdateUserInfoTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202210010415192_DropColumnTotalPriceInTableCartDetail.cs" />
+    <Compile Include="Migrations\202210010415192_DropColumnTotalPriceInTableCartDetail.designer.cs">
+      <DependentUpon>202210010415192_DropColumnTotalPriceInTableCartDetail.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Cart.cs" />
@@ -375,7 +382,6 @@
     <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\_LeftMenu.cshtml" />
     <Content Include="Areas\Admin\Views\Dashboard\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\Table\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Product\Create.cshtml" />
     <Content Include="Areas\Admin\Views\Product\Delete.cshtml" />
     <Content Include="Areas\Admin\Views\Product\Details.cshtml" />
@@ -395,6 +401,8 @@
     <Content Include="Areas\Admin\Views\Product\NotFound.cshtml" />
     <Content Include="Areas\Admin\Views\Dashboard\GetProductView.cshtml" />
     <Content Include="Areas\Admin\Views\Feedback\NotFound.cshtml" />
+    <Content Include="Areas\Admin\Views\ProductCategory\NotFound.cshtml" />
+    <Content Include="Areas\Admin\Views\ProductBrand\NotFound.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\chart.js" />
     <Content Include="Scripts\chart.min.js" />
@@ -527,6 +535,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202209301949443_AddCreateDateColumnTableFeedback.resx">
       <DependentUpon>202209301949443_AddCreateDateColumnTableFeedback.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202209302354460_UpdateUserInfoTable.resx">
+      <DependentUpon>202209302354460_UpdateUserInfoTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202210010415192_DropColumnTotalPriceInTableCartDetail.resx">
+      <DependentUpon>202210010415192_DropColumnTotalPriceInTableCartDetail.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

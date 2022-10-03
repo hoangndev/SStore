@@ -32,10 +32,12 @@
             </div>
             <p class="d-block d-sm-none mb-0">Showing @Model.FirstItemOnPage - @Model.LastItemOnPage of @Model.TotalItemCount Feedbacks</p>
             <div class="table-responsive">
-                <table class="table table-bordered table-hover mt-3">
+                <table class="table table-bordered table-hover my-2">
                     <tr>
                         <th class="text-truncate">
-                            No
+                            <a href="@Url.Action("Index", new { sortOrder = ViewBag.TimeSortParm })" class="text-dark">
+                                <i class="bi bi-sort-numeric-down"></i> Time
+                            </a>
                         </th>
                         <th class="text-truncate">
                             <a href="@Url.Action("Index", new { sortOrder = ViewBag.TitleSortParm })" class="text-dark">
@@ -43,9 +45,7 @@
                             </a>
                         </th>
                         <th class="text-truncate">
-                            <a href="@Url.Action("Index", new { sortOrder = ViewBag.NameSortParm })" class="text-dark">
-                                <i class="bi bi-sort-alpha-up"></i> Full Name
-                            </a>
+                            Full Name
                         </th>
                         <th class="text-truncate">
                             Email
@@ -55,41 +55,41 @@
                         </th>
                     </tr>
 
-                    @foreach (var item in Model.Select((d, i) => new { Data = d, Index = i + 1 }))
+                    @foreach (var item in Model)
                     {
                         <tr>
-                            <td class="align-middle text-truncate">
-                                @item.Index
+                            <td class="align-middle text-truncate" style="max-width:120px">
+                                <p class="m-0 text-truncate text-secondary fst-italic" title="@item.CreateDate">@item.CreateDate</p>
                             </td>
                             <td class="align-middle text-truncate" style="max-width:200px">
-                                @item.Data.Title
+                                <p class="m-0 text-truncate" title="@item.Title">@item.Title</p>
                             </td>
                             <td class="align-middle text-truncate" style="max-width:120px">
-                                @if (@item.Data.FullName == null)
+                                @if (@item.FullName == null)
                                 {
-                                    <p class="fst-italic m-0 text-secondary">No information</p>
+                                    <p class="fst-italic m-0 text-secondary">...</p>
                                 }
                                 else
                                 {
-                                    @item.Data.FullName
+                                    <p class="m-0 text-truncate" title="@item.FullName">@item.FullName</p>
                                 }
                             </td>
                             <td class="align-middle text-truncate" style="max-width: 180px">
-                                @if (@item.Data.Email == null)
+                                @if (@item.Email == null)
                                 {
-                                    <p class="fst-italic m-0 text-secondary">No information</p>
+                                    <p class="fst-italic m-0 text-secondary">...</p>
                                 }
                                 else
                                 {
-                                    <p class="m-0 text-truncate">@item.Data.Email</p>
+                                    <p class="m-0 text-truncate" title="@item.Email">@item.Email</p>
                                 }
                             </td>
                             <td class="align-middle">
                                 <div class="d-flex flex-nowrap">
-                                    <a href="@Url.Action("Details", "Feedback", new{ id = item.Data.Id })" class="btn detail-button me-2">
+                                    <a href="@Url.Action("Details", "Feedback", new{ id = item.Id })" class="btn detail-button me-2">
                                         <i class="bi bi-info-circle"></i>
                                     </a>
-                                    <a href="@Url.Action("Delete", "Feedback", new{ id = item.Data.Id })" class="btn delete-button">
+                                    <a href="@Url.Action("Delete", "Feedback", new{ id = item.Id })" class="btn delete-button">
                                         <i class="bi bi-trash"></i>
                                     </a>
                                 </div>

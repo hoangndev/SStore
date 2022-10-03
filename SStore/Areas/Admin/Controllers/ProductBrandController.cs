@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using PagedList;
 using SStore.Models;
 
 namespace SStore.Areas.Admin.Controllers
@@ -15,11 +16,45 @@ namespace SStore.Areas.Admin.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Admin/ProductBrand
-        public ActionResult Index()
+        public ActionResult Index(int? page, string sortOrder, string searchString)
         {
-            return View(db.ProductBrands.ToList());
+            ViewBag.CurrentSort = sortOrder;
+            ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "Name" : "Name_Desc";
+            int pageSize = 8;
+            int pageNumber = (page ?? 1);
+            var brands = db.ProductBrands.ToList();
+            switch (sortOrder)
+            {
+                case "Name":
+                    brands = db.ProductBrands.OrderBy(c => c.BrandName).ToList();
+                    break;
+                case "Name_Desc":
+                    brands = db.ProductBrands.OrderByDescending(c => c.BrandName).ToList();
+                    break;
+                default:
+                    brands = db.ProductBrands.OrderBy(c => c.BrandId).ToList();
+                    break;
+            }
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                brands = brands.Where(p => p.BrandName.ToUpper().Contains(searchString.ToUpper())).ToList();
+                if (brands.Count() > 0)
+                {
+                    return View(brands.ToPagedList(pageNumber, pageSize));
+                }
+                else
+                {
+                    return RedirectToAction("NotFound");
+                }
+
+            }
+            return View(brands.ToPagedList(pageNumber, pageSize));
         }
 
+        public ActionResult NotFound()
+        {
+            return View();
+        }
 
         // GET: Admin/ProductBrand/Create
         public ActionResult Create()

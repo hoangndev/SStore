@@ -19,10 +19,8 @@ namespace SStore.Areas.Admin.Controllers
         public ActionResult Index(int? page, string sortOrder, string searchString)
         {
             ViewBag.CurrentSort = sortOrder;
-            /*            ViewBag.TitleSortParm = String.IsNullOrEmpty(sortOrder) ? "Name_Desc" : "";
-            */
+            ViewBag.TimeSortParm = sortOrder == "Time" ? "Time_Desc" : "Time";
             ViewBag.TitleSortParm = sortOrder == "Title" ? "Title_Desc" : "Title";
-            ViewBag.NameSortParm = sortOrder == "Name" ? "Name_Desc" : "Name";
             int pageSize = 8;
             int pageNumber = (page ?? 1);
             var feedbacks = db.Feedbacks.ToList();
@@ -34,11 +32,11 @@ namespace SStore.Areas.Admin.Controllers
                 case "Title":
                     feedbacks = db.Feedbacks.OrderBy(f => f.Title).ToList();
                     break;
-                case "Name_Desc":
-                    feedbacks = db.Feedbacks.OrderByDescending(f => f.FullName).ToList();
+                case "Time":
+                    feedbacks = db.Feedbacks.OrderBy(f => f.CreateDate).ToList();
                     break;
-                case "Name":
-                    feedbacks = db.Feedbacks.OrderBy(f => f.FullName).ToList();
+                case "Time_Desc":
+                    feedbacks = db.Feedbacks.OrderByDescending(f => f.CreateDate).ToList();
                     break;
                 default:
                     feedbacks = db.Feedbacks.OrderByDescending(f => f.CreateDate).ToList();

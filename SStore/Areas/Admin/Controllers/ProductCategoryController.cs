@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using PagedList;
 using SStore.Models;
 
 namespace SStore.Areas.Admin.Controllers
@@ -15,11 +16,43 @@ namespace SStore.Areas.Admin.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Admin/ProductCategory
-        public ActionResult Index()
+        public ActionResult Index(int? page, string sortOrder, string searchString)
         {
-            var productCategory = db.ProductCategories.ToList();
+            ViewBag.CurrentSort = sortOrder;
+            ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "Name" : "Name_Desc";
+            int pageSize = 8;
+            int pageNumber = (page ?? 1);
+            var categories = db.ProductCategories.ToList();
+            switch (sortOrder)
+            {
+                case "Name":
+                    categories = db.ProductCategories.OrderBy(c => c.CategoryName).ToList();
+                    break;
+                case "Name_Desc":
+                    categories = db.ProductCategories.OrderByDescending(c => c.CategoryName).ToList();
+                    break;
+                default:
+                    categories = db.ProductCategories.OrderBy(c => c.CategoryId).ToList();
+                    break;
+            }
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                categories = categories.Where(p => p.CategoryName.ToUpper().Contains(searchString.ToUpper())).ToList();
+                if (categories.Count() > 0)
+                {
+                    return View(categories.ToPagedList(pageNumber, pageSize));
+                }
+                else
+                {
+                    return RedirectToAction("NotFound");
+                }
 
-            return View(productCategory);
+            }
+            return View(categories.ToPagedList(pageNumber, pageSize));
+        }
+        public ActionResult NotFound()
+        {
+            return View();
         }
 
         // GET: Admin/ProductCategory/Create

@@ -19,8 +19,7 @@ namespace SStore.Models
         [Required]
         [StringLength(100)]
         public string LastName { get; set; }
-        [StringLength(10)]
-        public string Gender { get; set; }
+        public Nullable<Gender> Gender { get; set; }
         [Required]
         [StringLength(255)]
         public string Email { get; set; }
@@ -37,5 +36,10 @@ namespace SStore.Models
         [StringLength(100)]
         public string Phone { get; set; }
         public Nullable<DateTime> RegisterDate { get; set; }
+    }
+    public enum Gender
+    {
+        Male,
+        Female
     }
 }

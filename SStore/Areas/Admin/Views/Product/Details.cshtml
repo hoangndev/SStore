@@ -64,7 +64,14 @@
                                 Weight
                             </th>
                             <td>
-                                @Model.Weight
+                                @if (@Model.Weight == null)
+                                {
+                                    <p class="fst-italic m-0 text-secondary">...</p>
+                                }
+                                else
+                                {
+                                    <p class="m-0 text-truncate">@Model.Weight</p>
+                                }
                             </td>
                         </tr>
                         <tr>
@@ -72,7 +79,14 @@
                                 Size
                             </th>
                             <td>
-                                @Model.Size
+                                @if (@Model.Weight == null)
+                                {
+                                    <p class="fst-italic m-0 text-secondary">...</p>
+                                }
+                                else
+                                {
+                                    <p class="m-0 text-truncate">@Model.Size</p>
+                                }
                             </td>
                         </tr>
                         <tr>
@@ -80,7 +94,14 @@
                                 Color
                             </th>
                             <td>
-                                @Model.Color
+                                @if (@Model.Weight == null)
+                                {
+                                    <p class="fst-italic m-0 text-secondary">...</p>
+                                }
+                                else
+                                {
+                                    <p class="m-0 text-truncate">@Model.Color</p>
+                                }
                             </td>
                         </tr>
                         <tr>
@@ -96,7 +117,14 @@
                                 Description
                             </th>
                             <td>
-                                @Model.Description
+                                @if (@Model.Description == null)
+                                {
+                                    <p class="fst-italic m-0 text-secondary">...</p>
+                                }
+                                else
+                                {
+                                    <p class="m-0 text-truncate">@Model.Description</p>
+                                }
                             </td>
                         </tr>
                         <tr>
