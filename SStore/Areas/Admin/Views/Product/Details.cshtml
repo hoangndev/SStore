@@ -79,7 +79,7 @@
                                 Size
                             </th>
                             <td>
-                                @if (@Model.Weight == null)
+                                @if (@Model.Size == null)
                                 {
                                     <p class="fst-italic m-0 text-secondary">...</p>
                                 }
@@ -94,7 +94,7 @@
                                 Color
                             </th>
                             <td>
-                                @if (@Model.Weight == null)
+                                @if (@Model.Color == null)
                                 {
                                     <p class="fst-italic m-0 text-secondary">...</p>
                                 }
@@ -123,7 +123,7 @@
                                 }
                                 else
                                 {
-                                    <p class="m-0 text-truncate">@Model.Description</p>
+                                    <p class="m-0 text-wrap">@Model.Description</p>
                                 }
                             </td>
                         </tr>
@@ -138,7 +138,7 @@
                                 }
                                 else
                                 {
-                                    <p class="m-0 text-warning">Out of stock</p>
+                                    <p class="m-0 text-danger">Out of stock</p>
                                 }
                             </td>
                         </tr>
@@ -165,11 +165,11 @@
                             <td>
                                 @if (@Model.Hot == true)
                                 {
-                                    <p class="m-0">Yes</p>
+                                    <p class="m-0 text-success">Yes</p>
                                 }
                                 else
                                 {
-                                    <p class="m-0">No</p>
+                                    <p class="m-0 text-warning">No</p>
                                 }
                             </td>
                         </tr>

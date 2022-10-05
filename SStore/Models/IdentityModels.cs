@@ -36,7 +36,6 @@ namespace SStore.Models
         public DbSet<Feedback> Feedbacks { get; set; }
 
 
-
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();

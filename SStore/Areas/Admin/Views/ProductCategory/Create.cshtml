@@ -24,6 +24,7 @@
                             @Html.LabelFor(c => c.CategoryName, "Category Name")
                         </label>
                         @Html.TextBoxFor(c => c.CategoryName, new { @class = "form-control", @placeholder = "Enter category name", required = "required" })
+                        @Html.ValidationMessageFor(c => c.CategoryName, "", new { @class = "text-danger" })
                     </div>
                     <div class="mb-3">
                         <label for="CategoryName" class="form-label fw-bold">

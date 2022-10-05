@@ -8,6 +8,8 @@ using System.Data;
 using System.Data.Entity;
 using Microsoft.Ajax.Utilities;
 using System.Net;
+using PagedList;
+using PagedList.Mvc;
 
 namespace SStore.Controllers
 {
@@ -15,22 +17,44 @@ namespace SStore.Controllers
     {
         private ApplicationDbContext db = new ApplicationDbContext();
         // GET: AllProduct
-        public ActionResult Index(string searchProduct)
+        public ActionResult Index(int? page, string searchString, string BrandFilter, string CategoryFilter, Nullable<decimal> HighPrice, Nullable<decimal> LowPrice)
         {
+            int pageSize = 18;
+            int pageNumber = (page ?? 1);
             var allProduct = db.Products.Include(p => p.productBrand).OrderBy(p => p.ProductName).Include(p => p.ProductCategory);
-            if (!String.IsNullOrEmpty(searchProduct))
+
+            var brands = db.ProductBrands;
+            ViewBag.ListBrand = brands;
+            var categories = db.ProductCategories;
+            ViewBag.ListCategory = categories;
+            if (!String.IsNullOrEmpty(searchString))
             {
-                allProduct = allProduct.Where(p => p.ProductName.Contains(searchProduct));
+                allProduct = allProduct.Where(p => p.ProductName.Contains(searchString));
                 if (allProduct.Count() > 0)
                 {
-                    return View(allProduct.ToList());
+                    return View(allProduct.ToPagedList(pageNumber, pageSize));
                 }
                 else
                 {
                     return RedirectToAction("NotFound");
                 }
             }
-            return View(allProduct.ToList());
+            else if (!String.IsNullOrEmpty(BrandFilter))
+            {
+                allProduct = allProduct.Where(p => p.productBrand.BrandName.Equals(BrandFilter));
+                return View(allProduct.ToPagedList(pageNumber, pageSize));
+            }
+            else if (!String.IsNullOrEmpty(CategoryFilter))
+            {
+                allProduct = allProduct.Where(p => p.ProductCategory.CategoryName.Equals(CategoryFilter));
+                return View(allProduct.ToPagedList(pageNumber, pageSize));
+            }
+            else if (HighPrice >= 0 && LowPrice >= 0)
+            {
+                allProduct = allProduct.Where(p => p.Price >= LowPrice && p.Price <= HighPrice);
+                return View(allProduct.ToPagedList(pageNumber, pageSize));
+            }
+            return View(allProduct.ToList().ToPagedList(pageNumber, pageSize));
         }
         public ActionResult Shoes()
         {

@@ -5,7 +5,6 @@
 @{
     ViewBag.Title = "Products";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
-
 }
 
 <div class="container-fluid my-2">
@@ -31,8 +30,8 @@
 
     @* Offcanvas *@
     <div class="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions" aria-labelledby="offcanvasWithBothOptionsLabel">
-        <div class="offcanvas-header">
-            <h4 class="offcanvas-title" id="offcanvasWithBothOptionsLabel">Filter</h4>
+        <div class="offcanvas-header pb-0">
+            <h4 class="offcanvas-title" id="offcanvasWithBothOptionsLabel">Filtre</h4>
             <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
 
@@ -42,80 +41,42 @@
                 <h5 class="mt-2">Category</h5>
                 <hr />
                 <div class="d-flex justify-content-between flex-wrap">
-
-                    <div class="form-check me-3">
-                        <input class="form-check-input" type="checkbox" onchange="this.form.submit()" name="CategoryFilter" value="Shoes" id="flexCheckDefault">
-                        <label class="form-check-label" for="flexCheckDefault">
-                            Shoes
-                        </label>
-                    </div>
-                    <div class="form-check me-3">
-                        <input class="form-check-input" type="checkbox" onchange="this.form.submit()" name="CategoryFilter" value="Shirt" id="flexCheckDefault">
-                        <label class="form-check-label" for="flexCheckDefault">
-                            Shirt
-                        </label>
-                    </div>
-                    <div class="form-check me-3">
-                        <input class="form-check-input" type="checkbox" onchange="this.form.submit()" name="CategoryFilter" value="Hat" id="flexCheckDefault">
-                        <label class="form-check-label" for="flexCheckDefault">
-                            Hat
-                        </label>
-                    </div>
-                    <div class="form-check me-3">
-                        <input class="form-check-input" type="checkbox" onchange="this.form.submit()" name="CategoryFilter" value="Accessories" id="flexCheckDefault">
-                        <label class="form-check-label" for="flexCheckDefault">
-                            Accessories
-                        </label>
-                    </div>
+                    @foreach (var brand in ViewBag.ListCategory)
+                    {
+                        <div class="form-check me-3">
+                            <input class="form-check-input" type="checkbox" onchange="this.form.submit()" name="CategoryFilter" value="@brand.CategoryName" id="flexCheckDefault">
+                            <label class="form-check-label" for="flexCheckDefault">
+                                @brand.CategoryName
+                            </label>
+                        </div>
+                    }
                 </div>
                 <h5 class="mt-2">Brand</h5>
                 <hr />
                 <div class="d-flex justify-content-between flex-wrap">
-                    <div class="form-check me-3">
-                        <input class="form-check-input" type="checkbox" onchange="this.form.submit()" name="BrandFilter" value="Nike" id="flexCheckDefault">
-                        <label class="form-check-label" for="flexCheckDefault">
-                            Nike
-                        </label>
-                    </div>
-                    <div class="form-check me-3">
-                        <input class="form-check-input" type="checkbox" onchange="this.form.submit()" name="BrandFilter" value="Adidas" id="flexCheckDefault">
-                        <label class="form-check-label" for="flexCheckDefault">
-                            Adidas
-                        </label>
-                    </div>
-                    <div class="form-check me-3">
-                        <input class="form-check-input" type="checkbox" onchange="this.form.submit()" name="BrandFilter" value="Converse" id="flexCheckDefault">
-                        <label class="form-check-label" for="flexCheckDefault">
-                            Converse
-                        </label>
-                    </div>
-                    <div class="form-check me-3">
-                        <input class="form-check-input" type="checkbox" onchange="this.form.submit()" name="BrandFilter" value="Vans" id="flexCheckDefault">
-                        <label class="form-check-label" for="flexCheckDefault">
-                            Vans
-                        </label>
-                    </div>
+                    @foreach (var brand in ViewBag.ListBrand)
+                    {
+                        <div class="form-check me-3">
+                            <input class="form-check-input" type="checkbox" onchange="this.form.submit()" name="BrandFilter" value="@brand.BrandName" id="flexCheckDefault">
+                            <label class="form-check-label" for="flexCheckDefault">
+                                @brand.BrandName
+                            </label>
+                        </div>
+                    }
                 </div>
                 <h5 class="mt-2">Price</h5>
                 <hr />
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" onchange="this.form.submit()" name="HighPrice" value="2000" id="flexCheckDefault">
-                    <label class="form-check-label" for="flexCheckDefault">
-                        Price ≥ 2000$
-                    </label>
-                </div>
-                <div class="form-check">
-
-                    <input class="form-check-input" type="checkbox" onchange="this.form.submit()" name="LowPrice" value="2000" id="flexCheckDefault">
-                    <label class="form-check-label" for="flexCheckDefault">
-                        Price ≤ 2000$
-                    </label>
+                <div class="form-check p-0 d-flex justify-content-start align-items-center">
+                    <span>From:&nbsp;</span>
+                    <input class="form-control" type="text" name="LowPrice" value="0" id="flexCheckDefault">
+                    <span>&nbsp;-&nbsp;</span>
+                    <input class="form-control" type="text" name="HighPrice" value="0" id="flexCheckDefault">&nbsp;
+                    <button type="submit" class="btn btn-outline-success">Search</button>
                 </div>
             </div>
         }
     </div>
     @* End Offcanvas *@
-
     <div class="d-flex justify-content-between align-items-center">
         @using (Html.BeginForm("Index", "Product", FormMethod.Get))
         {

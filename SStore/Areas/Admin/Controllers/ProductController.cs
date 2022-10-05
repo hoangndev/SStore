@@ -18,7 +18,7 @@ namespace SStore.Areas.Admin.Controllers
 
         // GET: Admin/Product
         [HttpGet]
-        public ActionResult Index(int? page, string sortOrder, string searchString, Nullable<decimal> HighPrice, Nullable<decimal> LowPrice, string BrandFilter, string CategoryFilter)
+        public ActionResult Index(int? page, string sortOrder, string searchString, string BrandFilter, string CategoryFilter, Nullable<decimal> HighPrice, Nullable<decimal> LowPrice)
         {
             ViewBag.CurrentSort = sortOrder;
             ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "Name_Desc" : "";
@@ -27,8 +27,6 @@ namespace SStore.Areas.Admin.Controllers
             ViewBag.CategorySortParm = sortOrder == "Category" ? "Category_Desc" : "Category";
             int pageSize = 8;
             int pageNumber = (page ?? 1);
-            /*            var products = db.Products.Include(p => p.productBrand).Include(p => p.ProductCategory).OrderBy(p => p.ProductName).ToList();
-            */
             var products = db.Products.Include(p => p.productBrand).Include(p => p.ProductCategory);
 
             switch (sortOrder)
@@ -58,7 +56,23 @@ namespace SStore.Areas.Admin.Controllers
                     products = db.Products.Include(p => p.productBrand).Include(p => p.ProductCategory).OrderBy(p => p.ProductName);
                     break;
             }
-            if (!String.IsNullOrEmpty(searchString))
+
+            var brands = db.ProductBrands;
+            ViewBag.ListBrand = brands;
+            var categories = db.ProductCategories;
+            ViewBag.ListCategory = categories;
+
+            if (!String.IsNullOrEmpty(BrandFilter))
+            {
+                products = products.Where(p => p.productBrand.BrandName.Equals(BrandFilter));
+                return View(products.ToPagedList(pageNumber, pageSize));
+            }
+            else if (!String.IsNullOrEmpty(CategoryFilter))
+            {
+                products = products.Where(p => p.ProductCategory.CategoryName.Equals(CategoryFilter));
+                return View(products.ToPagedList(pageNumber, pageSize));
+            }
+            else if (!String.IsNullOrEmpty(searchString))
             {
                 products = products.Where(p => p.ProductName.Contains(searchString));
                 if (products.Count() > 0)
@@ -70,27 +84,9 @@ namespace SStore.Areas.Admin.Controllers
                     return RedirectToAction("NotFound");
                 }
             }
-            if (HighPrice > 0)
+            else if (HighPrice >= 0 && LowPrice >= 0)
             {
-                products = products.Where(p => p.Price >= HighPrice);
-                return View(products.ToPagedList(pageNumber, pageSize));
-            }
-            if (LowPrice > 0)
-            {
-                products = products.Where(p => p.Price <= LowPrice);
-                return View(products.ToPagedList(pageNumber, pageSize));
-            }
-
-            var brands = db.ProductBrands;
-            ViewBag.Brands = brands;
-            if (!String.IsNullOrEmpty(BrandFilter))
-            {
-                products = products.Where(p => p.productBrand.BrandName.Equals(BrandFilter));
-                return View(products.ToPagedList(pageNumber, pageSize));
-            }
-            if (!String.IsNullOrEmpty(CategoryFilter))
-            {
-                products = products.Where(p => p.ProductCategory.CategoryName.Equals(CategoryFilter));
+                products = products.Where(p => p.Price >= LowPrice && p.Price <= HighPrice);
                 return View(products.ToPagedList(pageNumber, pageSize));
             }
             return View(products.ToList().ToPagedList(pageNumber, pageSize));
@@ -185,7 +181,7 @@ namespace SStore.Areas.Admin.Controllers
                 /*                db.Entry(product).State = EntityState.Modified;
                 */
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Details", product);
             }
             ViewBag.BrandId = new SelectList(db.ProductBrands, "BrandId", "BrandName", product.BrandId);
             ViewBag.CategoryId = new SelectList(db.ProductCategories, "CategoryId", "CategoryName", product.CategoryId);
