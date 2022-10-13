@@ -6,9 +6,23 @@
         <div class="image-hover img-overlay">
             <a href="@Url.Action("Details", "AllProduct",  new { area = "", id = item.Id })" class="text-decoration-none">
                 <figure>
-                    <img src="@Url.Content("~/Image/wp2461125.jpg")" class="card-img-top" alt="...">                
+                    @if (item.Image == null)
+                    {
+                        <img src="@Url.Content("~/Image/noimage.png")" class="card-img-top" alt="...">
+                    }
+                    else
+                    {
+                        <img src="@Url.Content("~/Image/" + item.Image)" class="card-img-top" alt="...">
+                    }
                     <div class="overlay">
-                        <div class="img-overlay-text">See details</div>
+                        @if (item.Image == null)
+                        {
+                            <div class="img-overlay-text text-secondary">See details</div>
+                        }
+                        else
+                        {
+                            <div class="img-overlay-text">See details</div>
+                        }
                     </div>
                 </figure>
             </a>
@@ -23,12 +37,12 @@
                 }
                 else
                 {
-                    <a href="#" class="btn buy-now-button">Buy now</a>
+                    <a href="#" class="btn add-to-cart-button"><span class="add-to-cart-text">Buy now</span></a>
                     <a href="#" class="btn add-to-cart-button align-bottom">
-                        <p class="m-0 d-none d-sm-block">
+                        <span class="add-to-cart-text d-none d-sm-block">
                             Add to cart &nbsp;<i class="bi bi-cart-plus"></i>
-                        </p>
-                        <i class="bi bi-cart-plus d-block d-sm-none"></i>
+                        </span>
+                        <span class="add-to-cart-text d-block d-sm-none"><i class="bi bi-cart-plus"></i></span>
                     </a>
                 }
             </div>

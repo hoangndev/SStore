@@ -17,9 +17,10 @@
         <div class="container-fluid" style="max-width:700px">
             <div class="card mt-2 mt-sm-4 mb-2 mb-sm-3 border-dark">
                 <div class="card-header bg-transparent border-dark">
-                    <div class="d-flex justify-content-between align-items-center">
-                        <h4 class="card-title">Title</h4>
-                        <p class="m-0 fst-italic text-secondary">@Model.CreateDate</p>
+                    <div class="d-flex justify-content-between align-items-center mb-2">
+                        <h4 class="card-title m-0">Title</h4>
+                        <p class="m-0 fst-italic text-secondary d-none d-sm-block">@Model.CreateDate</p>
+                        <p class="m-0 fst-italic text-secondary d-block d-sm-none">@Model.CreateDate.ToString("d")</p>
                     </div>
                     <p class="card-text">@Model.Title</p>
                 </div>
@@ -71,6 +72,9 @@
                     <p class="card-text">@Model.Description</p>
                 </div>
             </div>
+            <a href="@Url.Action("Delete", "Feedback", new{ id = Model.Id })" class="btn delete-button">
+                <i class="bi bi-trash"></i>
+            </a>
         </div>
     </div>
 </div>

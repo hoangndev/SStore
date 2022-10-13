@@ -21,7 +21,7 @@
                 <form>
                     <div class="mb-3">
                         <label for="CategoryName" class="form-label fw-bold">
-                            @Html.LabelFor(c => c.CategoryName, "Category Name")
+                            @Html.LabelFor(c => c.CategoryName, "Category Name")<span class="fw-normal text-danger">*</span>
                         </label>
                         @Html.TextBoxFor(c => c.CategoryName, new { @class = "form-control", @placeholder = "Enter category name", required = "required" })
                         @Html.ValidationMessageFor(c => c.CategoryName, "", new { @class = "text-danger" })
@@ -33,7 +33,7 @@
                         @Html.TextBoxFor(c => c.Description, new { @class = "form-control", @placeholder = "Enter category description" })
                     </div>
                     <div class="mb-3">
-                        <button type="submit" class="btn sub-button">Add</button>
+                        <button type="submit" class="btn sub-button"><span class="sub-button-text">Add</span></button>
                     </div>
                 </form>
             </div>

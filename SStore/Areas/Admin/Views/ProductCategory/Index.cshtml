@@ -22,7 +22,7 @@
                 </div>
                 <div class="col-xxl-7 col-xl-8 col-lg-9 col-md-10">
                     <a type="button" class="btn sub-button mb-2" href="@Url.Action("Create", "ProductCategory", new { area = "Admin" })">
-                        Add New Category
+                        <span class="sub-button-text">Add New Category</span>
                     </a>
                     <div class="d-flex justify-content-between align-items-center">
                         @using (Html.BeginForm("Index", "ProductCategory", FormMethod.Get))
@@ -40,18 +40,18 @@
                     <div class="table-responsive">
                         <table class="table table-bordered table-hover my-2">
                             <tr>
-                                <th class="text-nowrap">
+                                <th class="text-nowrap text-center">
                                     No
                                 </th>
-                                <th class="text-nowrap">
+                                <th class="text-nowrap text-center" style="min-width: 100px">
                                     <a href="@Url.Action("Index", new { sortOrder = ViewBag.NameSortParm })" class="text-dark">
                                         <i class="bi bi-sort-alpha-up"></i> Name
                                     </a>
                                 </th>
-                                <th class="text-nowrap">
+                                <th class="text-nowrap text-center">
                                     Description
                                 </th>
-                                <th class="text-nowrap">
+                                <th class="text-nowrap text-center">
                                     Action
                                 </th>
                             </tr>
@@ -59,24 +59,24 @@
                             @foreach (var item in Model.Select((d, i) => new { Data = d, Index = i + 1 }))
                             {
                                 <tr>
-                                    <td class="align-middle">
+                                    <td class="align-middle text-center">
                                         @item.Index
                                     </td>
-                                    <td class="align-middle text-truncate" style="max-width: 150px">
+                                    <td class="align-middle text-truncate text-center" style="max-width: 150px">
                                         <p class="m-0 text-truncate" title="@item.Data.CategoryName">@item.Data.CategoryName</p>
                                     </td>
-                                    <td class="align-middle text-truncate" style="max-width: 300px">
+                                    <td class="align-middle text-truncate" style="max-width: 300px; min-width: 200px">
                                         @if (@item.Data.Description == null)
                                         {
-                                            <p class="fst-italic m-0 text-secondary">...</p>
+                                            <p class="fst-italic m-0 text-secondary text-center">...</p>
                                         }
                                         else
                                         {
-                                            <p class="m-0 text-truncate" title="@item.Data.Description">@item.Data.Description</p>
+                                            <p class="m-0 text-truncate text-center" title="@item.Data.Description">@item.Data.Description</p>
                                         }
                                     </td>
                                     <td class="align-middle">
-                                        <div class="d-flex flex-nowrap">
+                                        <div class="d-flex flex-nowrap justify-content-center">
                                             <a href="@Url.Action("Edit", "ProductCategory", new{ id = item.Data.CategoryId })" class="btn edit-button me-2">
                                                 <i class="bi bi-pencil-square"></i>
                                             </a>

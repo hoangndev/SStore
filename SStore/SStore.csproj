@@ -197,6 +197,7 @@
     <Compile Include="Areas\Admin\Controllers\ProductBrandController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProductCategoryController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProductController.cs" />
+    <Compile Include="Areas\Admin\Controllers\SlideController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AllProductController.cs" />
     <Compile Include="Controllers\FeedbackClientController.cs" />
@@ -301,6 +302,10 @@
     <Compile Include="Migrations\202210010415192_DropColumnTotalPriceInTableCartDetail.designer.cs">
       <DependentUpon>202210010415192_DropColumnTotalPriceInTableCartDetail.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202210071227188_AddSliderTable.cs" />
+    <Compile Include="Migrations\202210071227188_AddSliderTable.designer.cs">
+      <DependentUpon>202210071227188_AddSliderTable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Cart.cs" />
@@ -313,6 +318,7 @@
     <Compile Include="Models\Product.cs" />
     <Compile Include="Models\ProductBrand.cs" />
     <Compile Include="Models\ProductCategory.cs" />
+    <Compile Include="Models\Slide.cs" />
     <Compile Include="Models\UserInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -346,7 +352,7 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Image\storelogo.png" />
+    <Content Include="Image\noimage.png" />
     <Content Include="Image\storelogo2.png" />
     <Content Include="Image\wp2461125.jpg" />
     <Content Include="Public\css\custom.css" />
@@ -403,6 +409,11 @@
     <Content Include="Areas\Admin\Views\Feedback\NotFound.cshtml" />
     <Content Include="Areas\Admin\Views\ProductCategory\NotFound.cshtml" />
     <Content Include="Areas\Admin\Views\ProductBrand\NotFound.cshtml" />
+    <Content Include="Areas\Admin\Views\Slide\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Slide\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\Slide\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\Slide\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Slide\Index.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\chart.js" />
     <Content Include="Scripts\chart.min.js" />
@@ -459,6 +470,7 @@
     <Content Include="Views\AllProduct\Accessories.cshtml" />
     <Content Include="Views\AllProduct\NotFound.cshtml" />
     <Content Include="Views\AllProduct\Details.cshtml" />
+    <Content Include="Views\Home\Slider.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -542,6 +554,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202210010415192_DropColumnTotalPriceInTableCartDetail.resx">
       <DependentUpon>202210010415192_DropColumnTotalPriceInTableCartDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202210071227188_AddSliderTable.resx">
+      <DependentUpon>202210071227188_AddSliderTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

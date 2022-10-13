@@ -24,12 +24,12 @@
                 <form>
                     <div class="mb-3">
                         <label for="CategoryName" class="form-label fw-bold">
-                            @Html.LabelFor(b => b.BrandName, "Category Name")
+                            @Html.LabelFor(b => b.BrandName, "Brand Name")<span class="fw-normal text-danger">*</span>
                         </label>
                         @Html.TextBoxFor(b => b.BrandName, new { @class = "form-control", @placeholder = "Enter brand name", required = "required" })
                     </div>
                     <div class="mb-3">
-                        <button type="submit" class="btn sub-button">Add</button>
+                        <button type="submit" class="btn sub-button"><span class="sub-button-text">Add</span></button>
                     </div>
                 </form>
             </div>

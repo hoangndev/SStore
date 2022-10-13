@@ -22,7 +22,7 @@
                 </div>
                 <div class="col-xxl-6 col-xl-7 col-lg-8 col-md-9">
                     <a type="button" class="btn sub-button mb-2" href="@Url.Action("Create", "ProductBrand", new { area = "Admin" })">
-                        Add New Brand
+                        <span class="sub-button-text">Add New Brand</span>
                     </a>
                     <div class="d-flex justify-content-between align-items-center">
                         @using (Html.BeginForm("Index", "ProductBrand", FormMethod.Get))
@@ -40,15 +40,15 @@
                     <div class="table-responsive">
                         <table class="table table-bordered table-hover my-2">
                             <tr>
-                                <th class="text-truncate">
+                                <th class="text-truncate text-center">
                                     No
                                 </th>
-                                <th class="text-truncate">
+                                <th class="text-truncate text-center" style="min-width: 120px">
                                     <a href="@Url.Action("Index", new { sortOrder = ViewBag.NameSortParm })" class="text-dark">
                                         <i class="bi bi-sort-alpha-up"></i> Name
                                     </a>
                                 </th>
-                                <th class="text-truncate">
+                                <th class="text-truncate text-center">
                                     Action
                                 </th>
                             </tr>
@@ -56,15 +56,14 @@
                             @foreach (var item in Model.Select((d, i) => new { Data = d, Index = i + 1 }))
                             {
                                 <tr>
-                                    <td class="align-middle">
+                                    <td class="align-middle text-center">
                                         @item.Index
                                     </td>
-                                    <td class="align-middle">
+                                    <td class="align-middle text-center">
                                         <p class="m-0" title="@item.Data.BrandName">@item.Data.BrandName</p>
                                     </td>
                                     <td class="align-middle">
-                                        <div class="d-flex flex-nowrap">
-
+                                        <div class="d-flex flex-nowrap justify-content-center">
                                             <a href="@Url.Action("Edit", "ProductBrand", new{ id = item.Data.BrandId })" class="btn edit-button me-2">
                                                 <i class="bi bi-pencil-square"></i>
                                             </a>

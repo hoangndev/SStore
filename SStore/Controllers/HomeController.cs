@@ -34,5 +34,10 @@ namespace SStore.Controllers
             var fashionProductList = db.Products.Include(p => p.productBrand).Include(p => p.ProductCategory).Where(p => p.Hot == true).OrderByDescending(p => p.ModifiedDate).Take(4).ToList();
             return PartialView(fashionProductList);
         }
+        public PartialViewResult Slider()
+        {
+            var sliders = db.Slides.OrderByDescending(s => s.Id).ToList();
+            return PartialView(sliders);
+        }
     }
 }

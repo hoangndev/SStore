@@ -24,7 +24,7 @@
                     @Html.HiddenFor(model => model.CategoryId)
                     <div class="mb-3">
                         <label for="CategoryName" class="form-label fw-bold">
-                            @Html.LabelFor(c => c.CategoryName, "Category Name")
+                            @Html.LabelFor(c => c.CategoryName, "Category Name")<span class="fw-normal text-danger">*</span>
                         </label>
                         @Html.EditorFor(model => model.CategoryName, new { htmlAttributes = new { @class = "form-control", required = "required" } })
                         @Html.ValidationMessageFor(model => model.CategoryName, "", new { @class = "text-danger" })
@@ -36,8 +36,8 @@
                         @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
                     </div>
                     <div class="mb-3">
-                        <button type="submit" class="btn sub-button">Update</button>
-                        <a href="@Url.Action("Index", "ProductCategory", new { area = "Admin"})" class="btn cancel-button">Cancel</a>
+                        <button type="submit" class="btn sub-button"><span class="sub-button-text">Update</span></button>
+                        <a href="@Url.Action("Index", "ProductCategory", new { area = "Admin"})" class="btn cancel-button"><span class="cancel-button-text">Cancel</span></a>
                     </div>
                 </form>
             </div>

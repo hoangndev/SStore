@@ -9,6 +9,7 @@ using System.Web.Mvc;
 using SStore.Models;
 using PagedList;
 using PagedList.Mvc;
+using System.IO;
 
 namespace SStore.Areas.Admin.Controllers
 {
@@ -124,7 +125,7 @@ namespace SStore.Areas.Admin.Controllers
 
         // POST: Admin/Product/Create
         [HttpPost]
-        public ActionResult Create(Product product)
+        public ActionResult Create(Product product, HttpPostedFileBase Image)
         {
             if (ModelState.IsValid)
             {
@@ -133,6 +134,22 @@ namespace SStore.Areas.Admin.Controllers
                 product.View = 0;
                 db.Products.Add(product);
                 db.SaveChanges();
+
+                if (Image != null && Image.ContentLength > 0)
+                {
+                    int id = int.Parse(db.Products.ToList().Last().Id.ToString());
+
+                    string fileName = "";
+                    int index = Image.FileName.IndexOf('.');
+                    fileName = "product" + id.ToString() + "." + Image.FileName.Substring(index + 1);
+                    string path = Path.Combine(Server.MapPath("~/Image"), fileName);
+                    Image.SaveAs(path);
+
+                    Product ipro = db.Products.FirstOrDefault(x => x.Id == id);
+                    ipro.Image = fileName;
+                    db.SaveChanges();
+                }
+
                 return RedirectToAction("Index");
             }
 
@@ -160,7 +177,7 @@ namespace SStore.Areas.Admin.Controllers
 
         // POST: Admin/Product/Edit/5
         [HttpPost]
-        public ActionResult Edit(Product product)
+        public ActionResult Edit(Product product, HttpPostedFileBase Image)
         {
             if (ModelState.IsValid)
             {
@@ -175,12 +192,27 @@ namespace SStore.Areas.Admin.Controllers
                 productdb.BrandId = product.BrandId;
                 productdb.Status = product.Status;
                 productdb.Description = product.Description;
-                productdb.Image = product.Image;
                 productdb.Hot = product.Hot;
                 productdb.ModifiedDate = DateTime.Now;
                 /*                db.Entry(product).State = EntityState.Modified;
                 */
                 db.SaveChanges();
+
+                if (Image != null && Image.ContentLength > 0)
+                {
+                    int id = product.Id;
+
+                    string fileName = "";
+                    int index = Image.FileName.IndexOf('.');
+                    fileName = "product" + id.ToString() + "." + Image.FileName.Substring(index + 1);
+                    string path = Path.Combine(Server.MapPath("~/Image"), fileName);
+                    Image.SaveAs(path);
+
+                    Product ipro = db.Products.FirstOrDefault(x => x.Id == id);
+                    ipro.Image = fileName;
+                    db.SaveChanges();
+                }
+
                 return RedirectToAction("Details", product);
             }
             ViewBag.BrandId = new SelectList(db.ProductBrands, "BrandId", "BrandName", product.BrandId);

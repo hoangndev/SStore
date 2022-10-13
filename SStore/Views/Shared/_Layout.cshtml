@@ -13,32 +13,41 @@
 <!-- Section Header -->
 <body class="d-flex flex-column min-vh-100">
     <section class="header clearfix bg-white">
-        <div class="container">
-            <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-2">
+        <div class="container-lg">
+            <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-sm-between py-2">
                 <!-- LOGO -->
-                <a href="@Url.Action("Index", "Home", new { area = "" })" class="d-flex align-items-center col-md-auto mb-2 mb-md-0 text-dark text-decoration-none">
-                    <h1 class="me-3 store-logo-homepage">SStore</h1>
-                </a>
+                <div class="d-flex align-items-center">
+                    <a href="@Url.Action("Index", "Home", new { area = "" })" class="col-md-auto text-dark text-decoration-none">
+                        <h1 class="store-logo-homepage mb-0">SStore</h1>
+                    </a>
+                </div>
+                <div class="d-none d-sm-block">
+                    @using (Html.BeginForm("Index", "allProduct", FormMethod.Get))
+                    {
+                        <form class="d-flex col-md-auto justify-content-center">
+                            <div class="d-flex align-items-center">
+                                <input type="search" name="searchString" class="bd-search form-control me-2 form-control-dark" placeholder="search product..." />
+                                <button class="btn btn-outline-success" type="submit">Search</button>
+                            </div>
+                        </form>
+                    }
+                </div>
+                <div class="d-none d-sm-block">
+                    <div class="d-flex col-md-auto text-end">
+                        @Html.Partial("_LoginPartial")
+                    </div>
+                </div>
+            </div>
+            <div class="d-block d-sm-none d-flex justify-content-center mb-2">
                 @using (Html.BeginForm("Index", "allProduct", FormMethod.Get))
                 {
-                    <form class="d-flex col-md-auto mb-2 justify-content-center mb-md-0">
-                        <div class="d-flex align-items-center mb-2 mb-sm-0">
+                    <form class="d-flex col-md-auto justify-content-center">
+                        <div class="d-flex align-items-center">
                             <input type="search" name="searchString" class="bd-search form-control me-2 form-control-dark" placeholder="search product..." />
                             <button class="btn btn-outline-success" type="submit">Search</button>
                         </div>
                     </form>
                 }
-                <div class="d-flex col-md-auto text-end">
-                    <a href="#" class="btn btn-outline-dark me-2">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart me-1" viewBox="0 0 16 16">
-                            <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
-                        </svg>
-                        Cart
-                        <span class="badge bg-dark text-light">4</span>
-                    </a>
-                    <button class="btn btn-outline-danger me-2">Login</button>
-                    <button class="btn btn-outline-danger">Register</button>
-                </div>
             </div>
         </div>
     </section>
@@ -50,6 +59,9 @@
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
+                <div class="d-flex justify-content-end col-md-auto text-end d-block d-sm-none">
+                    @Html.Partial("_LoginPartial")
+                </div>
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav mx-auto">
                         <li class="me-4">
@@ -98,9 +110,18 @@
             </nav>
         </div>
     </section>
+
     <!-- Section Content -->
     <section class="content bg-white">
         @RenderBody()
+        <div class="position-fixed bottom-0 end-0">
+            <a href="#" class="me-2 me-md-3 ms-2 mb-2 mb-md-3 position-relative btn cart-button">
+                <i class="bi bi-cart3 fs-3 cart-text"></i>
+                <span class="position-absolute top-0 end-0 badge rounded-pill bg-secondary p-1" style="font-size:9px">
+                    4
+                </span>
+            </a>
+        </div>
     </section>
 
     <!-- Section Footer -->

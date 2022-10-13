@@ -29,9 +29,8 @@ namespace SStore.Controllers
                 db.Feedbacks.Add(feedback);
                 feedback.CreateDate = DateTime.Now;
                 db.SaveChanges();
-                return RedirectToAction("Create");
+                ViewBag.Message = String.Format("Successfully sent feedback!");
             }
-
             return View(feedback);
         }
     }

@@ -21,10 +21,10 @@
     @* Add new product and filter button *@
     <div class="mb-2 d-flex justify-content-between">
         <a type="button" class="btn sub-button" href="@Url.Action("Create", "Product", new { area = "Admin" })">
-            Add New Product
+            <span class="sub-button-text">Add New Product</span>
         </a>
         <button class="btn sub-button" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions">
-            <i class="bi bi-funnel"></i>
+            <i class="bi bi-funnel sub-button-text"></i>
         </button>
     </div>
 
@@ -40,23 +40,23 @@
             <div class="offcanvas-body">
                 <h5 class="mt-2">Category</h5>
                 <hr />
-                <div class="d-flex justify-content-between flex-wrap">
-                    @foreach (var brand in ViewBag.ListCategory)
+                <div class="mb-3">
+                    @foreach (var category in ViewBag.ListCategory)
                     {
-                        <div class="form-check me-3">
-                            <input class="form-check-input" type="checkbox" onchange="this.form.submit()" name="CategoryFilter" value="@brand.CategoryName" id="flexCheckDefault">
+                        <div class="form-check mb-1">
+                            <input class="form-check-input" type="checkbox" onchange="this.form.submit()" name="CategoryFilter" value="@category.CategoryName" id="flexCheckDefault">
                             <label class="form-check-label" for="flexCheckDefault">
-                                @brand.CategoryName
+                                @category.CategoryName
                             </label>
                         </div>
                     }
                 </div>
                 <h5 class="mt-2">Brand</h5>
                 <hr />
-                <div class="d-flex justify-content-between flex-wrap">
+                <div class="mb-3">
                     @foreach (var brand in ViewBag.ListBrand)
                     {
-                        <div class="form-check me-3">
+                        <div class="form-check mb-1">
                             <input class="form-check-input" type="checkbox" onchange="this.form.submit()" name="BrandFilter" value="@brand.BrandName" id="flexCheckDefault">
                             <label class="form-check-label" for="flexCheckDefault">
                                 @brand.BrandName
@@ -66,12 +66,12 @@
                 </div>
                 <h5 class="mt-2">Price</h5>
                 <hr />
-                <div class="form-check p-0 d-flex justify-content-start align-items-center">
+                <div class="form-check p-0 d-flex justify-content-start align-items-center flex-wrap flex-sm-nowrap">
                     <span>From:&nbsp;</span>
                     <input class="form-control" type="text" name="LowPrice" value="0" id="flexCheckDefault">
                     <span>&nbsp;-&nbsp;</span>
-                    <input class="form-control" type="text" name="HighPrice" value="0" id="flexCheckDefault">&nbsp;
-                    <button type="submit" class="btn btn-outline-success">Search</button>
+                    <input class="form-control" type="text" name="HighPrice" value="0" id="flexCheckDefault">
+                    <button type="submit" class="btn btn-outline-success ms-0 ms-sm-1 mt-2 mt-sm-0">Search</button>
                 </div>
             </div>
         }
@@ -93,33 +93,33 @@
     <div class="table-responsive">
         <table class="table table-bordered table-hover my-2">
             <tr>
-                <th class="text-truncate col-1">
+                <th class="text-center">
                     Image
                 </th>
-                <th class="text-truncate">
+                <th class="text-center" style="min-width: 180px">
                     <a href="@Url.Action("Index", new { sortOrder = ViewBag.NameSortParm })" class="text-dark">
                         <i class="bi bi-sort-alpha-up"></i> Product Name
                     </a>
                 </th>
-                <th class="text-truncate">
+                <th class="text-center" style="min-width: 130px">
                     <a href="@Url.Action("Index", new { sortOrder = ViewBag.CategorySortParm })" class="text-dark">
                         <i class="bi bi-sort-alpha-up"></i> Category
                     </a>
                 </th>
-                <th class="text-truncate">
+                <th class="text-center" style="min-width: 100px">
                     <a href="@Url.Action("Index", new { sortOrder = ViewBag.BrandSortParm })" class="text-dark">
                         <i class="bi bi-sort-alpha-up"></i> Brand
                     </a>
                 </th>
-                <th class="text-truncate">
+                <th class="text-center" style="min-width: 100px">
                     <a href="@Url.Action("Index", new { sortOrder = ViewBag.PriceSortParm })" class="text-dark">
                         <i class="bi bi-sort-up"></i> Price
                     </a>
                 </th>
-                <th class="text-truncate">
+                <th class="text-center">
                     Description
                 </th>
-                <th class="text-truncate">
+                <th class="text-center">
                     Action
                 </th>
             </tr>
@@ -128,21 +128,28 @@
             {
                 <tr>
                     <td class="align-middle my-1">
-                        <img src="~/Image/wp2461125.jpg" class="img-fluid product-image-management" style="width:100%" />
+                        @if (item.Image == null)
+                        {
+                            <img src="~/Image/noimage.png" class="img-fluid product-image-management" style="width:100%" />
+                        }
+                        else
+                        {
+                            <img src="@Url.Content("~/Image/" + item.Image)" class="img-fluid product-image-management" style="width:100%" />
+                        }
                     </td>
-                    <td class="align-middle text-truncate" style="max-width: 180px">
+                    <td class="align-middle text-truncate text-center" style="max-width: 180px">
                         @item.ProductName
                     </td>
-                    <td class="align-middle text-truncate">
+                    <td class="align-middle text-truncate text-center">
                         @item.ProductCategory.CategoryName
                     </td>
-                    <td class="align-middle text-truncate">
+                    <td class="align-middle text-truncate text-center">
                         @item.productBrand.BrandName
                     </td>
-                    <td class="align-middle text-truncate">
+                    <td class="align-middle text-truncate text-center">
                         @item.Price $
                     </td>
-                    <td class="align-middle text-truncate" style="max-width: 300px">
+                    <td class="align-middle text-truncate text-center" style="max-width: 300px">
                         @if (@item.Description == null)
                         {
                             <p class="fst-italic m-0 text-secondary">...</p>
@@ -153,7 +160,7 @@
                         }
                     </td>
                     <td class="align-middle">
-                        <div class="d-flex flex-nowrap">
+                        <div class="d-flex flex-nowrap justify-content-center">
                             <a href="@Url.Action("Details", "Product", new{ id = item.Id })" class="btn detail-button me-2">
                                 <i class="bi bi-info-circle"></i>
                             </a>

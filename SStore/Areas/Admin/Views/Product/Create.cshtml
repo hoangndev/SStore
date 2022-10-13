@@ -15,7 +15,7 @@
     </nav>
     <h1 class="text-center my-3 admin-page-title text-uppercase">Add New Product</h1>
 
-    @using (Html.BeginForm("Create", "Product", FormMethod.Post))
+    @using (Html.BeginForm("Create", "Product", FormMethod.Post, new { enctype = "multipart/form-data" }))
     {
         <div class="d-flex justify-content-center">
             <div class="container-fluid" style="max-width:600px">
@@ -24,12 +24,12 @@
                         <label for="Image" class="form-label fw-bold">
                             @Html.LabelFor(model => model.Image, "Image")
                         </label>
-                        <input class="form-control" type="file" name="image" id="image">
+                        <input class="form-control" type="file" name="Image" id="Image" accept="image/*">
                         @Html.ValidationMessageFor(model => model.Image, "", new { @class = "text-danger" })
                     </div>
                     <div class="mb-2">
                         <label for="ProductName" class="form-label fw-bold">
-                            @Html.LabelFor(model => model.ProductName, "Product Name") <span class="fw-normal text-danger">*</span>
+                            @Html.LabelFor(model => model.ProductName, "Product Name")<span class="fw-normal text-danger">*</span>
                         </label>
                         @Html.TextBoxFor(model => model.ProductName, new { @class = "form-control", required = "required" })
                         @Html.ValidationMessageFor(model => model.ProductName, "", new { @class = "text-danger" })
@@ -57,21 +57,21 @@
                     </div>
                     <div class="mb-2">
                         <label for="Color" class="form-label fw-bold">
-                            @Html.LabelFor(model => model.Color, "Color") <span class="fw-normal text-danger">*</span>
+                            @Html.LabelFor(model => model.Color, "Color")<span class="fw-normal text-danger">*</span>
                         </label>
                         @Html.TextBoxFor(model => model.Color, new { @class = "form-control", required = "required" })
                         @Html.ValidationMessageFor(model => model.Color, "", new { @class = "text-danger" })
                     </div>
                     <div class="mb-2">
                         <label for="Size" class="form-label fw-bold">
-                            @Html.LabelFor(model => model.Size, "Size") <span class="fw-normal text-danger">*</span>
+                            @Html.LabelFor(model => model.Size, "Size")<span class="fw-normal text-danger">*</span>
                         </label>
                         @Html.TextBoxFor(model => model.Size, new { @class = "form-control", required = "required" })
                         @Html.ValidationMessageFor(model => model.Size, "", new { @class = "text-danger" })
                     </div>
                     <div class="mb-2">
                         <label for="Price" class="form-label fw-bold">
-                            @Html.LabelFor(model => model.Price, "Price") <span class="fw-normal text-danger">*</span>
+                            @Html.LabelFor(model => model.Price, "Price")<span class="fw-normal text-danger">*</span>
                         </label>
                         @Html.TextBoxFor(model => model.Price, new { @class = "form-control", required = "required" })
                         @Html.ValidationMessageFor(model => model.Price, "", new { @class = "text-danger" })
@@ -95,17 +95,16 @@
                         </select>
                         @Html.ValidationMessageFor(model => model.Hot, "", new { @class = "text-danger" })
                     </div>
-                    <div class="mb-0">
+                    <div class="mb-3">
                         <label for="CategoryName" class="form-label fw-bold">
                             @Html.LabelFor(model => model.Description, "Description")
                         </label>
                         <textarea class="form-control" name="Description" rows="4"></textarea>
                         @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
                     </div>
-                    <p class="my-1 text-danger fst-italic" style="font-size: 12px"><span class="fw-normal">(*)</span> required</p>
                     <div class="mb-2">
-                        <button type="submit" class="btn sub-button">Add</button>
-                        <a href="@Url.Action("Index", "Product", new { area = "Admin"})" class="btn cancel-button">Cancel</a>
+                        <button type="submit" class="btn sub-button"><span class="sub-button-text">Add</span></button>
+                        <a href="@Url.Action("Index", "Product", new { area = "Admin"})" class="btn cancel-button"><span class="cancel-button-text">Cancel</span></a>
                     </div>
                 </form>
             </div>

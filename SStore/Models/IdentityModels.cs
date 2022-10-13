@@ -34,6 +34,8 @@ namespace SStore.Models
         public DbSet<Order> Orders { get; set; }
         public DbSet<OrderDetail> OrderDetails { get; set; }
         public DbSet<Feedback> Feedbacks { get; set; }
+        public DbSet<Slide> Slides { get; set; }
+
 
 
         public static ApplicationDbContext Create()
