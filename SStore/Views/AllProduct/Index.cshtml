@@ -21,9 +21,9 @@
             <div class="col">
                 @using (Html.BeginForm("Index", "AllProduct", FormMethod.Get))
                 {
-                    <h5 class="mt-2">Category</h5>
+                    <h5 class="mb-0">Category</h5>
                     <hr />
-                    <div class="d-flex justify-content-between flex-wrap">
+                    <div class="mb-3">
                         @foreach (var brand in ViewBag.ListCategory)
                         {
                             <div class="form-check me-3">
@@ -34,9 +34,9 @@
                             </div>
                         }
                     </div>
-                    <h5 class="mt-2">Brand</h5>
+                    <h5 class="mb-0">Brand</h5>
                     <hr />
-                    <div class="d-flex justify-content-between flex-wrap">
+                    <div class="mb-3">
                         @foreach (var brand in ViewBag.ListBrand)
                         {
                             <div class="form-check me-3">
@@ -47,14 +47,14 @@
                             </div>
                         }
                     </div>
-                    <h5 class="mt-2">Price</h5>
+                    <h5 class="mb-0">Price</h5>
                     <hr />
                     <div class="form-check p-0 d-flex justify-content-start align-items-center">
-                        <span>From:&nbsp;</span>
+                        <span class="me-1">From:</span>
                         <input class="form-control" type="text" name="LowPrice" value="0" id="flexCheckDefault">
-                        <span>&nbsp;-&nbsp;</span>
-                        <input class="form-control" type="text" name="HighPrice" value="0" id="flexCheckDefault">&nbsp;
-                        <button type="submit" class="btn btn-outline-success">Search</button>
+                        <span class="mx-1">-</span>
+                        <input class="form-control" type="text" name="HighPrice" value="0" id="flexCheckDefault">
+                        <button type="submit" class="btn btn-outline-success ms-1">Search</button>
                     </div>
                 }
             </div>
@@ -68,9 +68,23 @@
                             <div class="image-hover img-overlay">
                                 <a href="@Url.Action("Details", "AllProduct",  new { area = "", id = item.Id })" class="text-decoration-none">
                                     <figure>
-                                        <img src="@Url.Content("~/Image/wp2461125.jpg")" class="card-img-top" alt="...">
+                                        @if (item.Image == null)
+                                        {
+                                            <img src="@Url.Content("~/Image/noimage.png")" class="card-img-top" alt="...">
+                                        }
+                                        else
+                                        {
+                                            <img src="@Url.Content("~/Image/" + item.Image)" class="card-img-top" alt="...">
+                                        }
                                         <div class="overlay">
-                                            <div class="img-overlay-text">See details</div>
+                                            @if (item.Image == null)
+                                            {
+                                                <div class="img-overlay-text text-secondary">See details</div>
+                                            }
+                                            else
+                                            {
+                                                <div class="img-overlay-text">See details</div>
+                                            }
                                         </div>
                                     </figure>
                                 </a>
@@ -186,12 +200,12 @@
             <h4 class="offcanvas-title" id="offcanvasWithBothOptionsLabel">Filtre</h4>
             <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
-        @using (Html.BeginForm("Index", "Product", FormMethod.Get))
+        @using (Html.BeginForm("Index", "AllProduct", FormMethod.Get))
         {
             <div class="offcanvas-body">
                 <h5 class="mt-2">Category</h5>
                 <hr />
-                <div class="d-flex justify-content-between flex-wrap">
+                <div class="mb-3">
                     @foreach (var brand in ViewBag.ListCategory)
                     {
                         <div class="form-check me-3">
@@ -204,7 +218,7 @@
                 </div>
                 <h5 class="mt-2">Brand</h5>
                 <hr />
-                <div class="d-flex justify-content-between flex-wrap">
+                <div class="mb-3">
                     @foreach (var brand in ViewBag.ListBrand)
                     {
                         <div class="form-check me-3">
@@ -217,12 +231,12 @@
                 </div>
                 <h5 class="mt-2">Price</h5>
                 <hr />
-                <div class="form-check p-0 d-flex justify-content-start align-items-center">
+                <div class="form-check p-0 d-flex justify-content-start align-items-center flex-wrap flex-sm-nowrap">
                     <span>From:&nbsp;</span>
                     <input class="form-control" type="text" name="LowPrice" value="0" id="flexCheckDefault">
                     <span>&nbsp;-&nbsp;</span>
-                    <input class="form-control" type="text" name="HighPrice" value="0" id="flexCheckDefault">&nbsp;
-                    <button type="submit" class="btn btn-outline-success">Search</button>
+                    <input class="form-control" type="text" name="HighPrice" value="0" id="flexCheckDefault">
+                    <button type="submit" class="btn btn-outline-success ms-0 ms-sm-1 mt-2 mt-sm-0">Search</button>
                 </div>
             </div>
         }

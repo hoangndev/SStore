@@ -6,9 +6,23 @@
         <div class="image-hover img-overlay">
             <a href="@Url.Action("Details", "AllProduct",  new { area = "", id = item.Id })" class="text-decoration-none">
                 <figure>
-                    <img src="@Url.Content("~/Image/wp2461125.jpg")" class="card-img-top" alt="...">
+                    @if (item.Image == null)
+                    {
+                        <img src="@Url.Content("~/Image/noimage.png")" class="card-img-top" alt="...">
+                    }
+                    else
+                    {
+                        <img src="@Url.Content("~/Image/" + item.Image)" class="card-img-top" alt="...">
+                    }
                     <div class="overlay">
-                        <div class="img-overlay-text">See details</div>
+                        @if (item.Image == null)
+                        {
+                            <div class="img-overlay-text text-secondary">See details</div>
+                        }
+                        else
+                        {
+                            <div class="img-overlay-text">See details</div>
+                        }
                     </div>
                 </figure>
             </a>

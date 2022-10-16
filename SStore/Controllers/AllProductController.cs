@@ -19,10 +19,10 @@ namespace SStore.Controllers
         // GET: AllProduct
         public ActionResult Index(int? page, string searchString, string BrandFilter, string CategoryFilter, Nullable<decimal> HighPrice, Nullable<decimal> LowPrice)
         {
+
             int pageSize = 18;
             int pageNumber = (page ?? 1);
             var allProduct = db.Products.Include(p => p.productBrand).OrderBy(p => p.ProductName).Include(p => p.ProductCategory);
-
             var brands = db.ProductBrands;
             ViewBag.ListBrand = brands;
             var categories = db.ProductCategories;
@@ -56,25 +56,97 @@ namespace SStore.Controllers
             }
             return View(allProduct.ToList().ToPagedList(pageNumber, pageSize));
         }
-        public ActionResult Shoes()
+
+        // Shoes page
+        public ActionResult Shoes(int? page, string BrandFilter, Nullable<decimal> HighPrice, Nullable<decimal> LowPrice)
         {
-            var Shoes = db.Products.Include(p => p.productBrand).Include(p => p.ProductCategory).Where(p => p.ProductCategory.CategoryName.Equals("Shoes")).OrderBy(p => p.ProductName).ToList();
-            return View(Shoes);
+            int pageSize = 18;
+            int pageNumber = (page ?? 1);
+            var Shoes = db.Products.Include(p => p.productBrand).Include(p => p.ProductCategory).Where(p => p.ProductCategory.CategoryName.Equals("Shoes")).OrderBy(p => p.ProductName);
+            var brands = db.ProductBrands;
+            ViewBag.ListBrand = brands;
+
+
+            if (!String.IsNullOrEmpty(BrandFilter))
+            {
+                Shoes = Shoes.Where(p => p.productBrand.BrandName.Equals(BrandFilter)).OrderBy(p => p.ProductName);
+                return View(Shoes.ToPagedList(pageNumber, pageSize));
+            }
+            else if (HighPrice >= 0 && LowPrice >= 0)
+            {
+                Shoes = Shoes.Where(p => p.Price >= LowPrice && p.Price <= HighPrice).OrderBy(p => p.ProductName);
+                return View(Shoes.ToPagedList(pageNumber, pageSize));
+            }
+            return View(Shoes.ToList().ToPagedList(pageNumber, pageSize));
         }
-        public ActionResult Shirt()
+
+        // Shirt page
+        public ActionResult Shirt(int? page, string BrandFilter, Nullable<decimal> HighPrice, Nullable<decimal> LowPrice)
         {
-            var Shirt = db.Products.Include(p => p.productBrand).Include(p => p.ProductCategory).Where(p => p.ProductCategory.CategoryName.Equals("Shirt")).OrderBy(p => p.ProductName).ToList();
-            return View(Shirt);
+            int pageSize = 18;
+            int pageNumber = (page ?? 1);
+            var Shirt = db.Products.Include(p => p.productBrand).Include(p => p.ProductCategory).Where(p => p.ProductCategory.CategoryName.Equals("Shirt")).OrderBy(p => p.ProductName);
+            var brands = db.ProductBrands;
+            ViewBag.ListBrand = brands;
+
+
+            if (!String.IsNullOrEmpty(BrandFilter))
+            {
+                Shirt = Shirt.Where(p => p.productBrand.BrandName.Equals(BrandFilter)).OrderBy(p => p.ProductName);
+                return View(Shirt.ToPagedList(pageNumber, pageSize));
+            }
+            else if (HighPrice >= 0 && LowPrice >= 0)
+            {
+                Shirt = Shirt.Where(p => p.Price >= LowPrice && p.Price <= HighPrice).OrderBy(p => p.ProductName);
+                return View(Shirt.ToPagedList(pageNumber, pageSize));
+            }
+            return View(Shirt.ToList().ToPagedList(pageNumber, pageSize));
         }
-        public ActionResult Hat()
+
+        // Hat page
+        public ActionResult Hat(int? page, string BrandFilter, Nullable<decimal> HighPrice, Nullable<decimal> LowPrice)
         {
-            var Hat = db.Products.Include(p => p.productBrand).Include(p => p.ProductCategory).Where(p => p.ProductCategory.CategoryName.Equals("Hat")).OrderBy(p => p.ProductName).ToList();
-            return View(Hat);
+            int pageSize = 18;
+            int pageNumber = (page ?? 1);
+            var Hat = db.Products.Include(p => p.productBrand).Include(p => p.ProductCategory).Where(p => p.ProductCategory.CategoryName.Equals("Hat")).OrderBy(p => p.ProductName);
+            var brands = db.ProductBrands;
+            ViewBag.ListBrand = brands;
+
+
+            if (!String.IsNullOrEmpty(BrandFilter))
+            {
+                Hat = Hat.Where(p => p.productBrand.BrandName.Equals(BrandFilter)).OrderBy(p => p.ProductName);
+                return View(Hat.ToPagedList(pageNumber, pageSize));
+            }
+            else if (HighPrice >= 0 && LowPrice >= 0)
+            {
+                Hat = Hat.Where(p => p.Price >= LowPrice && p.Price <= HighPrice).OrderBy(p => p.ProductName);
+                return View(Hat.ToPagedList(pageNumber, pageSize));
+            }
+            return View(Hat.ToList().ToPagedList(pageNumber, pageSize));
         }
-        public ActionResult Accessories()
+
+        // Accessories page
+        public ActionResult Accessories(int? page, string BrandFilter, Nullable<decimal> HighPrice, Nullable<decimal> LowPrice)
         {
-            var Accessories = db.Products.Include(p => p.productBrand).Include(p => p.ProductCategory).Where(p => p.ProductCategory.CategoryName.Equals("Accessories")).OrderBy(p => p.ProductName).ToList();
-            return View(Accessories);
+            int pageSize = 18;
+            int pageNumber = (page ?? 1);
+            var Accessories = db.Products.Include(p => p.productBrand).Include(p => p.ProductCategory).Where(p => p.ProductCategory.CategoryName.Equals("Accessories")).OrderBy(p => p.ProductName);
+            var brands = db.ProductBrands;
+            ViewBag.ListBrand = brands;
+
+
+            if (!String.IsNullOrEmpty(BrandFilter))
+            {
+                Accessories = Accessories.Where(p => p.productBrand.BrandName.Equals(BrandFilter)).OrderBy(p => p.ProductName);
+                return View(Accessories.ToPagedList(pageNumber, pageSize));
+            }
+            else if (HighPrice >= 0 && LowPrice >= 0)
+            {
+                Accessories = Accessories.Where(p => p.Price >= LowPrice && p.Price <= HighPrice).OrderBy(p => p.ProductName);
+                return View(Accessories.ToPagedList(pageNumber, pageSize));
+            }
+            return View(Accessories.ToList().ToPagedList(pageNumber, pageSize));
         }
         public ActionResult NotFound()
         {
