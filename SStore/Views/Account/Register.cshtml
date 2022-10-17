@@ -19,7 +19,7 @@
                     If you don't have an account, please register here.
                 </p>
                 @Html.ValidationSummary("", new { @class = "text-danger" })
-                <div class="row mb-3">
+                <div class="row mb-2">
                     <div class="col">
                         <label for="FirstName" class="form-label fw-bold">
                             @Html.LabelFor(m => m.FirstName, "First Name")<span class="fw-normal text-danger">*</span>
@@ -33,7 +33,7 @@
                         @Html.TextBoxFor(m => m.LastName, new { @class = "form-control" })
                     </div>
                 </div>
-                <div class="row mb-3">
+                <div class="row mb-2">
                     <div class="col">
                         <label for="Country" class="form-label fw-bold">
                             @Html.LabelFor(m => m.Country, "Country")
@@ -47,13 +47,13 @@
                         @Html.TextBoxFor(m => m.City, new { @class = "form-control" })
                     </div>
                 </div>
-                <div class="mb-3">
+                <div class="mb-2">
                     <label for="Address" class="form-label fw-bold">
                         @Html.LabelFor(m => m.Address, "Address")
                     </label>
                     @Html.TextBoxFor(m => m.Address, new { @class = "form-control" })
                 </div>
-                <div class="row mb-3">
+                <div class="row mb-2">
                     <div class="col-sm mb-sm-0 mb-3">
                         <label for="Gender" class="form-label fw-bold">
                             @Html.LabelFor(m => m.Gender, "Gender")
@@ -67,7 +67,7 @@
                         @Html.TextBoxFor(m => m.Phone, new { @class = "form-control" })
                     </div>
                 </div>
-                <div class="row mb-3">
+                <div class="row mb-2">
                     <div class="col-sm mb-sm-0 mb-3">
                         <label for="Username" class="form-label fw-bold">
                             @Html.LabelFor(m => m.Username, "Username")<span class="fw-normal text-danger">*</span>
@@ -95,7 +95,7 @@
                         @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
                     </div>
                 </div>
-                <div class="mb-3 d-flex align-items-center">
+                <div class="mb-2 d-flex align-items-center">
                     <button type="submit" class="btn sub-button me-2"><span class="sub-button-text">Register</span></button>
                 </div>
             }

@@ -22,26 +22,26 @@
                 <form class="needs-validation" novalidate>
                     <div class="form-horizontal" novalidate>
                         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                        <div class="mb-3">
+                        <div class="mb-2">
                             <label for="Title" class="form-label fw-bold">
                                 @Html.LabelFor(b => b.Title, "Title")<span class="fw-normal text-danger">*</span>
                             </label>
                             <input class="form-control" name="Title" required>
                             @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
                         </div>
-                        <div class="mb-3">
+                        <div class="mb-2">
                             <label for="Fullname" class="form-label fw-bold">
                                 @Html.LabelFor(b => b.FullName, "Full Name")
                             </label>
                             @Html.TextBoxFor(b => b.FullName, new { @class = "form-control" })
                         </div>
-                        <div class="mb-3">
+                        <div class="mb-2">
                             <label for="Email" class="form-label fw-bold">
                                 @Html.LabelFor(b => b.Email, "Email")
                             </label>
                             @Html.TextBoxFor(b => b.Email, new { @class = "form-control" })
                         </div>
-                        <div class="mb-3">
+                        <div class="mb-2">
                             <label for="PhoneNumber" class="form-label fw-bold">
                                 @Html.LabelFor(b => b.PhoneNumber, "Phone")
                             </label>
@@ -54,7 +54,7 @@
                             <textarea class="form-control" name="Description" rows="4" placeholder="Tell us the problem you are having ..." required></textarea>
                             @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
                         </div>
-                        <div class="form-group">
+                        <div class="mb-2">
                             <div class="col-md-offset-2 col-md-10">
                                 <button type="submit" class="btn sub-button"><span class="sub-button-text">Submit</span></button>
                             </div>

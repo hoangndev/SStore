@@ -29,7 +29,14 @@
         </h2>
         <div class="row">
             <div class="col-md-7 mb-2">
-                <img src="~/Image/wp2461125.jpg" class="img-fluid img-thumbnail" />
+                @if (Model.Image == null)
+                {
+                    <img src="~/Image/noimage.png" class="img-fluid img-thumbnail" />
+                }
+                else
+                {
+                    <img src="@Url.Content("~/Image/" + Model.Image)" class="img-fluid img-thumbnail" />
+                }
                 <a class="text-decoration-none btn edit-button mt-2 product-detail-button" href="@Url.Action("Edit", "Product", new { id = Model.Id })">
                     <i class="bi bi-pencil-square"></i>
                     &nbsp; Edit

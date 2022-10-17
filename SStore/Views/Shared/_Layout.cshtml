@@ -115,7 +115,7 @@
     <section class="content bg-white">
         @RenderBody()
         <div class="position-fixed bottom-0 end-0">
-            <a href="#" class="me-2 me-md-3 ms-2 mb-2 mb-md-3 position-relative btn cart-button">
+            <a href="#" class="me-2 me-md-3 ms-2 mb-2 mb-md-3 mb-5 mb-sm-0 position-relative btn cart-button">
                 <i class="bi bi-cart3 fs-3 cart-text"></i>
                 <span class="position-absolute top-0 end-0 badge rounded-pill bg-danger p-1" style="font-size:9px">
                     4
@@ -126,10 +126,10 @@
 
     <!-- Section Footer -->
     <section class="footer bg-black mt-auto">
-        <div class="container">
+        <div class="container-lg">
             <footer class="d-flex flex-wrap justify-content-between py-5">
-                <div class="me-3">
-                    <a href="/" class="text-decoration-none text-white">
+                <div class="me-5">
+                    <a href="@Url.Action("Index", "Home", new { area = "" })" class="text-decoration-none text-white">
                         <h1 class="pb-3 store-logo-homepage">SStore</h1>
                         <p>
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-telephone me-2" viewBox="0 0 16 16">
@@ -144,28 +144,28 @@
                         </p>
                     </a>
                 </div>
-                <div class="me-3">
-                    <h5 class="text-white">Section</h5>
+                <div class="me-5 mt-sm-0 mt-3">
+                    <h5 class="text-white">Information</h5>
                     <ul class="nav flex-column">
                         <li class="nav-item mb-2">
-                            <a href="#" class="nav-link p-0 text-muted">
+                            <a href="@Url.Action("Index", "Home", new { area = "" })" class="nav-link p-0 text-muted">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16">
                                     <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" />
-                                </svg> Home
+                                </svg> Home page
                             </a>
                         </li>
                         <li class="nav-item mb-2">
                             <a href="#" class="nav-link p-0 text-muted">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16">
                                     <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" />
-                                </svg> Features
+                                </svg> About
                             </a>
                         </li>
                         <li class="nav-item mb-2">
-                            <a href="#" class="nav-link p-0 text-muted">
+                            <a href="@Url.Action("Index", "Allproduct", new { area = "" })" class="nav-link p-0 text-muted">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16">
                                     <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" />
-                                </svg> Pricing
+                                </svg> Products
                             </a>
                         </li>
                         <li class="nav-item mb-2">
@@ -176,50 +176,43 @@
                             </a>
                         </li>
                         <li class="nav-item mb-2">
-                            <a href="#" class="nav-link p-0 text-muted">
+                            <a href="@Url.Action("Create", "FeedbackClient", new { area = "" })" class="nav-link p-0 text-muted">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16">
                                     <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" />
-                                </svg> About
+                                </svg> Contacts
                             </a>
                         </li>
                     </ul>
                 </div>
-                <div>
-                    <h5 class="text-white">Section</h5>
+                <div class="me-sm-5 mt-sm-0 mt-3 me-0">
+                    <h5 class="text-white">Privacy & Policy</h5>
                     <ul class="nav flex-column">
                         <li class="nav-item mb-2">
                             <a href="#" class="nav-link p-0 text-muted">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16">
                                     <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" />
-                                </svg> Home
+                                </svg> Privacy Policy
                             </a>
                         </li>
                         <li class="nav-item mb-2">
                             <a href="#" class="nav-link p-0 text-muted">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16">
                                     <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" />
-                                </svg> Features
+                                </svg> Return & Refund Policy
                             </a>
                         </li>
                         <li class="nav-item mb-2">
                             <a href="#" class="nav-link p-0 text-muted">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16">
                                     <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" />
-                                </svg> Pricing
+                                </svg> Payment policy
                             </a>
                         </li>
                         <li class="nav-item mb-2">
                             <a href="#" class="nav-link p-0 text-muted">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16">
                                     <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" />
-                                </svg> FAQs
-                            </a>
-                        </li>
-                        <li class="nav-item mb-2">
-                            <a href="#" class="nav-link p-0 text-muted">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16">
-                                    <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" />
-                                </svg> About
+                                </svg> Shipping Policy
                             </a>
                         </li>
                     </ul>
@@ -228,9 +221,10 @@
         </div>
         <div class="bg-dark">
             <div class="container bg-dark py-3">
-                <div class="d-flex justify-content-between">
-                    <div class="align-self-start mb-0 text-muted p-1">
-                        Copyright &copy; SStore 2022. All rights reserved.
+                <div class="d-flex justify-content-md-between flex-md-row flex-column align-items-center justify-content-center">
+                    <div class="mb-0 text-muted p-1 text-center">
+                        <p class="m-0 d-none d-sm-block" style="font-family: Arial, Helvetica, sans-serif">&copy; Copyright by <b class="text-white">SStore</b> | Website design by NHoang</p>
+                        <p class="m-0 d-block d-sm-none" style="font-family: Arial, Helvetica, sans-serif">&copy; Copyright by <b class="text-white">SStore</b><br />Website design by NHoang</p>
                     </div>
                     <div class="align-self-center mb-0 text-muted fs-5">
                         <a href="https://www.facebook.com/NG.nguyenhoang/" class="text-muted text-decoration-none mx-2" target="_blank">
