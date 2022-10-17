@@ -17,9 +17,13 @@ namespace SStore.Controllers
     {
         private ApplicationDbContext db = new ApplicationDbContext();
         // GET: AllProduct
-        public ActionResult Index(int? page, string searchString, string BrandFilter, string CategoryFilter, Nullable<decimal> HighPrice, Nullable<decimal> LowPrice)
+        public ActionResult Index(int? page, string sortOrder, string searchString, string BrandFilter, string CategoryFilter, Nullable<decimal> HighPrice, Nullable<decimal> LowPrice)
         {
-
+            ViewBag.CurrentSort = sortOrder;
+            ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "" : "";
+            ViewBag.PriceSortParm = sortOrder == "Price" ? "Price" : "Price";
+            ViewBag.NameSortDescParm = sortOrder == "Name_Desc" ? "Name_Desc" : "Name_Desc";
+            ViewBag.PriceSortDescParm = sortOrder == "Price_Desc" ? "Price_Desc" : "Price_Desc";
             int pageSize = 18;
             int pageNumber = (page ?? 1);
             var allProduct = db.Products.Include(p => p.productBrand).OrderBy(p => p.ProductName).Include(p => p.ProductCategory);
@@ -27,6 +31,23 @@ namespace SStore.Controllers
             ViewBag.ListBrand = brands;
             var categories = db.ProductCategories;
             ViewBag.ListCategory = categories;
+
+            switch (sortOrder)
+            {
+                case "Name_Desc":
+                    allProduct = allProduct.OrderByDescending(p => p.ProductName);
+                    break;
+                case "Price":
+                    allProduct = allProduct.OrderBy(p => p.Price);
+                    break;
+                case "Price_Desc":
+                    allProduct = allProduct.OrderByDescending(p => p.Price);
+                    break;
+                default:
+                    allProduct = allProduct.OrderBy(p => p.ProductName);
+                    break;
+            }
+
             if (!String.IsNullOrEmpty(searchString))
             {
                 allProduct = allProduct.Where(p => p.ProductName.Contains(searchString));
@@ -58,14 +79,34 @@ namespace SStore.Controllers
         }
 
         // Shoes page
-        public ActionResult Shoes(int? page, string BrandFilter, Nullable<decimal> HighPrice, Nullable<decimal> LowPrice)
+        public ActionResult Shoes(int? page, string sortOrder, string BrandFilter, Nullable<decimal> HighPrice, Nullable<decimal> LowPrice)
         {
+            ViewBag.CurrentSort = sortOrder;
+            ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "" : "";
+            ViewBag.PriceSortParm = sortOrder == "Price" ? "Price" : "Price";
+            ViewBag.NameSortDescParm = sortOrder == "Name_Desc" ? "Name_Desc" : "Name_Desc";
+            ViewBag.PriceSortDescParm = sortOrder == "Price_Desc" ? "Price_Desc" : "Price_Desc";
             int pageSize = 18;
             int pageNumber = (page ?? 1);
             var Shoes = db.Products.Include(p => p.productBrand).Include(p => p.ProductCategory).Where(p => p.ProductCategory.CategoryName.Equals("Shoes")).OrderBy(p => p.ProductName);
             var brands = db.ProductBrands;
             ViewBag.ListBrand = brands;
 
+            switch (sortOrder)
+            {
+                case "Name_Desc":
+                    Shoes = Shoes.OrderByDescending(p => p.ProductName);
+                    break;
+                case "Price":
+                    Shoes = Shoes.OrderBy(p => p.Price);
+                    break;
+                case "Price_Desc":
+                    Shoes = Shoes.OrderByDescending(p => p.Price);
+                    break;
+                default:
+                    Shoes = Shoes.OrderBy(p => p.ProductName);
+                    break;
+            }
 
             if (!String.IsNullOrEmpty(BrandFilter))
             {

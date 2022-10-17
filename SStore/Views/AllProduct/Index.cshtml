@@ -15,14 +15,15 @@
             <li class="breadcrumb-item breadcrumb-client-active">All Product</li>
         </ol>
     </nav>
+    @* End breadcrumb *@
 
     <div class=" d-none d-xxl-block">
         <div class="row">
             <div class="col">
                 @using (Html.BeginForm("Index", "AllProduct", FormMethod.Get))
                 {
-                    <h5 class="mb-0">Category</h5>
-                    <hr />
+                    <h5 class="mt-3">Category</h5>
+                    <hr style="margin-top: 12px" />
                     <div class="mb-3">
                         @foreach (var brand in ViewBag.ListCategory)
                         {
@@ -59,7 +60,38 @@
                 }
             </div>
             <div class="col-9">
-                <p class="mb-0">Showing @Model.FirstItemOnPage - @Model.LastItemOnPage of @Model.TotalItemCount products</p>
+                <div class="d-flex justify-content-between align-items-end">
+                    <p class="mb-0">Showing @Model.FirstItemOnPage - @Model.LastItemOnPage of @Model.TotalItemCount products</p>
+                    <div class="dropdown">
+                        <button class="btn back-page-client dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                            <span class="back-page-client-text">
+                                Sort by <i class="bi bi-sort-up-alt"></i>
+                            </span>
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li>
+                                <a href="@Url.Action("Index", new { sortOrder = ViewBag.NameSortParm })" class="dropdown-item">
+                                    Name
+                                </a>
+                            </li>
+                            <li>
+                                <a href="@Url.Action("Index", new { sortOrder = ViewBag.NameSortDescParm })" class="dropdown-item">
+                                    Name descending
+                                </a>
+                            </li>
+                            <li>
+                                <a href="@Url.Action("Index", new { sortOrder = ViewBag.PriceSortParm })" class="dropdown-item">
+                                    Price
+                                </a>
+                            </li>
+                            <li>
+                                <a href="@Url.Action("Index", new { sortOrder = ViewBag.PriceSortDescParm })" class="dropdown-item">
+                                    Price descending
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
                 <hr />
                 <div class="d-flex flex-wrap justify-content-center">
                     @foreach (var item in Model)
@@ -126,8 +158,40 @@
         </div>
     </div>
 
+    @* Responsive display on screen >= 1400px *@
     <div class="d-block d-xxl-none">
-        <p class="mb-0 text-end">Showing @Model.FirstItemOnPage - @Model.LastItemOnPage of @Model.TotalItemCount products</p>
+        <div class="d-flex justify-content-sm-between justify-content-end align-items-end">
+            <p class="mb-0 text-end d-sm-block d-none">Showing @Model.FirstItemOnPage - @Model.LastItemOnPage of @Model.TotalItemCount products</p>
+            <div class="dropdown">
+                <button class="btn back-page-client dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                    <span class="back-page-client-text">
+                        Sort by <i class="bi bi-sort-up-alt"></i>
+                    </span>
+                </button>
+                <ul class="dropdown-menu dropdown-menu-end">
+                    <li>
+                        <a href="@Url.Action("Index", new { sortOrder = ViewBag.NameSortParm })" class="dropdown-item">
+                            Name
+                        </a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("Index", new { sortOrder = ViewBag.NameSortDescParm })" class="dropdown-item">
+                            Name descending
+                        </a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("Index", new { sortOrder = ViewBag.PriceSortParm })" class="dropdown-item">
+                            Price
+                        </a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("Index", new { sortOrder = ViewBag.PriceSortDescParm })" class="dropdown-item">
+                            Price descending
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
         <hr />
         <div class="d-flex flex-wrap justify-content-center">
             @foreach (var item in Model)
@@ -167,6 +231,9 @@
             }
         </div>
     </div>
+    @* Responsive display on screen >= 1400px end *@
+
+    @* Paging and responsive paging *@
     <div class="d-none d-sm-block d-xxl-none mt-4">
         @Html.PagedListPager(Model, page => Url.Action("Index", new { page, sortOrder = ViewBag.CurrentSort, searchString = Request.QueryString["searchString"], HighPrice = Request.QueryString["HighPrice"], LowPrice = Request.QueryString["LowPrice"], BrandFilter = Request.QueryString["BrandFilter"], CategoryFilter = Request.QueryString["CategoryFilter"] }),
                   new PagedListRenderOptions()
@@ -189,6 +256,9 @@
                       ContainerDivClasses = new List<string> { "d-flex", "justify-content-center" }
                   })
     </div>
+    @* Paging and responsive paging end *@
+
+    @* Sorting and filtre display on screen >= 1400px *@
     <div class="position-fixed top-50 end-0 translate-middle-y d-block d-xxl-none">
         <button class="btn sub-button" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions">
             <i class="bi bi-funnel sub-button-text"></i>
@@ -241,4 +311,5 @@
             </div>
         }
     </div>
+    @* Sorting and filtre display on screen >= 1400px end *@
 </div>
