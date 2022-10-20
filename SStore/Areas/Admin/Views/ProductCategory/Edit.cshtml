@@ -34,6 +34,7 @@
                             @Html.LabelFor(c => c.Description, "Description")
                         </label>
                         @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
                     </div>
                     <div class="mb-3">
                         <button type="submit" class="btn sub-button"><span class="sub-button-text">Update</span></button>

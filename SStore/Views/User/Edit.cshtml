@@ -1,46 +1,48 @@
-﻿@model SStore.Models.RegisterViewModel
+﻿@model SStore.Models.UserInfo
+
 @{
-    ViewBag.Title = "Register";
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
+
 <div class="container mt-2 mb-sm-4 mb-3">
     <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="@Url.Action("Index", "Home", new {area = ""})" class="breadcrumb-client"><i class="bi bi-house-door"></i> Home</a></li>
-            <li class="breadcrumb-item breadcrumb-client-active">Register</li>
+            <li class="breadcrumb-item"><a href="@Url.Action("Index", "Manage", new {area = ""})" class="breadcrumb-client">Setting</a></li>
+            <li class="breadcrumb-item"><a href="@Url.Action("Details", "User", new {area = ""})" class="breadcrumb-client">Profile</a></li>
+            <li class="breadcrumb-item breadcrumb-client-active">Update</li>
         </ol>
     </nav>
+
     <div class="d-flex justify-content-center">
         <div class="container-fluid" style="max-width:700px">
-            @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+            @using (Html.BeginForm("Edit", "User", FormMethod.Post))
             {
-                @Html.AntiForgeryToken()
-                <h2 class="text-uppercase text-center page-title">Register</h2>
-                <p class="lead text-center fs-6 text-secondary">
-                    If you don't have an account, please register here.
-                </p>
+                <h2 class="text-uppercase text-center page-title">Profile update</h2>
                 @Html.ValidationSummary("", new { @class = "text-danger" })
                 <div class="row mb-2">
-                    <div class="col">
+                    <div class="col-sm mb-sm-0 mb-3">
                         <label for="FirstName" class="form-label fw-bold">
                             @Html.LabelFor(m => m.FirstName, "First Name")<span class="fw-normal text-danger">*</span>
                         </label>
-                        @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control", required = "required" })
+                        @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control" })
                     </div>
-                    <div class="col">
+                    <div class="col-sm">
                         <label for="LastName" class="form-label fw-bold">
                             @Html.LabelFor(m => m.LastName, "Last Name")<span class="fw-normal text-danger">*</span>
                         </label>
-                        @Html.TextBoxFor(m => m.LastName, new { @class = "form-control", required = "required" })
+                        @Html.TextBoxFor(m => m.LastName, new { @class = "form-control" })
                     </div>
                 </div>
                 <div class="row mb-2">
-                    <div class="col">
+                    <div class="col-sm mb-sm-0 mb-3">
                         <label for="Country" class="form-label fw-bold">
                             @Html.LabelFor(m => m.Country, "Country")
                         </label>
                         @Html.TextBoxFor(m => m.Country, new { @class = "form-control" })
                     </div>
-                    <div class="col">
+                    <div class="col-sm">
                         <label for="City" class="form-label fw-bold">
                             @Html.LabelFor(m => m.City, "City")
                         </label>
@@ -59,6 +61,7 @@
                             @Html.LabelFor(m => m.Gender, "Gender")
                         </label>
                         @Html.EnumDropDownListFor(m => m.Gender, new { @class = "form-control" })
+
                     </div>
                     <div class="col-sm">
                         <label for="Phone" class="form-label fw-bold">
@@ -67,41 +70,16 @@
                         @Html.TextBoxFor(m => m.Phone, new { @class = "form-control" })
                     </div>
                 </div>
-                <div class="row mb-2">
-                    <div class="col-sm mb-sm-0 mb-3">
-                        <label for="Username" class="form-label fw-bold">
-                            @Html.LabelFor(m => m.Username, "Username")<span class="fw-normal text-danger">*</span>
-                        </label>
-                        @Html.TextBoxFor(m => m.Username, new { @class = "form-control", required = "required" })
-                    </div>
-                    <div class="col-sm">
-                        <label for="Email" class="form-label fw-bold">
-                            @Html.LabelFor(m => m.Email)<span class="fw-normal text-danger">*</span>
-                        </label>
-                        @Html.TextBoxFor(m => m.Email, new { @class = "form-control", required = "required" })
-                    </div>
-                </div>
-                <div class="row mb-3">
-                    <div class="col-sm mb-sm-0 mb-3">
-                        <label for="Password" class="form-label fw-bold">
-                            @Html.LabelFor(m => m.Password)<span class="fw-normal text-danger">*</span>
-                        </label>
-                        @Html.PasswordFor(m => m.Password, new { @class = "form-control", required = "required" })
-                    </div>
-                    <div class="col-sm">
-                        <label for="ConfirmPassword" class="form-label fw-bold">
-                            @Html.LabelFor(m => m.ConfirmPassword, "Confirm Password")<span class="fw-normal text-danger">*</span>
-                        </label>
-                        @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control", required = "required" })
-                    </div>
+                <div class="mb-3">
+                    <label for="Email" class="form-label fw-bold">
+                        @Html.LabelFor(m => m.Email, "Email")
+                    </label>
+                    @Html.TextBoxFor(m => m.Email, new { @class = "form-control", @readonly = "readonly" })
                 </div>
                 <div class="mb-2 d-flex align-items-center">
-                    <button type="submit" class="btn sub-button me-2"><span class="sub-button-text">Register</span></button>
+                    <button type="submit" class="btn sub-button me-2"><span class="sub-button-text">Update</span></button>
                 </div>
             }
         </div>
     </div>
 </div>
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}

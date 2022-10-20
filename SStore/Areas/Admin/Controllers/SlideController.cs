@@ -79,12 +79,26 @@ namespace SStore.Areas.Admin.Controllers
 
         // POST: Admin/Slide/Edit/5
         [HttpPost]
-        public ActionResult Edit(Slide slide)
+        public ActionResult Edit(Slide slide, HttpPostedFileBase Image)
         {
             if (ModelState.IsValid)
             {
                 db.Entry(slide).State = EntityState.Modified;
                 db.SaveChanges();
+                if (Image != null && Image.ContentLength > 0)
+                {
+                    int id = slide.Id;
+
+                    string fileName = "";
+                    int index = Image.FileName.IndexOf('.');
+                    fileName = "slide" + id.ToString() + "." + Image.FileName.Substring(index + 1);
+                    string path = Path.Combine(Server.MapPath("~/Image"), fileName);
+                    Image.SaveAs(path);
+
+                    Slide islide = db.Slides.FirstOrDefault(x => x.Id == id);
+                    islide.Image = fileName;
+                    db.SaveChanges();
+                }
                 return RedirectToAction("Index");
             }
             return View(slide);

@@ -19,20 +19,16 @@ namespace SStore.Models
         [Required]
         [StringLength(100)]
         public string LastName { get; set; }
-        public Nullable<Gender> Gender { get; set; }
+        public Gender Gender { get; set; }
         [Required]
         [StringLength(255)]
         public string Email { get; set; }
-        [Required]
         [StringLength(100)]
         public string Country { get; set; }
-        [Required]
         [StringLength(100)]
         public string City { get; set; }
-        [Required]
         [StringLength(255)]
         public string Address { get; set; }
-        [Required]
         [StringLength(100)]
         public string Phone { get; set; }
         public Nullable<DateTime> RegisterDate { get; set; }

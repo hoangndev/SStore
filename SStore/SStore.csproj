@@ -203,6 +203,7 @@
     <Compile Include="Controllers\FeedbackClientController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -305,6 +306,10 @@
     <Compile Include="Migrations\202210071227188_AddSliderTable.cs" />
     <Compile Include="Migrations\202210071227188_AddSliderTable.designer.cs">
       <DependentUpon>202210071227188_AddSliderTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202210191808229_UpdateUserInfoTable1.cs" />
+    <Compile Include="Migrations\202210191808229_UpdateUserInfoTable1.designer.cs">
+      <DependentUpon>202210191808229_UpdateUserInfoTable1.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -411,7 +416,6 @@
     <Content Include="Areas\Admin\Views\ProductBrand\NotFound.cshtml" />
     <Content Include="Areas\Admin\Views\Slide\Create.cshtml" />
     <Content Include="Areas\Admin\Views\Slide\Delete.cshtml" />
-    <Content Include="Areas\Admin\Views\Slide\Details.cshtml" />
     <Content Include="Areas\Admin\Views\Slide\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Slide\Index.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
@@ -471,6 +475,8 @@
     <Content Include="Views\AllProduct\NotFound.cshtml" />
     <Content Include="Views\AllProduct\Details.cshtml" />
     <Content Include="Views\Home\Slider.cshtml" />
+    <Content Include="Views\User\Details.cshtml" />
+    <Content Include="Views\User\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -557,6 +563,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202210071227188_AddSliderTable.resx">
       <DependentUpon>202210071227188_AddSliderTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202210191808229_UpdateUserInfoTable1.resx">
+      <DependentUpon>202210191808229_UpdateUserInfoTable1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

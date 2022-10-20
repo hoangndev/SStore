@@ -27,10 +27,11 @@
                         @Html.ValidationMessageFor(c => c.CategoryName, "", new { @class = "text-danger" })
                     </div>
                     <div class="mb-3">
-                        <label for="CategoryName" class="form-label fw-bold">
+                        <label for="Description" class="form-label fw-bold">
                             @Html.LabelFor(c => c.Description, "Description")
                         </label>
                         @Html.TextBoxFor(c => c.Description, new { @class = "form-control", @placeholder = "Enter category description" })
+                        @Html.ValidationMessageFor(c => c.Description, "", new { @class = "text-danger" })
                     </div>
                     <div class="mb-3">
                         <button type="submit" class="btn sub-button"><span class="sub-button-text">Add</span></button>
