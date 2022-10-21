@@ -10,7 +10,7 @@
 }
 @if (Request.IsAuthenticated)
 {
-    using (Html.BeginForm("LogOff", "Account", new { area ="" }, FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+    using (Html.BeginForm("LogOff", "Account", new { area = "" }, FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
     {
         @Html.AntiForgeryToken()
         <div class="dropdown">
@@ -20,6 +20,7 @@
 
             <ul class="dropdown-menu dropdown-menu-end dropdown-menu-start fix-sticky mt-sm-2" aria-labelledby="dropdownMenuLink">
                 <li><a class="dropdown-item" href="@Url.Action("Index", "Manage", new { area ="" })"><i class="bi bi-gear"></i> Setting</a></li>
+                <li><a class="dropdown-item" href="@Url.Action("Index", "Order", new { area ="" })"><i class="bi bi-list-ul"></i> Orders</a></li>
                 <li><a class="dropdown-item" href="javascript:document.getElementById('logoutForm').submit()"><i class="bi bi-box-arrow-left"></i> Logout</a></li>
             </ul>
         </div>

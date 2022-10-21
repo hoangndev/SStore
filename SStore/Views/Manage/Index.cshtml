@@ -18,21 +18,34 @@
         <p class="lead text-center fs-6 text-secondary">
             Change your account settings
         </p>
-        <div class="mb-3 p-1">
-            Password: @if (Model.HasPassword)
-            {
-                <a href="@Url.Action("ChangePassword","Manage")" class="mx-1 border border-1 rounded border-warning text-warning p-1">Change password</a>
-            }
-            else
-            {
-                @Html.ActionLink("Create", "SetPassword")
-            }
-        </div>
-        <div class="mb-4 p-1">
-            Profile:
-            <a href="@Url.Action("Details", "User", new { area ="" })" class="ms-1 border border-1 rounded border-primary p-1">Details <i class="bi bi-card-text"></i></a>
-            <a href="@Url.Action("Edit", "User", new { area ="" })" class="mx-1 border border-1 rounded border-success p-1 text-success">Edit <i class="bi bi-pen"></i></a>
-        </div>
+
+        <a href="@Url.Action("ChangePassword","Manage")">
+            <div class="border rounded p-2 d-flex justify-content-between align-items-center" style="background-color: lightgray">
+                <span class="text-secondary"><i class="bi bi-key me-2"></i>Change Password</span>
+                <i class="bi bi-caret-right text-secondary"></i>
+            </div>
+        </a>
+        <a href="@Url.Action("Details", "User", new { area ="" })">
+            <div class="border rounded p-2 d-flex justify-content-between" style="background-color: lightgray">
+                <span class="text-secondary"><i class="bi bi-person-lines-fill me-2"></i> Profile</span>
+                <i class="bi bi-caret-right text-secondary"></i>
+            </div>
+        </a>
+        @*        <div class="mb-3 p-1">
+                Password: @if (Model.HasPassword)
+                {
+                    <a href="@Url.Action("ChangePassword","Manage")" class="mx-1 border border-1 rounded border-warning text-warning p-1">Change password</a>
+                }
+                else
+                {
+                    @Html.ActionLink("Create", "SetPassword")
+                }
+            </div>
+            <div class="mb-4 p-1">
+                Profile:
+                <a href="@Url.Action("Details", "User", new { area ="" })" class="ms-1 border border-1 rounded border-primary p-1">Details <i class="bi bi-card-text"></i></a>
+                <a href="@Url.Action("Edit", "User", new { area ="" })" class="mx-1 border border-1 rounded border-success p-1 text-success">Edit <i class="bi bi-pen"></i></a>
+            </div>*@
     </div>
 
     @*        <dt>External Logins:</dt>

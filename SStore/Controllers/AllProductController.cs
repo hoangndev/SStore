@@ -122,14 +122,34 @@ namespace SStore.Controllers
         }
 
         // Shirt page
-        public ActionResult Shirt(int? page, string BrandFilter, Nullable<decimal> HighPrice, Nullable<decimal> LowPrice)
+        public ActionResult Shirt(int? page, string sortOrder, string BrandFilter, Nullable<decimal> HighPrice, Nullable<decimal> LowPrice)
         {
+            ViewBag.CurrentSort = sortOrder;
+            ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "" : "";
+            ViewBag.PriceSortParm = sortOrder == "Price" ? "Price" : "Price";
+            ViewBag.NameSortDescParm = sortOrder == "Name_Desc" ? "Name_Desc" : "Name_Desc";
+            ViewBag.PriceSortDescParm = sortOrder == "Price_Desc" ? "Price_Desc" : "Price_Desc";
             int pageSize = 18;
             int pageNumber = (page ?? 1);
             var Shirt = db.Products.Include(p => p.productBrand).Include(p => p.ProductCategory).Where(p => p.ProductCategory.CategoryName.Equals("Shirt")).OrderBy(p => p.ProductName);
             var brands = db.ProductBrands;
             ViewBag.ListBrand = brands;
 
+            switch (sortOrder)
+            {
+                case "Name_Desc":
+                    Shirt = Shirt.OrderByDescending(p => p.ProductName);
+                    break;
+                case "Price":
+                    Shirt = Shirt.OrderBy(p => p.Price);
+                    break;
+                case "Price_Desc":
+                    Shirt = Shirt.OrderByDescending(p => p.Price);
+                    break;
+                default:
+                    Shirt = Shirt.OrderBy(p => p.ProductName);
+                    break;
+            }
 
             if (!String.IsNullOrEmpty(BrandFilter))
             {
@@ -145,14 +165,34 @@ namespace SStore.Controllers
         }
 
         // Hat page
-        public ActionResult Hat(int? page, string BrandFilter, Nullable<decimal> HighPrice, Nullable<decimal> LowPrice)
+        public ActionResult Hat(int? page, string sortOrder, string BrandFilter, Nullable<decimal> HighPrice, Nullable<decimal> LowPrice)
         {
+            ViewBag.CurrentSort = sortOrder;
+            ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "" : "";
+            ViewBag.PriceSortParm = sortOrder == "Price" ? "Price" : "Price";
+            ViewBag.NameSortDescParm = sortOrder == "Name_Desc" ? "Name_Desc" : "Name_Desc";
+            ViewBag.PriceSortDescParm = sortOrder == "Price_Desc" ? "Price_Desc" : "Price_Desc";
             int pageSize = 18;
             int pageNumber = (page ?? 1);
             var Hat = db.Products.Include(p => p.productBrand).Include(p => p.ProductCategory).Where(p => p.ProductCategory.CategoryName.Equals("Hat")).OrderBy(p => p.ProductName);
             var brands = db.ProductBrands;
             ViewBag.ListBrand = brands;
 
+            switch (sortOrder)
+            {
+                case "Name_Desc":
+                    Hat = Hat.OrderByDescending(p => p.ProductName);
+                    break;
+                case "Price":
+                    Hat = Hat.OrderBy(p => p.Price);
+                    break;
+                case "Price_Desc":
+                    Hat = Hat.OrderByDescending(p => p.Price);
+                    break;
+                default:
+                    Hat = Hat.OrderBy(p => p.ProductName);
+                    break;
+            }
 
             if (!String.IsNullOrEmpty(BrandFilter))
             {
@@ -168,14 +208,34 @@ namespace SStore.Controllers
         }
 
         // Accessories page
-        public ActionResult Accessories(int? page, string BrandFilter, Nullable<decimal> HighPrice, Nullable<decimal> LowPrice)
+        public ActionResult Accessories(int? page, string sortOrder, string BrandFilter, Nullable<decimal> HighPrice, Nullable<decimal> LowPrice)
         {
+            ViewBag.CurrentSort = sortOrder;
+            ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "" : "";
+            ViewBag.PriceSortParm = sortOrder == "Price" ? "Price" : "Price";
+            ViewBag.NameSortDescParm = sortOrder == "Name_Desc" ? "Name_Desc" : "Name_Desc";
+            ViewBag.PriceSortDescParm = sortOrder == "Price_Desc" ? "Price_Desc" : "Price_Desc";
             int pageSize = 18;
             int pageNumber = (page ?? 1);
             var Accessories = db.Products.Include(p => p.productBrand).Include(p => p.ProductCategory).Where(p => p.ProductCategory.CategoryName.Equals("Accessories")).OrderBy(p => p.ProductName);
             var brands = db.ProductBrands;
             ViewBag.ListBrand = brands;
 
+            switch (sortOrder)
+            {
+                case "Name_Desc":
+                    Accessories = Accessories.OrderByDescending(p => p.ProductName);
+                    break;
+                case "Price":
+                    Accessories = Accessories.OrderBy(p => p.Price);
+                    break;
+                case "Price_Desc":
+                    Accessories = Accessories.OrderByDescending(p => p.Price);
+                    break;
+                default:
+                    Accessories = Accessories.OrderBy(p => p.ProductName);
+                    break;
+            }
 
             if (!String.IsNullOrEmpty(BrandFilter))
             {

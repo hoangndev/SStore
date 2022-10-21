@@ -132,7 +132,7 @@
                     }
                 </div>
                 <div class="d-none d-xxl-block mt-4">
-                    @Html.PagedListPager(Model, page => Url.Action("Index", new { page, sortOrder = ViewBag.CurrentSort, HighPrice = Request.QueryString["HighPrice"], LowPrice = Request.QueryString["LowPrice"], BrandFilter = Request.QueryString["BrandFilter"], CategoryFilter = Request.QueryString["CategoryFilter"] }),
+                    @Html.PagedListPager(Model, page => Url.Action("Shoes", new { page, sortOrder = ViewBag.CurrentSort, HighPrice = Request.QueryString["HighPrice"], LowPrice = Request.QueryString["LowPrice"], BrandFilter = Request.QueryString["BrandFilter"], CategoryFilter = Request.QueryString["CategoryFilter"] }),
                         new PagedListRenderOptions()
                         {
                             LiElementClasses = new List<string> { "page-link" },
@@ -145,7 +145,7 @@
         </div>
     </div>
 
-    @* Responsive display on screen >= 1400px *@
+    @* Responsive display on screen <= 1400px *@
     <div class="d-block d-xxl-none">
         <div class="d-flex justify-content-sm-between justify-content-end align-items-end">
             <p class="mb-0 text-end d-sm-block d-none">Showing @Model.FirstItemOnPage - @Model.LastItemOnPage of @Model.TotalItemCount products</p>
@@ -157,22 +157,22 @@
                 </button>
                 <ul class="dropdown-menu dropdown-menu-end">
                     <li>
-                        <a href="@Url.Action("Index", new { sortOrder = ViewBag.NameSortParm })" class="dropdown-item">
+                        <a href="@Url.Action("Shoes", new { sortOrder = ViewBag.NameSortParm })" class="dropdown-item">
                             Name
                         </a>
                     </li>
                     <li>
-                        <a href="@Url.Action("Index", new { sortOrder = ViewBag.NameSortDescParm })" class="dropdown-item">
+                        <a href="@Url.Action("Shoes", new { sortOrder = ViewBag.NameSortDescParm })" class="dropdown-item">
                             Name descending
                         </a>
                     </li>
                     <li>
-                        <a href="@Url.Action("Index", new { sortOrder = ViewBag.PriceSortParm })" class="dropdown-item">
+                        <a href="@Url.Action("Shoes", new { sortOrder = ViewBag.PriceSortParm })" class="dropdown-item">
                             Price
                         </a>
                     </li>
                     <li>
-                        <a href="@Url.Action("Index", new { sortOrder = ViewBag.PriceSortDescParm })" class="dropdown-item">
+                        <a href="@Url.Action("Shoes", new { sortOrder = ViewBag.PriceSortDescParm })" class="dropdown-item">
                             Price descending
                         </a>
                     </li>
@@ -218,11 +218,11 @@
             }
         </div>
     </div>
-    @* Responsive display on screen >= 1400px end *@
+    @* Responsive display on screen <= 1400px end *@
 
     @* Paging and responsive paging *@
     <div class="d-none d-sm-block d-xxl-none mt-4">
-        @Html.PagedListPager(Model, page => Url.Action("Index", new { page, sortOrder = ViewBag.CurrentSort, HighPrice = Request.QueryString["HighPrice"], LowPrice = Request.QueryString["LowPrice"], BrandFilter = Request.QueryString["BrandFilter"], CategoryFilter = Request.QueryString["CategoryFilter"] }),
+        @Html.PagedListPager(Model, page => Url.Action("Shoes", new { page, sortOrder = ViewBag.CurrentSort, HighPrice = Request.QueryString["HighPrice"], LowPrice = Request.QueryString["LowPrice"], BrandFilter = Request.QueryString["BrandFilter"], CategoryFilter = Request.QueryString["CategoryFilter"] }),
                   new PagedListRenderOptions()
                   {
                       LiElementClasses = new List<string> { "page-link" },
@@ -232,7 +232,7 @@
                   })
     </div>
     <div class="d-block d-sm-none mt-3">
-        @Html.PagedListPager(Model, page => Url.Action("Index", new { page, sortOrder = ViewBag.CurrentSort, HighPrice = Request.QueryString["HighPrice"], LowPrice = Request.QueryString["LowPrice"], BrandFilter = Request.QueryString["BrandFilter"], CategoryFilter = Request.QueryString["CategoryFilter"] }),
+        @Html.PagedListPager(Model, page => Url.Action("Shoes", new { page, sortOrder = ViewBag.CurrentSort, HighPrice = Request.QueryString["HighPrice"], LowPrice = Request.QueryString["LowPrice"], BrandFilter = Request.QueryString["BrandFilter"], CategoryFilter = Request.QueryString["CategoryFilter"] }),
                   new PagedListRenderOptions()
                   {
                       LiElementClasses = new List<string> { "page-link" },
