@@ -9,14 +9,13 @@ namespace SStore.Models
 {
     public class Cart
     {
-        [Key]
-        [Column(Order = 0)]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int CardId { get; set; }
-        [Column(Order = 1)]
-        [ForeignKey("UserInfo")]
-        public string UserId { get; set; }
-        public UserInfo UserInfo { get; set; }
+        public Product Product { get; set; }
+        public int Quantity { get; set; }
 
+        public Cart(Product product, int quantity)
+        {
+            Product = product;
+            Quantity = quantity;
+        }
     }
 }

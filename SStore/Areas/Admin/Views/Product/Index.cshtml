@@ -76,6 +76,7 @@
             </div>
         }
     </div>
+
     @* End Offcanvas *@
     <div class="d-flex justify-content-between align-items-center">
         @using (Html.BeginForm("Index", "Product", FormMethod.Get))
@@ -178,6 +179,7 @@
         </table>
     </div>
 
+    @* Paging *@
     <p class="mb-2">Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount</p>
     <div class="d-none d-lg-block">
         @Html.PagedListPager(Model, page => Url.Action("Index", new { page, sortOrder = ViewBag.CurrentSort, searchString = Request.QueryString["searchString"], HighPrice = Request.QueryString["HighPrice"], LowPrice = Request.QueryString["LowPrice"], BrandFilter = Request.QueryString["BrandFilter"], CategoryFilter = Request.QueryString["CategoryFilter"] }),

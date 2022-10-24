@@ -115,7 +115,7 @@
     <section class="content bg-white">
         @RenderBody()
         <div class="position-fixed bottom-0 end-0">
-            <a href="#" class="me-2 me-md-3 ms-2 mb-2 mb-md-3 mb-5 mb-sm-0 position-relative btn cart-button">
+            <a href="@Url.Action("Index", "ShoppingCart", new { area = ""})" class="me-2 me-md-3 ms-2 mb-2 mb-md-3 mb-5 mb-sm-0 position-relative btn cart-button">
                 <i class="bi bi-cart3 fs-3 cart-text"></i>
                 <span class="position-absolute top-0 end-0 badge rounded-pill bg-danger p-1" style="font-size:9px">
                     4
@@ -128,7 +128,7 @@
     <section class="footer bg-black mt-auto">
         <div class="container-lg">
             <footer class="d-flex flex-wrap justify-content-between py-5">
-                <div class="me-5">
+                <div class="me-3 me-sm-5">
                     <a href="@Url.Action("Index", "Home", new { area = "" })" class="text-decoration-none text-white">
                         <h1 class="pb-3 store-logo-homepage">SStore</h1>
                         <p>
@@ -142,6 +142,12 @@
                                 <path d="M8 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm0 1a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
                             </svg>650 Ngo Quyen, An Hai Bac, Son Tra, Da Nang
                         </p>
+                        <div class="d-flex flex-nowrap">
+                            <i class="bi bi-envelope me-2"></i>
+                            <p class="text-break">
+                                hoangngcd18786@fpt.edu.vn
+                            </p>
+                        </div>
                     </a>
                 </div>
                 <div class="me-5 mt-sm-0 mt-3">

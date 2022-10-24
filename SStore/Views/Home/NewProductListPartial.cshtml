@@ -37,8 +37,8 @@
                 }
                 else
                 {
-                    <a href="#" class="btn add-to-cart-button"><span class="add-to-cart-text">Buy now</span></a>
-                    <a href="#" class="btn add-to-cart-button align-bottom">
+                    <a href="@Url.Action("OrderNow", "ShoppingCart", new { area = "", id = item.Id})" class="btn add-to-cart-button"><span class="add-to-cart-text">Buy now</span></a>
+                    <a href="@Url.Action("OrderNow", "ShoppingCart", new { area = "", id = item.Id})" class="btn add-to-cart-button align-bottom">
                         <span class="add-to-cart-text d-none d-sm-block">
                             Add to cart &nbsp;<i class="bi bi-cart-plus"></i>
                         </span>
