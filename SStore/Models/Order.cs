@@ -10,6 +10,7 @@ namespace SStore.Models
     public class Order
     {
         [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int OrderId { get; set; }
         public DateTime OrderDate { get; set; }
         public bool Status { get; set; }
@@ -21,6 +22,20 @@ namespace SStore.Models
         [StringLength(100)]
         public string PaymentType { get; set; }
         public bool PaymentStatus { get; set; }
-
+        [Required]
+        [StringLength(100)]
+        [Display(Name = "Name")]
+        public string CustomerName { get; set; }
+        [Required]
+        [StringLength(50)]
+        [Display(Name = "Phone Number")]
+        public string CustomerPhone { get; set; }
+        [EmailAddress]
+        [Display(Name = "Email")]
+        public string CustomerEmail { get; set; }
+        [Required]
+        [Display(Name = "Address")]
+        [StringLength(255)]
+        public string DeliveryAddress { get; set; }
     }
 }

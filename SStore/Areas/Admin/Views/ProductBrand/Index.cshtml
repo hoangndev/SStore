@@ -43,20 +43,21 @@
                     <p class="d-block d-xl-none mb-0">Showing @Model.FirstItemOnPage - @Model.LastItemOnPage of @Model.TotalItemCount Brands</p>
                     <div class="table-responsive">
                         <table class="table table-bordered table-hover my-2">
-                            <tr>
-                                <th class="text-truncate text-center">
-                                    No
-                                </th>
-                                <th class="text-truncate text-center" style="min-width: 120px">
-                                    <a href="@Url.Action("Index", new { sortOrder = ViewBag.NameSortParm })" class="text-dark">
-                                        <i class="bi bi-sort-alpha-up"></i> Name
-                                    </a>
-                                </th>
-                                <th class="text-truncate text-center">
-                                    Action
-                                </th>
-                            </tr>
-
+                            <thead class="table-light">
+                                <tr>
+                                    <th class="text-truncate text-center">
+                                        No
+                                    </th>
+                                    <th class="text-truncate text-center" style="min-width: 120px">
+                                        <a href="@Url.Action("Index", new { sortOrder = ViewBag.NameSortParm })" class="text-dark">
+                                            <i class="bi bi-sort-alpha-up"></i> Name
+                                        </a>
+                                    </th>
+                                    <th class="text-truncate text-center">
+                                        Action
+                                    </th>
+                                </tr>
+                            </thead>
                             @foreach (var item in Model.Select((d, i) => new { Data = d, Index = i + 1 }))
                             {
                                 <tr>

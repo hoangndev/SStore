@@ -93,38 +93,39 @@
     <p class="d-block d-sm-none mb-0">Showing @Model.FirstItemOnPage - @Model.LastItemOnPage of @Model.TotalItemCount products</p>
     <div class="table-responsive">
         <table class="table table-bordered table-hover my-2">
-            <tr>
-                <th class="text-center">
-                    Image
-                </th>
-                <th class="text-center" style="min-width: 180px">
-                    <a href="@Url.Action("Index", new { sortOrder = ViewBag.NameSortParm })" class="text-dark">
-                        <i class="bi bi-sort-alpha-up"></i> Product Name
-                    </a>
-                </th>
-                <th class="text-center" style="min-width: 130px">
-                    <a href="@Url.Action("Index", new { sortOrder = ViewBag.CategorySortParm })" class="text-dark">
-                        <i class="bi bi-sort-alpha-up"></i> Category
-                    </a>
-                </th>
-                <th class="text-center" style="min-width: 100px">
-                    <a href="@Url.Action("Index", new { sortOrder = ViewBag.BrandSortParm })" class="text-dark">
-                        <i class="bi bi-sort-alpha-up"></i> Brand
-                    </a>
-                </th>
-                <th class="text-center" style="min-width: 100px">
-                    <a href="@Url.Action("Index", new { sortOrder = ViewBag.PriceSortParm })" class="text-dark">
-                        <i class="bi bi-sort-up"></i> Price
-                    </a>
-                </th>
-                <th class="text-center">
-                    Description
-                </th>
-                <th class="text-center">
-                    Action
-                </th>
-            </tr>
-
+            <thead class="table-light">
+                <tr>
+                    <th class="text-center">
+                        Image
+                    </th>
+                    <th class="text-center" style="min-width: 180px">
+                        <a href="@Url.Action("Index", new { sortOrder = ViewBag.NameSortParm })" class="text-dark">
+                            <i class="bi bi-sort-alpha-up"></i> Product Name
+                        </a>
+                    </th>
+                    <th class="text-center" style="min-width: 130px">
+                        <a href="@Url.Action("Index", new { sortOrder = ViewBag.CategorySortParm })" class="text-dark">
+                            <i class="bi bi-sort-alpha-up"></i> Category
+                        </a>
+                    </th>
+                    <th class="text-center" style="min-width: 100px">
+                        <a href="@Url.Action("Index", new { sortOrder = ViewBag.BrandSortParm })" class="text-dark">
+                            <i class="bi bi-sort-alpha-up"></i> Brand
+                        </a>
+                    </th>
+                    <th class="text-center" style="min-width: 100px">
+                        <a href="@Url.Action("Index", new { sortOrder = ViewBag.PriceSortParm })" class="text-dark">
+                            <i class="bi bi-sort-up"></i> Price
+                        </a>
+                    </th>
+                    <th class="text-center">
+                        Description
+                    </th>
+                    <th class="text-center">
+                        Action
+                    </th>
+                </tr>
+            </thead>
             @foreach (var item in Model)
             {
                 <tr>

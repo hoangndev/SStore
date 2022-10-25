@@ -26,24 +26,25 @@
 
             <div class="table-responsive">
                 <table class="table table-bordered table-hover my-2">
-                    <tr>
-                        <th class="text-center">
-                            ID
-                        </th>
-                        <th class="text-center">
-                            Title
-                        </th>
-                        <th class="text-center">
-                            Description
-                        </th>
-                        <th class="text-center">
-                            Image
-                        </th>
-                        <th class="text-center">
-                            Action
-                        </th>
-                    </tr>
-
+                    <thead class="table-light">
+                        <tr>
+                            <th class="text-center">
+                                ID
+                            </th>
+                            <th class="text-center">
+                                Title
+                            </th>
+                            <th class="text-center">
+                                Description
+                            </th>
+                            <th class="text-center">
+                                Image
+                            </th>
+                            <th class="text-center">
+                                Action
+                            </th>
+                        </tr>
+                    </thead>
                     @foreach (var item in Model)
                     {
                         <tr>

@@ -1,6 +1,8 @@
 ﻿@using SStore.Models;
+@model SStore.Models.Order
+
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "CheckOut";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -9,11 +11,12 @@
     <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
         <ol class="breadcrumb ms-2">
             <li class="breadcrumb-item"><a href="@Url.Action("Index", "Home", new {area = ""})" class="breadcrumb-client"><i class="bi bi-house-door"></i> Home</a></li>
-            <li class="breadcrumb-item breadcrumb-client-active">Cart</li>
+            <li class="breadcrumb-item"><a href="@Url.Action("Index", "ShoppingCart", new {area = ""})" class="breadcrumb-client">Cart</a></li>
+            <li class="breadcrumb-item breadcrumb-client-active">Checkout</li>
         </ol>
     </nav>
 
-    <h2 class="text-uppercase text-center page-title mb-sm-2 mb-3">Your Cart</h2>
+    <h2 class="text-uppercase text-center page-title mb-sm-2 mb-3">CheckOut</h2>
     @if (Session["Cart"] != null)
     {
         <div class="table-responsive d-none d-sm-block">
@@ -23,7 +26,7 @@
                         <th class="text-center text-nowrap">
                             Image
                         </th>
-                        <th class="text-center text-nowrap" style="min-width: 200px">
+                        <th class="text-center text-nowrap" style="min-width: 150px">
                             Name
                         </th>
                         <th class="text-center text-nowrap" style="min-width: 130px">
@@ -35,15 +38,13 @@
                         <th class="text-center text-nowrap" style="min-width: 140px">
                             Sub total
                         </th>
-                        <th class="text-center text-nowrap">
-                        </th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach (var cart in (List<Cart>)Session["Cart"])
                     {
                         <tr>
-                            <td class="text-center align-middle p-0 p-lg-2" style="max-width: 38px">
+                            <td class="text-center align-middle p-1 p-lg-2" style="max-width: 38px">
                                 <div class="image-hover img-overlay">
                                     <a href="@Url.Action("Details", "AllProduct",  new { area = "", id = cart.Product.Id })" class="text-decoration-none">
                                         <figure>
@@ -70,25 +71,16 @@
                                 </div>
                             </td>
                             <td class="text-center align-middle text-nowrap">
-                                <a href="@Url.Action("Details", "AllProduct",  new { area = "", id = cart.Product.Id })" class="text-decoration-none text-dark">
-                                    @cart.Product.ProductName
-                                </a>
+                                @cart.Product.ProductName
                             </td>
                             <td class="text-center align-middle text-nowrap">
                                 @(string.Format("{0:C2}", @cart.Product.Price))
                             </td>
                             <td class="text-center align-middle text-nowrap">
-                                @using (Html.BeginForm("UpdateCart", "ShoppingCart", FormMethod.Post))
-                                {
-                                    <input type="hidden" value="@cart.Product.Id" name="productId" />
-                                    <input type="number" class="text-center rounded" name="Quantity" onkeyup="if(value<1) value=1;" id="Quantity" min="1" value="@cart.Quantity" style="max-width: 70px" onchange="this.form.submit()" />
-                                }
+                                @cart.Quantity
                             </td>
                             <td class="text-center align-middle">
                                 @(string.Format("{0:C2}", cart.Product.Price * cart.Quantity))
-                            </td>
-                            <td class="text-center align-middle">
-                                <a href="@Url.Action("Delete", "ShoppingCart", new { area = "", id = cart.Product.Id})" class="delete-button btn">Remove</a>
                             </td>
                         </tr>
                     }
@@ -110,13 +102,6 @@
                     </tr>
                 </tfoot>
             </table>
-            <div class="d-flex justify-content-between my-3">
-                <a href="@Url.Action("Index", "AllProduct", new {area = ""})" class="btn back-page-client"><span class="back-page-client-text"><i class="bi bi-arrow-left"></i> Continue shopping</span></a>
-                @if (ViewBag.infoCart != 0)
-                {
-                    <a href="@Url.Action("CheckOut", "ShoppingCart", new {area = ""})" class="btn sub-button"><span class="sub-button-text">CheckOut <i class="bi bi-arrow-right"></i></span></a>
-                }
-            </div>
         </div>
 
         @* Display on screen <= 575 px*@
@@ -128,34 +113,19 @@
                         <div class="ms-2 me-auto">
                             @if (cart.Product.Image == null)
                             {
-                                <a href="@Url.Action("Details", "AllProduct",  new { area = "", id = cart.Product.Id })" class="text-decoration-none text-dark">
-                                    <img src="~/Image/noimage.png" class="img-fluid product-image-management img-thumbnail mb-1" style="max-width:192px; min-height:100px" />
-                                </a>
+                                <img src="~/Image/noimage.png" class="img-fluid product-image-management img-thumbnail mb-1" style="max-width:192px; min-height:100px" />
                             }
                             else
                             {
-                                <a href="@Url.Action("Details", "AllProduct",  new { area = "", id = cart.Product.Id })" class="text-decoration-none text-dark">
-                                    <img src="@Url.Content("~/Image/" + cart.Product.Image)" class="img-fluid product-image-management img-thumbnail mb-1" style="max-width:192px; min-height:100px" />
-                                </a>
+                                <img src="@Url.Content("~/Image/" + cart.Product.Image)" class="img-fluid product-image-management img-thumbnail mb-1" style="max-width:192px; min-height:100px" />
                             }
-                            <p class="fw-bold my-1 product-cart-title">
-                                <a href="@Url.Action("Details", "AllProduct",  new { area = "", id = cart.Product.Id })">
-                                    @cart.Product.ProductName
-                                </a>
-                            </p>
+                            <p class="fw-bold my-1 product-cart-title">@cart.Product.ProductName</p>
                             <p class="my-1"><span class="fw-bold">Price:</span> @cart.Product.Price</p>
                             <p class="my-1">
                                 <span class="fw-bold">Sub total:</span> @(string.Format("{0:N0}", cart.Product.Price * cart.Quantity))
                             </p>
                         </div>
-                        <span class="badge d-flex flex-column" style="height: 200px;">
-                            @using (Html.BeginForm("UpdateCart", "ShoppingCart", FormMethod.Post))
-                            {
-                                <input type="hidden" value="@cart.Product.Id" name="productId" />
-                                <input type="number" class="text-center rounded border-info" name="Quantity" onkeyup="if(value<1) value=1;" id="Quantity" min="1" value="@cart.Quantity" style="max-width: 42px; height:38px" onchange="this.form.submit()" />
-                            }
-                            <a href="@Url.Action("Delete", "ShoppingCart", new { area = "", id = cart.Product.Id})" class="delete-button btn mt-auto border-2" style="min-width: 42px; height:38px"><i class="bi bi-trash"></i></a>
-                        </span>
+                        <span class="badge bg-secondary rounded-pill">@cart.Quantity</span>
                     </li>
                 }
             </ol>
@@ -163,12 +133,59 @@
                 <p class="fw-bold m-0 text-uppercase">Total</p>
                 <p class="m-0 fw-bold">@total</p>
             </div>
-            <div class="d-flex justify-content-center">
-                <div class="d-flex flex-column my-4">
-                    <a href="@Url.Action("CheckOut", "ShoppingCart", new {area = ""})" class="btn sub-button mb-2"><span class="sub-button-text">CheckOut</span></a>
-                    <a href="@Url.Action("Index", "AllProduct", new {area = ""})" class="btn back-page-client"><span class="back-page-client-text">Continue shopping</span></a>
-                </div>
+        </div>
+
+        @* Delivery infomation *@
+        <div class="d-flex justify-content-center mt-3">
+            <div class="container-fluid" style="max-width:500px">
+                @using (Html.BeginForm("ProcessOrder", "ShoppingCart", FormMethod.Post))
+                {
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <h4 class="text-center">Delivery Information</h4>
+                    <form class="needs-validation" novalidate>
+                        <div class="form-horizontal" novalidate>
+                            <div class="mb-2">
+                                <label for="CustomerName" class="form-label fw-bold">
+                                    Customer Name<span class="fw-normal text-danger">*</span>
+                                </label>
+                                <input class="form-control" type="text" name="CustomerName" required>
+                                @Html.ValidationMessageFor(model => model.CustomerName, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="mb-2">
+                                <label for="CustomerPhone" class="form-label fw-bold">
+                                    Phone<span class="fw-normal text-danger">*</span>
+                                </label>
+                                <input class="form-control" type="text" name="CustomerPhone" required>
+                                @Html.ValidationMessageFor(model => model.CustomerPhone, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="mb-2">
+                                <label for="Title" class="form-label fw-bold">
+                                    Email
+                                </label>
+                                <input class="form-control" type="text" name="CustomerEmail">
+                                @Html.ValidationMessageFor(model => model.CustomerEmail, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="mb-3">
+                                <label for="DeliveryAddress" class="form-label fw-bold">
+                                    Delivery Address<span class="fw-normal text-danger">*</span>
+                                </label>
+                                <input class="form-control" type="text" name="DeliveryAddress" required>
+                                @Html.ValidationMessageFor(model => model.DeliveryAddress, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="mb-2">
+                                <div class="col-md-offset-2 col-md-10">
+                                    <button type="submit" class="btn sub-button"><span class="sub-button-text">Process Order</span></button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                }
             </div>
+        </div>
+        <div class="d-flex justify-content-between my-4">
+            <a href="@Url.Action("Index", "ShoppingCart", new {area = ""})" class="btn back-page-client"><span class="back-page-client-text"><i class="bi bi-arrow-left"></i> Cart</span></a>
+            @*            <a href="@Url.Action("Index", "AllProduct", new {area = ""})" class="btn sub-button"><span class="sub-button-text">Pay <i class="bi bi-arrow-right"></i></span></a>
+            *@
         </div>
     }
     else
@@ -181,4 +198,3 @@
         </div>
     }
 </div>
-

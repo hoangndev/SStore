@@ -252,14 +252,14 @@ figure {
     cursor: pointer;
     outline: none;
     transform: translate(0);
-    background-image: linear-gradient(45deg, #f2ffc4, #f4e096, #fbbc73, #ff9463, #ff6767);
+    background-image: linear-gradient(45deg, #fbbc73, #f4e096, #fbbc73, #ff9463, #ff6767);
     border-radius: 50%;
 }
 
     .cart-button .cart-text {
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
-        background-image: linear-gradient(45deg, #f2ffc4, #f4e096, #fbbc73, #ff9463, #ff6767);
+        background-image: linear-gradient(45deg, #fbbc73, #f4e096, #fbbc73, #ff9463, #ff6767);
     }
 
     .cart-button:after {
@@ -278,13 +278,27 @@ figure {
     }
 
     .cart-button:hover {
-        background-image: linear-gradient(-45deg, #f2ffc4, #f4e096, #fbbc73, #ff9463, #ff6767);
+        background-image: linear-gradient(-45deg, #fbbc73, #f4e096, #fbbc73, #ff9463, #ff6767);
     }
 
         .cart-button:hover .cart-text {
-            background-image: linear-gradient(-45deg, #f2ffc4, #f4e096, #fbbc73, #ff9463, #ff6767);
+            background-image: linear-gradient(-45deg, #fbbc73, #f4e096, #fbbc73, #ff9463, #ff6767);
         }
 
+.bag-cart {
+    background-image: linear-gradient(to right top, #e36666, #f38257, #f8a34b, #f0c649, #dde95b);
+}
+
+.product-cart-title {
+    font-size: 20px;
+    background-image: linear-gradient(to right bottom, #1f58ae, #0081cf, #00a3c0, #00bf86, #6dd136);
+    background-clip: text;
+    -webkit-background-clip: text;
+    text-fill-color: transparent;
+    -webkit-text-fill-color: transparent;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
 
 .text-error {
     background-image: linear-gradient(to right top, #6975ff, #5f94ff, #6bb0ff, #8ac8ff, #b3deff);

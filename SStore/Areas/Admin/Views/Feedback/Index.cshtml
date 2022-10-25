@@ -34,28 +34,29 @@
             <p class="d-block d-sm-none mb-0">Showing @Model.FirstItemOnPage - @Model.LastItemOnPage of @Model.TotalItemCount Feedbacks</p>
             <div class="table-responsive">
                 <table class="table table-bordered table-hover my-2">
-                    <tr>
-                        <th class="text-truncate text-center" style="min-width: 100px">
-                            <a href="@Url.Action("Index", new { sortOrder = ViewBag.TimeSortParm })" class="text-dark">
-                                <i class="bi bi-sort-numeric-down"></i> Time
-                            </a>
-                        </th>
-                        <th class="text-truncate text-center" style="min-width: 130px">
-                            <a href="@Url.Action("Index", new { sortOrder = ViewBag.TitleSortParm })" class="text-dark">
-                                <i class="bi bi-sort-alpha-up"></i> Title
-                            </a>
-                        </th>
-                        <th class="text-truncate text-center" style="min-width: 130px">
-                            Full Name
-                        </th>
-                        <th class="text-truncate text-center" style="min-width: 200px">
-                            Email
-                        </th>
-                        <th class="text-truncate text-center">
-                            Action
-                        </th>
-                    </tr>
-
+                    <thead class="table-light">
+                        <tr>
+                            <th class="text-truncate text-center" style="min-width: 100px">
+                                <a href="@Url.Action("Index", new { sortOrder = ViewBag.TimeSortParm })" class="text-dark">
+                                    <i class="bi bi-sort-numeric-down"></i> Time
+                                </a>
+                            </th>
+                            <th class="text-truncate text-center" style="min-width: 130px">
+                                <a href="@Url.Action("Index", new { sortOrder = ViewBag.TitleSortParm })" class="text-dark">
+                                    <i class="bi bi-sort-alpha-up"></i> Title
+                                </a>
+                            </th>
+                            <th class="text-truncate text-center" style="min-width: 130px">
+                                Full Name
+                            </th>
+                            <th class="text-truncate text-center" style="min-width: 200px">
+                                Email
+                            </th>
+                            <th class="text-truncate text-center">
+                                Action
+                            </th>
+                        </tr>
+                    </thead>
                     @foreach (var item in Model)
                     {
                         <tr>
