@@ -37,5 +37,6 @@ namespace SStore.Models
         [Display(Name = "Address")]
         [StringLength(255)]
         public string DeliveryAddress { get; set; }
+        public decimal TotalPrice { get; set; }
     }
 }

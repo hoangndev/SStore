@@ -203,6 +203,7 @@
     <Compile Include="Controllers\FeedbackClientController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\OrderController.cs" />
     <Compile Include="Controllers\ShoppingCartController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
@@ -320,6 +321,14 @@
     <Compile Include="Migrations\202210251707181_UpdateOrderTable.designer.cs">
       <DependentUpon>202210251707181_UpdateOrderTable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202210261727275_UpdateOrderTable1.cs" />
+    <Compile Include="Migrations\202210261727275_UpdateOrderTable1.designer.cs">
+      <DependentUpon>202210261727275_UpdateOrderTable1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202210261743412_UpdateOrderDetailTable1.cs" />
+    <Compile Include="Migrations\202210261743412_UpdateOrderDetailTable1.designer.cs">
+      <DependentUpon>202210261743412_UpdateOrderDetailTable1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Cart.cs" />
@@ -426,6 +435,8 @@
     <Content Include="Areas\Admin\Views\Slide\Delete.cshtml" />
     <Content Include="Areas\Admin\Views\Slide\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Slide\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Dashboard\GetCounts.cshtml" />
+    <Content Include="Areas\Admin\Views\Dashboard\GetOrderByMonth.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\chart.js" />
     <Content Include="Scripts\chart.min.js" />
@@ -489,6 +500,7 @@
     <Content Include="Views\ShoppingCart\BagCart.cshtml" />
     <Content Include="Views\ShoppingCart\CheckOut.cshtml" />
     <Content Include="Views\ShoppingCart\OrderSuccess.cshtml" />
+    <Content Include="Views\Order\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -584,6 +596,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202210251707181_UpdateOrderTable.resx">
       <DependentUpon>202210251707181_UpdateOrderTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202210261727275_UpdateOrderTable1.resx">
+      <DependentUpon>202210261727275_UpdateOrderTable1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202210261743412_UpdateOrderDetailTable1.resx">
+      <DependentUpon>202210261743412_UpdateOrderDetailTable1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

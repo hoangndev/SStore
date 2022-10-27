@@ -42,6 +42,31 @@ namespace SStore.Controllers
             }
             else
             {
+                Session.Remove(Cart);
+                List<Cart> lsCart = new List<Cart>
+                {
+                    new Cart(db.Products.Find(id),1)
+                };
+                Session[Cart] = lsCart;
+            }
+            return RedirectToAction("CheckOut");
+        }
+        public ActionResult AddToCart(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            if (Session[Cart] == null)
+            {
+                List<Cart> lsCart = new List<Cart>
+                {
+                    new Cart(db.Products.Find(id),1)
+                };
+                Session[Cart] = lsCart;
+            }
+            else
+            {
                 List<Cart> lsCart = (List<Cart>)Session[Cart];
                 int check = isExisting(id);
                 if (check == -1)
@@ -50,6 +75,7 @@ namespace SStore.Controllers
                     lsCart[check].Quantity++;
                 Session[Cart] = lsCart;
             }
+            ViewBag.Message = String.Format("Successfully sent feedback!");
             return View("Index");
         }
         private int isExisting(int? id)
@@ -125,7 +151,7 @@ namespace SStore.Controllers
                         OrderId = order.OrderId,
                         ProductId = cart.Product.Id,
                         Quantity = cart.Quantity,
-                        TotalPrice = cart.Product.Price
+                        Price = cart.Product.Price
                     };
                     db.OrderDetails.Add(orderDetail);
                     db.SaveChanges();

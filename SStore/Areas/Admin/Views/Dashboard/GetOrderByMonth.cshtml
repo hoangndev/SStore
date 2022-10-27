@@ -1,0 +1,32 @@
+﻿
+<canvas id="GetOrderByMonth"></canvas>
+<script type="text/javascript">
+    var ProductName = [
+        "@ViewBag.SixthMonthName",
+        "@ViewBag.FifthMonthName",
+        "@ViewBag.FourthMonthName",
+        "@ViewBag.ThirtMonthName",
+        "@ViewBag.SecondMonthName",
+        "@ViewBag.ThisMonthName",
+    ];
+    console.log(ProductName);
+
+    const data = {
+        labels: ProductName,
+        datasets: [{
+            label: 'Income over 6 months',
+            backgroundColor: 'rgb(255, 99, 132)',
+            borderColor: 'rgb(255, 99, 132)',
+            data: [@ViewBag.SixthMonth, @ViewBag.FifthMonth, @ViewBag.FourthMonth, @ViewBag.ThirtMonth, @ViewBag.SecondMonth, @ViewBag.ThisMonth],
+        }]
+    };
+    const config = {
+        type: 'line',
+        data,
+        options: {}
+    };
+    var myChart = new Chart(
+        document.getElementById('GetOrderByMonth'),
+        config
+    );
+</script>
