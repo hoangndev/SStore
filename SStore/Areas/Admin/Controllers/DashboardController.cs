@@ -27,26 +27,89 @@ namespace SStore.Areas.Admin.Controllers
         // GET: Admin/Dashboard
         public ActionResult Index()
         {
+            return View();
+        }
 
+        public PartialViewResult GetProductView()
+        {
             var products = db.Products.Take(5).OrderByDescending(p => p.View);
             var listProducts = new List<Product>();
             foreach (var product in products)
             {
                 listProducts.Add(product);
             }
-
-            return View(listProducts);
-        }
-
-        public PartialViewResult GetProductView()
-        {
-            var products = db.Products.Take(6).OrderByDescending(p => p.View);
-            var listProducts = new List<Product>();
-            foreach (var product in products)
-            {
-                listProducts.Add(product);
-            }
             return PartialView(listProducts);
+        }
+        public PartialViewResult GetOrderByWeek()
+        {
+            /* Get this week */
+            DateTime today = DateTime.Now.AddDays(-1);
+            DateTime secondDay = today.AddDays(-1);
+            DateTime thirtDay = secondDay.AddDays(-1);
+            DateTime fourthDay = thirtDay.AddDays(-1);
+            DateTime fifthDay = fourthDay.AddDays(-1);
+            DateTime sixthDay = fifthDay.AddDays(-1);
+            DateTime seventhDay = fifthDay.AddDays(-1);
+            /* Get days name */
+            var TodayName = DateTime.Now.ToString("dddd");
+            var secondDayName = today.ToString("dddd");
+            var thirtDayName = secondDay.ToString("dddd");
+            var fourthDayName = thirtDay.ToString("dddd");
+            var fifthDayName = fourthDay.ToString("dddd");
+            var sixthDayName = fifthDay.ToString("dddd");
+            var seventhDayName = seventhDay.ToString("dddd");
+            /* Pass days name to view */
+            ViewBag.TodayName = TodayName;
+            ViewBag.SecondDayName = secondDayName;
+            ViewBag.ThirtDayName = thirtDayName;
+            ViewBag.FourthDayName = fourthDayName;
+            ViewBag.FifthDayName = fifthDayName;
+            ViewBag.SixthDayName = sixthDayName;
+            ViewBag.SeventhDayName = seventhDayName;
+            /* Get orders total value of each day */
+            var todayOrders = db.Orders.Where(u => u.OrderDate <= DateTime.Now && u.OrderDate >= today).ToList();
+            var secondDayOrders = db.Orders.Where(u => u.OrderDate <= today && u.OrderDate >= secondDay).ToList();
+            var thirtDayOrders = db.Orders.Where(u => u.OrderDate <= secondDay && u.OrderDate >= thirtDay).ToList();
+            var fourtDayOrders = db.Orders.Where(u => u.OrderDate <= thirtDay && u.OrderDate >= fourthDay).ToList();
+            var fifthDayOrders = db.Orders.Where(u => u.OrderDate <= fourthDay && u.OrderDate >= fifthDay).ToList();
+            var sixthDayOrders = db.Orders.Where(u => u.OrderDate <= fifthDay && u.OrderDate >= sixthDay).ToList();
+            var seventhDayOrders = db.Orders.Where(u => u.OrderDate <= sixthDay && u.OrderDate >= seventhDay).ToList();
+            /* Pass orders total value to view */
+            ViewBag.Today = todayOrders.Sum(v => v.TotalPrice);
+            ViewBag.SecondDay = secondDayOrders.Sum(v => v.TotalPrice);
+            ViewBag.ThirtDay = thirtDayOrders.Sum(v => v.TotalPrice);
+            ViewBag.FourthDay = fourtDayOrders.Sum(v => v.TotalPrice);
+            ViewBag.FifthDay = fifthDayOrders.Sum(v => v.TotalPrice);
+            ViewBag.SixthDay = sixthDayOrders.Sum(v => v.TotalPrice);
+            ViewBag.SeventhDay = seventhDayOrders.Sum(v => v.TotalPrice);
+            /* End this week */
+
+            /* Get last week */
+            DateTime lastWeekFirstDay = seventhDay.AddDays(-1);
+            DateTime lastWeeksecondDay = lastWeekFirstDay.AddDays(-1);
+            DateTime lastWeekthirtDay = lastWeeksecondDay.AddDays(-1);
+            DateTime lastWeekfourthDay = lastWeekthirtDay.AddDays(-1);
+            DateTime lastWeekfifthDay = lastWeekfourthDay.AddDays(-1);
+            DateTime lastWeeksixthDay = lastWeekfifthDay.AddDays(-1);
+            DateTime lastWeekseventhDay = lastWeeksixthDay.AddDays(-1);
+            /* Get orders total value of each day of last week */
+            var lastWeekFirstDayOrders = db.Orders.Where(u => u.OrderDate <= seventhDay && u.OrderDate >= lastWeekFirstDay).ToList();
+            var lastWeekSecondDayOrders = db.Orders.Where(u => u.OrderDate <= lastWeekFirstDay && u.OrderDate >= lastWeeksecondDay).ToList();
+            var lastWeekThirtDayOrders = db.Orders.Where(u => u.OrderDate <= lastWeeksecondDay && u.OrderDate >= lastWeekthirtDay).ToList();
+            var lastWeekFourtDayOrders = db.Orders.Where(u => u.OrderDate <= lastWeekthirtDay && u.OrderDate >= lastWeekfourthDay).ToList();
+            var lastWeekFifthDayOrders = db.Orders.Where(u => u.OrderDate <= lastWeekfourthDay && u.OrderDate >= lastWeekfifthDay).ToList();
+            var lastWeekSixthDayOrders = db.Orders.Where(u => u.OrderDate <= lastWeekfifthDay && u.OrderDate >= lastWeeksixthDay).ToList();
+            var lastWeekSeventhDayOrders = db.Orders.Where(u => u.OrderDate <= lastWeeksixthDay && u.OrderDate >= lastWeekseventhDay).ToList();
+            /* Pass orders total value to view */
+            ViewBag.LastWeekFirstDay = lastWeekFirstDayOrders.Sum(v => v.TotalPrice);
+            ViewBag.LastWeekSecondDay = lastWeekSecondDayOrders.Sum(v => v.TotalPrice);
+            ViewBag.LastWeekThirtDay = lastWeekThirtDayOrders.Sum(v => v.TotalPrice);
+            ViewBag.LastWeekFourthDay = lastWeekFourtDayOrders.Sum(v => v.TotalPrice);
+            ViewBag.LastWeekFifthDay = lastWeekFifthDayOrders.Sum(v => v.TotalPrice);
+            ViewBag.LastWeekSixthDay = lastWeekSixthDayOrders.Sum(v => v.TotalPrice);
+            ViewBag.LastWeekSeventhDay = lastWeekSeventhDayOrders.Sum(v => v.TotalPrice);
+            /* End last week */
+            return PartialView();
         }
         public PartialViewResult GetOrderByMonth()
         {
@@ -55,7 +118,7 @@ namespace SStore.Areas.Admin.Controllers
             DateTime secondMonth = thisMonth.AddMonths(-1);
             DateTime thirtMonth = secondMonth.AddMonths(-1);
             DateTime fourthMonth = thirtMonth.AddMonths(-1);
-            DateTime fifthMonth = thirtMonth.AddMonths(-1);
+            DateTime fifthMonth = fourthMonth.AddMonths(-1);
             DateTime SixthMonth = fifthMonth.AddMonths(-1);
 
             /* Get 6 months name */

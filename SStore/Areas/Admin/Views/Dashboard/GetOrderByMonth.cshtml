@@ -1,7 +1,8 @@
 ﻿
 <canvas id="GetOrderByMonth"></canvas>
+
 <script type="text/javascript">
-    var ProductName = [
+    var ListMonth = [
         "@ViewBag.SixthMonthName",
         "@ViewBag.FifthMonthName",
         "@ViewBag.FourthMonthName",
@@ -9,24 +10,33 @@
         "@ViewBag.SecondMonthName",
         "@ViewBag.ThisMonthName",
     ];
-    console.log(ProductName);
 
-    const data = {
-        labels: ProductName,
+    const data2 = {
+        labels: ListMonth,
         datasets: [{
             label: 'Income over 6 months',
             backgroundColor: 'rgb(255, 99, 132)',
             borderColor: 'rgb(255, 99, 132)',
+            tension: 0.4,
             data: [@ViewBag.SixthMonth, @ViewBag.FifthMonth, @ViewBag.FourthMonth, @ViewBag.ThirtMonth, @ViewBag.SecondMonth, @ViewBag.ThisMonth],
         }]
     };
-    const config = {
+    const config2 = {
         type: 'line',
-        data,
-        options: {}
+        data: data2,
+        options: {
+            responsive: true,
+            scales: {
+                y: {
+                    type: 'linear',
+                    display: true,
+                    position: 'right',
+                },
+            }
+        },
     };
-    var myChart = new Chart(
+    var myChart2 = new Chart(
         document.getElementById('GetOrderByMonth'),
-        config
+        config2
     );
 </script>
