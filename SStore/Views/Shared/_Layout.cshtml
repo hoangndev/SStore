@@ -117,7 +117,7 @@
         <div class="position-fixed bottom-0 end-0">
             <a href="@Url.Action("Index", "ShoppingCart", new { area = ""})" class="me-2 me-md-3 ms-2 mb-2 mb-md-3 mb-5 mb-sm-0 position-relative btn cart-button">
                 <i class="bi bi-cart3 fs-3 cart-text"></i>
-                @Html.Action("BagCart", "ShoppingCart")
+                @Html.Action("BagCart", "ShoppingCart", new { area = ""})
             </a>
         </div>
     </section>

@@ -19,13 +19,13 @@
         @using (Html.BeginForm())
         {
             @Html.AntiForgeryToken()
-            <div class="form-actions no-color my-2 d-block d-md-none">
+            <div class="form-actions no-color my-2 d-block d-lg-none">
                 <button type="submit" class="btn delete-button">Delete</button>
                 <a href="@Url.Action("Index", "Product", new { area = "Admin"})" class="btn back-page-button"><span class="back-page-button-text"></span>Back to list</a>
             </div>
         }
         <div class="row">
-            <div class="col-md-7 mb-2">
+            <div class="col-lg-7 mb-2">
                 @if (Model.Image == null)
                 {
                     <img src="~/Image/noimage.png" class="img-fluid img-thumbnail" />
@@ -37,13 +37,13 @@
                 @using (Html.BeginForm())
                 {
                     @Html.AntiForgeryToken()
-                    <div class="form-actions no-color mt-2 d-none d-md-block">
+                    <div class="form-actions no-color mt-2 d-none d-lg-block">
                         <button type="submit" class="btn delete-button">Delete</button>
                         <a href="@Url.Action("Index", "Product", new { area = "Admin"})" class="btn back-page-button"><span class="back-page-button-text"></span>Back to list</a>
                     </div>
                 }
             </div>
-            <div class="col">
+            <div class="col-lg-5">
                 <div class="table-responsive">
                     <table class="table table-bordered table-hover">
                         <tr>
@@ -154,19 +154,19 @@
                             </td>
                         </tr>
                         <tr>
-                            <th>
-                                CreatedDate
+                            <th class="text-nowrap">
+                                Created Date
                             </th>
                             <td class="fst-italic text-secondary">
-                                @Model.CreatedDate
+                                @Model.CreatedDate.ToString("g")
                             </td>
                         </tr>
                         <tr>
-                            <th>
-                                ModifiedDate
+                            <th class="text-nowrap">
+                                Last Modified
                             </th>
                             <td class="fst-italic text-secondary">
-                                @Model.ModifiedDate
+                                @Model.ModifiedDate.ToString("g")
                             </td>
                         </tr>
                         <tr>

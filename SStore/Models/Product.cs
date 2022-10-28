@@ -12,7 +12,6 @@ namespace SStore.Models
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
-
         [Required]
         [StringLength(255)]
         public string ProductName { get; set; }
@@ -34,9 +33,10 @@ namespace SStore.Models
         public string Description { get; set; }
         [StringLength(255)]
         public string Image { get; set; }
-        public Nullable<DateTime> CreatedDate { get; set; }
-        public Nullable<DateTime> ModifiedDate { get; set; }
+        public DateTime CreatedDate { get; set; }
+        public DateTime ModifiedDate { get; set; }
         public Nullable<bool> Hot { get; set; }
         public Nullable<int> View { get; set; }
+
     }
 }

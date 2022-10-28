@@ -194,6 +194,7 @@
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\DashboardController.cs" />
     <Compile Include="Areas\Admin\Controllers\FeedbackController.cs" />
+    <Compile Include="Areas\Admin\Controllers\OrdersController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProductBrandController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProductCategoryController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProductController.cs" />
@@ -329,6 +330,22 @@
     <Compile Include="Migrations\202210261743412_UpdateOrderDetailTable1.designer.cs">
       <DependentUpon>202210261743412_UpdateOrderDetailTable1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202210280227277_UpdateOrderTable2.cs" />
+    <Compile Include="Migrations\202210280227277_UpdateOrderTable2.designer.cs">
+      <DependentUpon>202210280227277_UpdateOrderTable2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202210280416162_EditOrderDetailTable.cs" />
+    <Compile Include="Migrations\202210280416162_EditOrderDetailTable.designer.cs">
+      <DependentUpon>202210280416162_EditOrderDetailTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202210280417469_EditOrderDetailTable1.cs" />
+    <Compile Include="Migrations\202210280417469_EditOrderDetailTable1.designer.cs">
+      <DependentUpon>202210280417469_EditOrderDetailTable1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202210281704158_UpdateProductTable.cs" />
+    <Compile Include="Migrations\202210281704158_UpdateProductTable.designer.cs">
+      <DependentUpon>202210281704158_UpdateProductTable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Cart.cs" />
@@ -438,6 +455,10 @@
     <Content Include="Areas\Admin\Views\Dashboard\GetCounts.cshtml" />
     <Content Include="Areas\Admin\Views\Dashboard\GetOrderByMonth.cshtml" />
     <Content Include="Areas\Admin\Views\Dashboard\GetOrderByWeek.cshtml" />
+    <Content Include="Areas\Admin\Views\Orders\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\Orders\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\Orders\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Orders\Index.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\chart.js" />
     <Content Include="Scripts\chart.min.js" />
@@ -502,6 +523,7 @@
     <Content Include="Views\ShoppingCart\CheckOut.cshtml" />
     <Content Include="Views\ShoppingCart\OrderSuccess.cshtml" />
     <Content Include="Views\Order\Index.cshtml" />
+    <Content Include="Views\Order\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -603,6 +625,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202210261743412_UpdateOrderDetailTable1.resx">
       <DependentUpon>202210261743412_UpdateOrderDetailTable1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202210280227277_UpdateOrderTable2.resx">
+      <DependentUpon>202210280227277_UpdateOrderTable2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202210280416162_EditOrderDetailTable.resx">
+      <DependentUpon>202210280416162_EditOrderDetailTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202210280417469_EditOrderDetailTable1.resx">
+      <DependentUpon>202210280417469_EditOrderDetailTable1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202210281704158_UpdateProductTable.resx">
+      <DependentUpon>202210281704158_UpdateProductTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

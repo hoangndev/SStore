@@ -16,14 +16,14 @@ namespace SStore.Controllers
 {
     public class OrderController : Controller
     {
-        private ApplicationDbContext db = new ApplicationDbContext();
+        ApplicationDbContext db = new ApplicationDbContext();
         // GET: Order
         public ActionResult Index(int? page)
         {
-            int pageSize = 8;
+            int pageSize = 5;
             int pageNumber = (page ?? 1);
             var userId = User.Identity.GetUserId();
-            var orders = db.Orders.Where(x => x.UserId == userId).ToList();
+            var orders = db.Orders.OrderByDescending(o => o.OrderDate).Where(o => o.UserId == userId).ToList();
             return View(orders.ToPagedList(pageNumber, pageSize));
         }
         public ActionResult Details(int? id)
@@ -32,12 +32,15 @@ namespace SStore.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            OrderDetail orderDetail = db.OrderDetails.Include(o => o.Order).SingleOrDefault(p => p.OrderId == id);
-            if (orderDetail == null)
+            var order = db.Orders.Find(id);
+
+            var orderDetails = db.OrderDetails.Include(o => o.Product).Where(o => o.OrderId == id).ToList();
+            ViewBag.OrderDetails = orderDetails;
+            if (order == null)
             {
                 return HttpNotFound();
             }
-            return View(orderDetail);
+            return View(order);
         }
     }
 }

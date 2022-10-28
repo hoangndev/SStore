@@ -15,15 +15,15 @@
         labels: WeekDays,
         datasets: [{
             label: 'This week income',
-            backgroundColor: 'rgb(255, 99, 132)',
-            borderColor: 'rgb(255, 99, 132)',
+            backgroundColor: '#0acf97',
+            borderColor: '#0acf97',
             tension: 0.3,
             data: [@ViewBag.SeventhDay, @ViewBag.SixthDay, @ViewBag.FifthDay, @ViewBag.FourthDay, @ViewBag.ThirtDay, @ViewBag.SecondDay,  @ViewBag.Today],
         },
         {
             label: 'Last week income',
-            backgroundColor: 'rgb(0, 151, 254)',
-            borderColor: 'rgb(0, 151, 254)',
+            backgroundColor: '#727cf5',
+            borderColor: '#727cf5',
             tension: 0.3,
             data: [@ViewBag.LastWeekSeventhDay, @ViewBag.LastWeekSixthDay, @ViewBag.LastWeekFifthDay, @ViewBag.LastWeekFourthDay, @ViewBag.LastWeekThirtDay, @ViewBag.LastWeekSecondDay,  @ViewBag.LastWeekFirstDay],
             }

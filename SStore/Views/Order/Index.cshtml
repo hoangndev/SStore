@@ -50,7 +50,7 @@
                 {
                     <tr>
                         <td>
-                            @item.OrderId
+                            <a href="@Url.Action("Details", "Order", new { area = "", id = item.OrderId })">@item.OrderId</a>
                         </td>
                         <td class="text-center align-middle text-nowrap">
                             @item.OrderDate
