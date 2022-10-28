@@ -508,7 +508,7 @@
     <Content Include="Views\Home\HotProductListPartial.cshtml" />
     <Content Include="Views\Home\FashionProductListPartial.cshtml" />
     <Content Include="Views\AllProduct\Index.cshtml" />
-    <Content Include="Views\FeedbackClient\Create.cshtml" />
+    <Content Include="Views\FeedbackClient\Index.cshtml" />
     <Content Include="Views\AllProduct\Shoes.cshtml" />
     <Content Include="Views\AllProduct\Shirt.cshtml" />
     <Content Include="Views\AllProduct\Hat.cshtml" />

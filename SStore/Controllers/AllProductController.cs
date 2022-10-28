@@ -264,6 +264,8 @@ namespace SStore.Controllers
 
             Product product = db.Products.Include(p => p.productBrand).Include(p => p.ProductCategory).SingleOrDefault(p => p.Id == id);
             product.View++;
+            var hotProductList = db.Products.OrderByDescending(p => p.View).Take(4).ToList();
+            ViewBag.HotProductList = hotProductList;
             db.SaveChanges();
             if (product == null)
             {

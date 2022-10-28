@@ -15,14 +15,14 @@ namespace SStore.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Admin/Feedback/Create
-        public ActionResult Create()
+        public ActionResult Index()
         {
             return View();
         }
 
         // POST: Admin/Feedback/Create
         [HttpPost]
-        public ActionResult Create(Feedback feedback)
+        public ActionResult Index(Feedback feedback)
         {
             if (ModelState.IsValid)
             {

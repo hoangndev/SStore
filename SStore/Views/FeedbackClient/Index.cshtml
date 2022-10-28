@@ -12,11 +12,11 @@
             <li class="breadcrumb-item breadcrumb-client-active">Feedback</li>
         </ol>
     </nav>
-    <h2 class="text-uppercase text-center page-title">Feedback Us!!!</h2>
+    <h2 class="text-uppercase text-center page-title">Contact Us!!!</h2>
     <div class="d-flex justify-content-center">
         <div class="container-fluid" style="max-width:500px">
             <div id="liveAlertPlaceholder"></div>
-            @using (Html.BeginForm("Create", "FeedbacKClient", FormMethod.Post))
+            @using (Html.BeginForm("Index", "FeedbacKClient", FormMethod.Post))
             {
                 @Html.AntiForgeryToken()
                 <form class="needs-validation" novalidate>
