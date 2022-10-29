@@ -172,16 +172,10 @@
                                 <input class="form-control" type="text" name="DeliveryAddress" required>
                                 @Html.ValidationMessageFor(model => model.DeliveryAddress, "", new { @class = "text-danger" })
                             </div>                            
-                            <div class="mb-3">
-                                <label for="DeliveTotalPriceryAddress" class="form-label fw-bold">
-                                    TotalPrice<span class="fw-normal text-danger">*</span>
-                                </label>
                                 @{
                                     var totalPrice = temp.Sum(x => x.Quantity * x.Product.Price);
                                 }
-                                <input class="form-control" type="text" name="TotalPrice" value="@totalPrice">
-                                @Html.ValidationMessageFor(model => model.TotalPrice, "", new { @class = "text-danger" })
-                            </div>
+                                <input class="form-control" type="hidden" name="TotalPrice" value="@totalPrice">
                             <div class="mb-2">
                                 <div class="col-md-offset-2 col-md-10">
                                     <button type="submit" class="btn sub-button"><span class="sub-button-text">Process Order</span></button>

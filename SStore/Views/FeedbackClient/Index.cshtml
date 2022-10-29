@@ -4,7 +4,6 @@
     ViewBag.Title = "Create";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
 <div class="container mt-2 mb-sm-4 mb-3">
     <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
         <ol class="breadcrumb">
@@ -47,12 +46,19 @@
                             </label>
                             @Html.TextBoxFor(b => b.PhoneNumber, new { @class = "form-control" })
                         </div>
-                        <div class="mb-3">
+                        <div class="mb-2">
                             <label for="Description" name="Description" class="form-label fw-bold">
                                 @Html.LabelFor(b => b.Description, "Description")<span class="fw-normal text-danger">*</span>
                             </label>
                             <textarea class="form-control" name="Description" rows="4" placeholder="Tell us the problem you are having ..." required></textarea>
                             @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="mb-2">
+                            @if (!string.IsNullOrEmpty(ViewBag.Message))
+                            {
+                                <p>@ViewBag.Message</p>
+                            }
+                            <div class="g-recaptcha" data-sitekey="6LdpyMMiAAAAACtdSdwZPaa8OLCkT5Xo15iBS21o"></div>
                         </div>
                         <div class="mb-2">
                             <div class="col-md-offset-2 col-md-10">
@@ -62,7 +68,7 @@
                     </div>
                 </form>
             }
-            @if (ViewBag.Message != null)
+            @if (ViewBag.Messages != null)
             {
                 <script type="text/javascript">
                     window.onload = function () {
@@ -89,3 +95,9 @@
         </div>
     </div>
 </div>
+
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+<script src="https://www.google.com/recaptcha/api.js?render=reCAPTCHA_site_key"></script>
+<script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit"
+        async defer>
+</script>
