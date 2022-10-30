@@ -54,11 +54,11 @@
                             @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
                         </div>
                         <div class="mb-2">
+                            <div class="g-recaptcha" data-sitekey="6LdpyMMiAAAAACtdSdwZPaa8OLCkT5Xo15iBS21o"></div>
                             @if (!string.IsNullOrEmpty(ViewBag.Message))
                             {
-                                <p>@ViewBag.Message</p>
+                                <p class="m-0 text-danger">@ViewBag.Message</p>
                             }
-                            <div class="g-recaptcha" data-sitekey="6LdpyMMiAAAAACtdSdwZPaa8OLCkT5Xo15iBS21o"></div>
                         </div>
                         <div class="mb-2">
                             <div class="col-md-offset-2 col-md-10">

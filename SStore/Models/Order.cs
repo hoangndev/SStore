@@ -14,8 +14,6 @@ namespace SStore.Models
         public int OrderId { get; set; }
         public DateTime OrderDate { get; set; }
         public bool Status { get; set; }
-        public bool Delivered { get; set; }
-        public Nullable<DateTime> DeliveredDate { get; set; }
         [ForeignKey("UserInfo")]
         public string UserId { get; set; }
         public UserInfo UserInfo { get; set; }

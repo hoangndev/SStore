@@ -552,15 +552,17 @@ a:any-link {
 }
 
 .list-recommend {
-    min-width: 19rem;
+    width: 19rem;
 }
+
 @media screen and (max-width: 1400px) {
     .list-recommend {
-        min-width: 16rem;
+        width: 16rem;
     }
 
     @media screen and (max-width: 1000px) {
         .list-recommend {
-            min-width: 15rem;
+            width: 15rem;
         }
     }
+}

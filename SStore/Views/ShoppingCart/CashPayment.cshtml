@@ -120,9 +120,10 @@
                                 <img src="@Url.Content("~/Image/" + cart.Product.Image)" class="img-fluid product-image-management img-thumbnail mb-1" style="max-width:192px; min-height:100px" />
                             }
                             <p class="fw-bold my-1 product-cart-title">@cart.Product.ProductName</p>
-                            <p class="my-1"><span class="fw-bold">Price:</span> @cart.Product.Price</p>
                             <p class="my-1">
-                                <span class="fw-bold">Sub total:</span> @(string.Format("{0:N0}", cart.Product.Price * cart.Quantity))
+                                <span class="fw-bold">Price:</span> @(string.Format("{0:C2}", @cart.Product.Price))</p>
+                            <p class="my-1">
+                                <span class="fw-bold">Sub total:</span> @(string.Format("{0:C2}", cart.Product.Price * cart.Quantity))
                             </p>
                         </div>
                         <span class="badge bg-secondary rounded-pill">@cart.Quantity</span>
@@ -138,7 +139,7 @@
         @* Delivery infomation *@
         <div class="d-flex justify-content-center mt-3">
             <div class="container-fluid border rounded p-3" style="max-width: 500px; background-color: #FAFAFA ">
-                @using (Html.BeginForm("ProcessOrder", "ShoppingCart", FormMethod.Post))
+                @using (Html.BeginForm("CashPayment", "ShoppingCart", FormMethod.Post))
                 {
                     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                     <form class="needs-validation" novalidate>
@@ -171,11 +172,11 @@
                                 </label>
                                 <input class="form-control" type="text" name="DeliveryAddress" required>
                                 @Html.ValidationMessageFor(model => model.DeliveryAddress, "", new { @class = "text-danger" })
-                            </div>                            
-                                @{
-                                    var totalPrice = temp.Sum(x => x.Quantity * x.Product.Price);
-                                }
-                                <input class="form-control" type="hidden" name="TotalPrice" value="@totalPrice">
+                            </div>
+                            @{
+                                var totalPrice = temp.Sum(x => x.Quantity * x.Product.Price);
+                            }
+                            <input class="form-control" type="hidden" name="TotalPrice" value="@totalPrice">
                             <div class="mb-2">
                                 <div class="col-md-offset-2 col-md-10">
                                     <button type="submit" class="btn sub-button"><span class="sub-button-text">Process Order</span></button>
