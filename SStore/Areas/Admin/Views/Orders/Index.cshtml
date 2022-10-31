@@ -1,86 +1,185 @@
-﻿@model IEnumerable<SStore.Models.Order>
-
+﻿@model PagedList.IPagedList<SStore.Models.Order>
+@using PagedList.Mvc;
+@using PagedList;
 @{
     ViewBag.Title = "Index";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<div class="container-fluid my-2">
+    @* Breadcrumb *@
+    <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="@Url.Action("Index", "Dashboard", new { area = "Admin" })" class="breadcrumb-client">Dashboard</a></li>
+            <li class="breadcrumb-item breadcrumb-client-active">Orders</li>
+        </ol>
+    </nav>
+    @* Page Title *@
+    <h1 class="text-center my-3 admin-page-title text-uppercase">Orders Management</h1>
 
-<table class="table">
-    <tr>
-        <th>
-            Id
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.OrderDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Status)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.PaymentType)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.PaymentStatus)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CustomerName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CustomerPhone)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CustomerEmail)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DeliveryAddress)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.TotalPrice)
-        </th>
-        <th></th>
-    </tr>
+    <div class="d-flex justify-content-between align-items-center">
+        @using (Html.BeginForm("Index", "Orders", FormMethod.Get))
+        {
+            <form class="d-flex col-md-auto mb-2 justify-content-center mb-md-0">
+                <div class="d-flex align-items-center mb-2 mb-sm-0">
+                    <input type="search" name="orderIdSearch" class="bd-search form-control me-1 form-control-dark" placeholder="Search ID ..." />
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                </div>
+            </form>
+        }
+        <p class="mb-0 d-none d-sm-block">Showing @Model.FirstItemOnPage - @Model.LastItemOnPage of @Model.TotalItemCount orders</p>
 
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                @item.OrderId
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.OrderDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Status)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PaymentType)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PaymentStatus)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CustomerName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CustomerPhone)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CustomerEmail)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DeliveryAddress)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TotalPrice)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.OrderId }) |
-                @Html.ActionLink("Details", "Details", new { id = item.OrderId }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.OrderId })
-            </td>
-        </tr>
-    }
+    </div>
+    <p class="d-block d-sm-none mb-0">Showing @Model.FirstItemOnPage - @Model.LastItemOnPage of @Model.TotalItemCount orders</p>
+    <div class="table-responsive">
+        <table class="table table-bordered table-hover my-2">
+            <thead class="table-light">
+                <tr>
+                    <th class="text-center">
+                        ID
+                    </th>
+                    <th class="text-center" style="min-width: 180px">
+                        <a href="@Url.Action("Index", new { sortOrder = ViewBag.OrdDateSortParm })" class="text-dark">
+                            <i class="bi bi-sort-alpha-up"></i> Order Date
+                        </a>
+                    </th>
+                    <th class="text-center" style="min-width: 130px">
+                        Payment Type
+                    </th>
+                    <th class="text-center" style="min-width: 100px">
+                        <a href="@Url.Action("Index", new { sortOrder = ViewBag.PaymentStatusSortParm })" class="text-dark">
+                            Payment Status
+                        </a>
+                    </th>
 
-</table>
+                    <th class="text-center">
+                        Customer Name
+                    </th>
+                    <th class="text-center">
+                        Phone Number
+                    </th>
+                    <th class="text-center">
+                        Email
+                    </th>
+                    <th class="text-center">
+                        Delivery Address
+                    </th>
+                    <th class="text-center">
+                        Total Price
+                    </th>
+                    <th class="text-center" style="min-width: 100px">
+                        <a href="@Url.Action("Index", new { sortOrder = ViewBag.StatusSortParm })" class="text-dark">
+                            <i class="bi bi-sort-up"></i> Order Status
+                        </a>
+                    </th>
+                    <th class="text-center">
+                        Action
+                    </th>
+                </tr>
+            </thead>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td class="align-middle my-1">
+                        @item.OrderId
+                    </td>
+                    <td class="align-middle text-truncate text-center" style="max-width: 180px">
+                        @item.OrderDate
+                    </td>
+                    <td class="align-middle text-truncate text-center">
+                        @item.PaymentType
+                    </td>
+                    <td class="align-middle text-truncate text-center">
+                        @if (item.PaymentStatus == false)
+                        {
+                            <div class="spinner-border text-warning" role="status">
+                                <span class="visually-hidden">Loading...</span>
+                            </div>
+                        }
+                        else
+                        {
+                            <i class="bi bi-check2-circle text-success fs-2"></i>
+                        }
+                    </td>
+                    <td class="align-middle text-truncate text-center">
+                        @item.CustomerName
+                    </td>
+                    <td class="align-middle text-truncate text-center">
+                        @item.CustomerPhone
+                    </td>
+                    <td class="align-middle text-truncate text-center">
+                        @if (@item.CustomerEmail.IsEmpty())
+                        {
+                            <p class="fst-italic m-0 text-secondary">...</p>
+                        }
+                        else
+                        {
+                            @item.CustomerEmail
+                        }
+                    </td>
+                    <td class="align-middle text-truncate text-center">
+                        @item.DeliveryAddress
+                    </td>
+                    <td class="align-middle text-truncate text-center">
+                        @(string.Format("{0:C2}", @item.TotalPrice))
+                    </td>
+                    <td class="align-middle text-truncate text-center" style="max-width: 300px">
+                        @if (@item.Status == true)
+                        {
+                            <div class="spinner-grow text-warning" role="status">
+                            </div>
+                        }
+                        else
+                        {
+                            <i class="bi bi-x-circle-fill text-danger fs-2"></i>
+                        }
+                    </td>
+                    <td class="align-middle">
+                        <div class="d-flex flex-nowrap justify-content-center">
+                            <a href="@Url.Action("Details", "Orders", new{ area = "Admin", id = item.OrderId })" class="btn detail-button me-2">
+                                <i class="bi bi-info-circle"></i>
+                            </a>
+                            <a href="@Url.Action("Edit", "Orders", new{ area = "Admin", id = item.OrderId })" class="btn edit-button me-2">
+                                <i class="bi bi-pencil-square"></i>
+                            </a>
+                            <a href="@Url.Action("Delete", "Orders", new{ area = "Admin", id = item.OrderId })" class="btn delete-button">
+                                <i class="bi bi-trash"></i>
+                            </a>
+                        </div>
+                    </td>
+                </tr>
+            }
+
+        </table>
+        <p class="mb-2">Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount</p>
+        <div class="d-none d-lg-block">
+            @Html.PagedListPager(Model, page => Url.Action("Index", new { page, sortOrder = ViewBag.CurrentSort, orderIdSearch = Request.QueryString["orderIdSearch"] }),
+                      new PagedListRenderOptions()
+                      {
+                          LiElementClasses = new List<string> { "page-link" },
+                          UlElementClasses = new List<string> { "pagination", "d-flex", "flex-wrap" },
+                          MaximumPageNumbersToDisplay = 8,
+                      })
+        </div>
+        <div class="d-none d-sm-block d-lg-none">
+            @Html.PagedListPager(Model, page => Url.Action("Index", new { page, sortOrder = ViewBag.CurrentSort, orderIdSearch = Request.QueryString["orderIdSearch"] }),
+                      new PagedListRenderOptions()
+                      {
+                          LiElementClasses = new List<string> { "page-link" },
+                          UlElementClasses = new List<string> { "pagination", "d-flex", "flex-wrap" },
+                          MaximumPageNumbersToDisplay = 5,
+                      })
+        </div>
+        <div class="d-block d-sm-none">
+            @Html.PagedListPager(Model, page => Url.Action("Index", new { page, sortOrder = ViewBag.CurrentSort, orderIdSearch = Request.QueryString["orderIdSearch"] }),
+                      new PagedListRenderOptions()
+                      {
+                          LiElementClasses = new List<string> { "page-link" },
+                          UlElementClasses = new List<string> { "pagination pagination-sm", "d-flex", "flex-wrap" },
+                          MaximumPageNumbersToDisplay = 3,
+                          DisplayEllipsesWhenNotShowingAllPageNumbers = false,
+                          ItemSliceAndTotalFormat = "Showing items {0} through {1} of {2}.",
+                      })
+        </div>
+    </div>
+</div>

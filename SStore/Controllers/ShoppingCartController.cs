@@ -127,6 +127,14 @@ namespace SStore.Controllers
         }
         public ActionResult CashPayment()
         {
+            var itemCount = 0;
+            List<Cart> lsCart = (List<Cart>)Session[Cart];
+            if (Session[Cart] != null)
+            {
+                itemCount = lsCart.Sum(s => s.Quantity);
+            }
+            Session[Cart] = lsCart;
+            ViewBag.CartItemCount = itemCount;
             return View();
         }
         [HttpPost]

@@ -7,6 +7,8 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using SStore.Models;
+using PagedList;
+using PagedList.Mvc;
 
 namespace SStore.Areas.Admin.Controllers
 {
@@ -15,10 +17,54 @@ namespace SStore.Areas.Admin.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Admin/Orders
-        public ActionResult Index()
+        public ActionResult Index(int? page, string sortOrder, string orderIdSearch)
         {
-            var orders = db.Orders.Include(o => o.UserInfo);
-            return View(orders.ToList());
+            ViewBag.CurrentSort = sortOrder;
+            ViewBag.OrdDateSortParm = String.IsNullOrEmpty(sortOrder) ? "Date" : "";
+            ViewBag.StatusSortParm = sortOrder == "Status" ? "Status_Desc" : "Status";
+            ViewBag.PaymentStatusSortParm = sortOrder == "PayStatus" ? "PayStatus_Desc" : "PayStatus";
+            int pageSize = 8;
+            int pageNumber = (page ?? 1);
+            var orders = db.Orders.ToList();
+
+            switch (sortOrder)
+            {
+                case "Date":
+                    orders = db.Orders.OrderBy(p => p.OrderDate).ToList();
+                    break;
+                case "Status":
+                    orders = db.Orders.OrderBy(p => p.Status).ToList();
+                    break;
+                case "Status_Desc":
+                    orders = db.Orders.OrderByDescending(p => p.Status).ToList();
+                    break;
+                case "PayStatus":
+                    orders = db.Orders.OrderBy(p => p.PaymentStatus).ToList();
+                    break;
+                case "PayStatus_Desc":
+                    orders = db.Orders.OrderByDescending(p => p.PaymentStatus).ToList();
+                    break;
+                default:
+                    orders = db.Orders.OrderByDescending(p => p.OrderDate).ToList();
+                    break;
+            }
+            if (!String.IsNullOrEmpty(orderIdSearch))
+            {
+                orders = orders.Where(p => p.OrderId.ToString().Equals(orderIdSearch.ToString())).ToList();
+                if (orders.Count() > 0)
+                {
+                    return View(orders.ToPagedList(pageNumber, pageSize));
+                }
+                else
+                {
+                    return RedirectToAction("NotFound");
+                }
+            }
+            return View(orders.ToPagedList(pageNumber, pageSize));
+        }
+        public ActionResult NotFound()
+        {
+            return View();
         }
 
         // GET: Admin/Orders/Details/5
@@ -34,6 +80,34 @@ namespace SStore.Areas.Admin.Controllers
             if (order == null)
             {
                 return HttpNotFound();
+            }
+            return View(order);
+        }
+
+        public ActionResult Edit(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Order order = db.Orders.Find(id);
+            if (order == null)
+            {
+                return HttpNotFound();
+            }
+            return View(order);
+        }
+
+        // POST: /Movies/Edit/5
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(Order order)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Entry(order).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Index");
             }
             return View(order);
         }

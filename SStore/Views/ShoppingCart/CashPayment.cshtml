@@ -17,7 +17,7 @@
     </nav>
 
     <h2 class="text-uppercase text-center page-title mb-sm-2 mb-3">CheckOut</h2>
-    @if (Session["Cart"] != null)
+    @if ((Session["Cart"] != null) && (ViewBag.CartItemCount != 0))
     {
         <div class="table-responsive d-none d-sm-block">
             <table class="table table-hover my-2">
