@@ -150,15 +150,15 @@
                 </div>
             </div>
             <div class="mb-2">
-                <a class="text-decoration-none btn edit-button" href="@Url.Action("Edit", "Orders", new { id = Model.OrderId })">
+                <a class="text-decoration-none btn edit-button mb-1 mb-sm-0" href="@Url.Action("Edit", "Orders", new { id = Model.OrderId })">
                     <i class="bi bi-pencil-square"></i>
                     &nbsp; Edit
                 </a>
-                <a href="@Url.Action("Delete", "Orders", new{ id = Model.OrderId })" class="btn delete-button">
+                <a href="@Url.Action("Delete", "Orders", new{ id = Model.OrderId })" class="btn delete-button mb-1 mb-sm-0">
                     <i class="bi bi-trash"></i>
                     &nbsp; Delete
                 </a>
-                <a href="@Url.Action("Index", "Orders", new { area = "Admin"})" class="btn back-page-button"><span class="back-page-button-text"></span>Back to list</a>
+                <a href="@Url.Action("Index", "Orders", new { area = "Admin"})" class="btn back-page-button mb-1 mb-sm-0"><span class="back-page-button-text"></span>Back to list</a>
             </div>
         </div>
     </div>

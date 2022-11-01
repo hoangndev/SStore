@@ -12,6 +12,7 @@ using SStore.Models;
 
 namespace SStore.Areas.Admin.Controllers
 {
+    [Authorize(Roles = "Manager")]
     public class SlideController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();

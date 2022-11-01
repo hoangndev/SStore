@@ -100,11 +100,14 @@
                                 Feedback
                             </a>
                         </li>
-                        <li class="me-4">
-                            <a class="nav-link text-white store-navigation-link-homepage" href="@Url.Action("Index", "Dashboard", new { area = "Admin" }, null)">
-                                Dashboard
-                            </a>
-                        </li>
+                        @if (User.IsInRole("Manager"))
+                        {
+                            <li class="me-4">
+                                <a class="nav-link text-white store-navigation-link-homepage" href="@Url.Action("Index", "Dashboard", new { area = "Admin" }, null)">
+                                    Dashboard
+                                </a>
+                            </li>
+                        }
                     </ul>
                 </div>
             </nav>
@@ -117,7 +120,7 @@
         <div class="position-fixed bottom-0 end-0">
             <a href="@Url.Action("Index", "ShoppingCart", new { area = ""})" class="me-2 me-md-3 ms-2 mb-2 mb-md-3 mb-5 mb-sm-0 position-relative btn cart-button">
                 <i class="bi bi-cart3 fs-3 cart-text"></i>
-                @Html.Action("BagCart", "ShoppingCart", new { area = ""})
+                @Html.Action("BagCart", "ShoppingCart", new { area = "" })
             </a>
         </div>
     </section>

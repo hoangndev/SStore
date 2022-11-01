@@ -14,6 +14,7 @@ using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace SStore.Areas.Admin.Controllers
 {
+    [Authorize(Roles = "Manager")]
     public class DashboardController : Controller
     {
         private ApplicationDbContext db;

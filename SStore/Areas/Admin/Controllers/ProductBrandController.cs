@@ -11,6 +11,7 @@ using SStore.Models;
 
 namespace SStore.Areas.Admin.Controllers
 {
+    [Authorize(Roles = "Manager")]
     public class ProductBrandController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();

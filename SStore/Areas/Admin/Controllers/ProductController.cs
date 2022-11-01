@@ -13,6 +13,7 @@ using System.IO;
 
 namespace SStore.Areas.Admin.Controllers
 {
+    [Authorize(Roles = "Manager")]
     public class ProductController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
@@ -213,7 +214,7 @@ namespace SStore.Areas.Admin.Controllers
                     db.SaveChanges();
                 }
 
-                return RedirectToAction("Details", product);
+                return RedirectToAction("Details", new { id = product.Id });
             }
             ViewBag.BrandId = new SelectList(db.ProductBrands, "BrandId", "BrandName", product.BrandId);
             ViewBag.CategoryId = new SelectList(db.ProductCategories, "CategoryId", "CategoryName", product.CategoryId);

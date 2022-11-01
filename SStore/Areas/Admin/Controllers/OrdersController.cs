@@ -12,6 +12,7 @@ using PagedList.Mvc;
 
 namespace SStore.Areas.Admin.Controllers
 {
+    [Authorize(Roles = "Manager")]
     public class OrdersController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
@@ -91,6 +92,8 @@ namespace SStore.Areas.Admin.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Order order = db.Orders.Find(id);
+            var orderDetails = db.OrderDetails.Include(o => o.Product).Where(o => o.OrderId == id).ToList();
+            ViewBag.OrderDetails = orderDetails;
             if (order == null)
             {
                 return HttpNotFound();
@@ -100,14 +103,18 @@ namespace SStore.Areas.Admin.Controllers
 
         // POST: /Movies/Edit/5
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public ActionResult Edit(Order order)
         {
+            var orderDetails = db.OrderDetails.Include(o => o.Product).Where(o => o.OrderId == order.OrderId).ToList();
+            ViewBag.OrderDetails = orderDetails;
             if (ModelState.IsValid)
             {
-                db.Entry(order).State = EntityState.Modified;
+                var orderInDb = db.Orders.SingleOrDefault(o => o.OrderId.Equals(order.OrderId));
+
+                orderInDb.PaymentStatus = order.PaymentStatus;
+                orderInDb.Status = order.Status;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Details", new { id = order.OrderId });
             }
             return View(order);
         }
@@ -120,6 +127,8 @@ namespace SStore.Areas.Admin.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Order order = db.Orders.Find(id);
+            var orderDetails = db.OrderDetails.Include(o => o.Product).Where(o => o.OrderId == id).ToList();
+            ViewBag.OrderDetails = orderDetails;
             if (order == null)
             {
                 return HttpNotFound();

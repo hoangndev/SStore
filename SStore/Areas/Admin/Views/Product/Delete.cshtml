@@ -21,7 +21,7 @@
             @Html.AntiForgeryToken()
             <div class="form-actions no-color my-2 d-block d-lg-none">
                 <button type="submit" class="btn delete-button">Delete</button>
-                <a href="@Url.Action("Index", "Product", new { area = "Admin"})" class="btn back-page-button"><span class="back-page-button-text"></span>Back to list</a>
+                <a href="@Url.Action("Index", "Product", new { area = "Admin"})" class="btn back-page-button"><span class="back-page-button-text"></span>Cancel</a>
             </div>
         }
         <div class="row">
@@ -39,7 +39,7 @@
                     @Html.AntiForgeryToken()
                     <div class="form-actions no-color mt-2 d-none d-lg-block">
                         <button type="submit" class="btn delete-button">Delete</button>
-                        <a href="@Url.Action("Index", "Product", new { area = "Admin"})" class="btn back-page-button"><span class="back-page-button-text"></span>Back to list</a>
+                        <a href="@Url.Action("Index", "Product", new { area = "Admin"})" class="btn back-page-button"><span class="back-page-button-text"></span>Cancel</a>
                     </div>
                 }
             </div>

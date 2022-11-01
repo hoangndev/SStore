@@ -14,6 +14,7 @@ using Microsoft.AspNet.Identity;
 
 namespace SStore.Controllers
 {
+    [Authorize]
     public class OrderController : Controller
     {
         ApplicationDbContext db = new ApplicationDbContext();
