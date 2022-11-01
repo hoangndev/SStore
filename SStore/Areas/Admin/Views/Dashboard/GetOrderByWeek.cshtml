@@ -1,5 +1,8 @@
-﻿
-<canvas id="WeekOrderViewChart"></canvas>
+﻿<div class="chartCard">
+    <div class="chartBox">
+        <canvas id="WeekOrderViewChart"></canvas>
+    </div>
+</div>
 
 <script type="text/javascript">
     var WeekDays = [
@@ -11,7 +14,7 @@
         "@ViewBag.SecondDayName",
         "@ViewBag.TodayName",
     ];
-    const data = {
+    const WeekOrderViewChartData = {
         labels: WeekDays,
         datasets: [{
             label: 'This week income',
@@ -29,10 +32,11 @@
             }
         ]
     };
-    const config = {
+    const WeekOrderViewChartConfig = {
         type: 'line',
-        data: data,
+        data: WeekOrderViewChartData,
         options: {
+            maintainAspectRatio: false,
             responsive: true,
             scales: {
                 y: {
@@ -43,9 +47,9 @@
             }
         },
     };
-    var myChart2 = new Chart(
+    var WeekOrderViewChart = new Chart(
         document.getElementById('WeekOrderViewChart'),
-        config
+        WeekOrderViewChartConfig
     );
 </script>
 

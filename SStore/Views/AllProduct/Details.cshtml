@@ -163,16 +163,23 @@
         </div>
     </div>
     <div class="d-flex flex-row overflow-auto p-2">
-        @foreach (var item in ViewBag.HotProductList)
+        @foreach (var item in ViewBag.RandomProduct)
         {
             var itemPrice = String.Format("{0:C2}", item.Price);
             if (item.Image == null)
             {
                 <a href="@Url.Action("Details", "AllProduct",  new { area = "", id = item.Id })" class="text-decoration-none">
                     <div class="card list-recommend m-1">
-                        <img src="~/Image/noimage.png" class="img-fluid img-thumbnail card-img-top" />
+                        <div class="image-hover img-overlay">
+                            <figure>
+                                <img src="~/Image/noimage.png" class="img-fluid img-thumbnail card-img-top" />
+                                <div class="overlay">
+                                    <div class="img-overlay-text text-secondary">See details</div>
+                                </div>
+                            </figure>
+                        </div>
                         <div class="card-body">
-                            <p class="card-text text-black mb-1 fw-bold">@item.ProductName</p>
+                            <p class="card-text text-black mb-1 fw-bold text-truncate" title="@item.ProductName">@item.ProductName</p>
                             <p class="card-text text-secondary mb-1">@itemPrice</p>
                         </div>
                     </div>
@@ -182,9 +189,16 @@
             {
                 <a href="@Url.Action("Details", "AllProduct",  new { area = "", id = item.Id })" class="text-decoration-none">
                     <div class="card list-recommend m-1">
-                        <img src="@Url.Content("~/Image/" + item.Image)" class="img-fluid img-thumbnail card-img-top" />
+                        <div class="image-hover img-overlay">
+                            <figure>
+                                <img src="@Url.Content("~/Image/" + item.Image)" class="img-fluid img-thumbnail card-img-top" />
+                                <div class="overlay">
+                                    <div class="img-overlay-text">See details</div>
+                                </div>
+                            </figure>
+                        </div>
                         <div class="card-body">
-                            <p class="card-text text-black mb-1 fw-bold">@item.ProductName</p>
+                            <p class="card-text text-black mb-1 fw-bold text-truncate" title="@item.ProductName">@item.ProductName</p>
                             <p class="card-text text-secondary mb-1">@itemPrice</p>
                         </div>
                     </div>

@@ -264,8 +264,10 @@ namespace SStore.Controllers
 
             Product product = db.Products.Include(p => p.productBrand).Include(p => p.ProductCategory).SingleOrDefault(p => p.Id == id);
             product.View++;
-            var hotProductList = db.Products.OrderByDescending(p => p.View).Take(4).ToList();
-            ViewBag.HotProductList = hotProductList;
+            Random rand = new Random();
+            int skipper = rand.Next(0, db.Products.Count());
+            var randomProductList = db.Products.OrderBy(p => p.Id).Skip(skipper).Take(4).ToList();
+            ViewBag.RandomProduct = randomProductList;
             db.SaveChanges();
             if (product == null)
             {

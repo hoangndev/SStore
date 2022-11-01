@@ -51,13 +51,13 @@ namespace SStore.Areas.Admin.Controllers
             DateTime sixthDay = fifthDay.AddDays(-1);
             DateTime seventhDay = fifthDay.AddDays(-1);
             /* Get days name */
-            var TodayName = DateTime.Now.ToString("dddd");
-            var secondDayName = today.ToString("dddd");
-            var thirtDayName = secondDay.ToString("dddd");
-            var fourthDayName = thirtDay.ToString("dddd");
-            var fifthDayName = fourthDay.ToString("dddd");
-            var sixthDayName = fifthDay.ToString("dddd");
-            var seventhDayName = seventhDay.ToString("dddd");
+            var TodayName = DateTime.Now.ToString("ddd");
+            var secondDayName = today.ToString("ddd");
+            var thirtDayName = secondDay.ToString("ddd");
+            var fourthDayName = thirtDay.ToString("ddd");
+            var fifthDayName = fourthDay.ToString("ddd");
+            var sixthDayName = fifthDay.ToString("ddd");
+            var seventhDayName = seventhDay.ToString("ddd");
             /* Pass days name to view */
             ViewBag.TodayName = TodayName;
             ViewBag.SecondDayName = secondDayName;
@@ -122,12 +122,12 @@ namespace SStore.Areas.Admin.Controllers
             DateTime SixthMonth = fifthMonth.AddMonths(-1);
 
             /* Get 6 months name */
-            var ThisMonthName = DateTime.Now.ToString("MMMM");
-            var secondMonthName = thisMonth.ToString("MMMM");
-            var thirtMonthName = secondMonth.ToString("MMMM");
-            var fourthMonthName = thirtMonth.ToString("MMMM");
-            var fifthMonthName = fourthMonth.ToString("MMMM");
-            var SixthMonthName = fifthMonth.ToString("MMMM");
+            var ThisMonthName = DateTime.Now.ToString("MMM");
+            var secondMonthName = thisMonth.ToString("MMM");
+            var thirtMonthName = secondMonth.ToString("MMM");
+            var fourthMonthName = thirtMonth.ToString("MMM");
+            var fifthMonthName = fourthMonth.ToString("MMM");
+            var SixthMonthName = fifthMonth.ToString("MMM");
             /* Pass months name to view */
             ViewBag.ThisMonthName = ThisMonthName;
             ViewBag.SecondMonthName = secondMonthName;

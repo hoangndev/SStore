@@ -566,3 +566,107 @@ a:any-link {
         }
     }
 }
+
+/* Chart */
+.chartCard {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.chartBox {
+    height: 450px;
+    width: 100%;
+}
+
+.chartBox2 {
+    height: 600px;
+    width: 100%;
+}
+
+@media only screen and (max-width: 1400px) {
+    .chartBox2 {
+        height: 450px;
+    }
+}
+
+@media only screen and (max-width: 1000px) {
+    .chartBox {
+        height: 420px;
+    }
+
+    .chartBox2 {
+        height: 420px;
+    }
+}
+
+@media only screen and (max-width: 900px) {
+    .chartBox {
+        height: 400px;
+    }
+
+    .chartBox2 {
+        height: 400px;
+    }
+}
+
+@media only screen and (max-width: 800px) {
+    .chartBox {
+        height: 370px;
+    }
+
+    .chartBox2 {
+        height: 370px;
+    }
+}
+
+@media only screen and (max-width: 700px) {
+    .chartBox {
+        height: 350px;
+    }
+
+    .chartBox2 {
+        height: 350px;
+    }
+}
+
+@media only screen and (max-width: 650px) {
+    .chartBox {
+        height: 320px;
+    }
+
+    .chartBox2 {
+        height: 320px;
+    }
+}
+
+@media only screen and (max-width: 575px) {
+    .chartBox {
+        height: 300px;
+    }
+
+    .chartBox2 {
+        height: 300px;
+    }
+}
+
+@media only screen and (max-width: 400px) {
+    .chartBox {
+        height: 250px;
+    }
+
+    .chartBox2 {
+        height: 250px;
+    }
+}
+
+@media only screen and (max-width: 300px) {
+    .chartBox {
+        height: 200px;
+    }
+
+    .chartBox2 {
+        height: 200px;
+    }
+}
