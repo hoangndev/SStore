@@ -145,10 +145,10 @@ namespace SStore.Controllers
             if (ModelState.IsValid)
             {
                 order.OrderDate = DateTime.Now;
-                order.Status = true;
+                order.Status = 0;
                 order.UserId = User.Identity.GetUserId();
                 order.PaymentType = "Cash";
-                order.PaymentStatus = false;
+                order.PaymentStatus = 0;
                 db.Orders.Add(order);
                 db.SaveChanges();
                 //Save the order detail into Order Detail table
@@ -165,12 +165,8 @@ namespace SStore.Controllers
                     db.SaveChanges();
                 }
                 Session.Remove(Cart);
-                return RedirectToAction("OrderSuccess");
+                return View("OrderSuccess");
             };
-            return View();
-        }
-        public ActionResult OrderSuccess()
-        {
             return View();
         }
 
@@ -199,7 +195,7 @@ namespace SStore.Controllers
 
             var redirUrls = new RedirectUrls()
             {
-                cancel_url = redirectUrl,
+                cancel_url = "http://sstore.local/",
                 return_url = redirectUrl
             };
 

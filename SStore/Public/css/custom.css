@@ -369,6 +369,15 @@ figure {
     text-transform: uppercase;
 }
 
+.order-list {
+    background-color: white;
+    color: #686868;
+}
+
+    .order-list:hover {
+        background-color: #f8f9fa;
+        color: #8E8E8E;
+    }
 
 /* Admin area*/
 .sub-button {

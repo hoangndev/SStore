@@ -13,13 +13,13 @@ namespace SStore.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int OrderId { get; set; }
         public DateTime OrderDate { get; set; }
-        public bool Status { get; set; }
+        public Status Status { get; set; }
         [ForeignKey("UserInfo")]
         public string UserId { get; set; }
         public UserInfo UserInfo { get; set; }
         [StringLength(100)]
         public string PaymentType { get; set; }
-        public bool PaymentStatus { get; set; }
+        public PaymentStatus PaymentStatus { get; set; }
         [Required]
         [StringLength(100)]
         [Display(Name = "Name")]
@@ -36,5 +36,18 @@ namespace SStore.Models
         [StringLength(255)]
         public string DeliveryAddress { get; set; }
         public decimal TotalPrice { get; set; }
+    }
+
+    public enum Status
+    {
+        Processing,
+        Success,
+        Denied
+    }
+    public enum PaymentStatus
+    {
+        Waiting,
+        Paid,
+        Denied
     }
 }

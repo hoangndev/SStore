@@ -19,6 +19,7 @@
             </a>
 
             <ul class="dropdown-menu dropdown-menu-end dropdown-menu-start fix-sticky mt-sm-2" aria-labelledby="dropdownMenuLink">
+                <li class="d-flex justify-content-center"><a class="dropdown-item" href="#">@Html.Action("MemberShip", "Manage", new { area = "" })</a></li>
                 <li><a class="dropdown-item" href="@Url.Action("Index", "Manage", new { area ="" })"><i class="bi bi-gear"></i> Setting</a></li>
                 <li><a class="dropdown-item" href="@Url.Action("Index", "Order", new { area ="" })"><i class="bi bi-list-ul"></i> Orders</a></li>
                 <li><a class="dropdown-item" href="javascript:document.getElementById('logoutForm').submit()"><i class="bi bi-box-arrow-left"></i> Logout</a></li>

@@ -48,39 +48,17 @@
                                             <div class="d-flex align-items-center mb-2 row">
                                                 <dt class="col-sm-4 text-nowrap">Order Status:</dt>
                                                 <dd class="col-sm-8 d-flex align-items-center mb-0">
-                                                    <select class="form-select" aria-label="Default select example" name="Status">
-                                                        @if (@Model.Status == false)
-                                                        {
-                                                            <option value="false" class="text-danger" selected>Denied</option>
-                                                            <option value="true" class="text-warning">Processing</option>
-                                                        }
-                                                        else
-                                                        {
-                                                            <option value="true" class="text-warning" selected>Processing</option>
-                                                            <option value="false" class="text-danger">Denied</option>
-                                                        }
-                                                    </select>
+                                                    @Html.EnumDropDownListFor(m => m.Status, new { @class = "form-control" })
                                                 </dd>
                                             </div>
                                             <dt class="col-sm-4 text-nowrap">Payment Type:</dt>
                                             <dd class="col-sm-8 font-monospace">
                                                 @Model.PaymentType
                                             </dd>
-                                            <div class="d-flex align-items-center mb-2 row">
+                                            <div class="d-flex align-items-center row">
                                                 <dt class="col-sm-4 text-nowrap">Payment Status:</dt>
                                                 <dd class="col-sm-8 d-flex align-items-center mb-0">
-                                                    <select class="form-select" aria-label="Default select example" name="PaymentStatus">
-                                                        @if (@Model.PaymentStatus == false)
-                                                        {
-                                                            <option value="false" class="text-warning" selected>Waiting</option>
-                                                            <option value="true" class="text-success">Paid</option>
-                                                        }
-                                                        else
-                                                        {
-                                                            <option value="true" class="text-success" selected>Paid</option>
-                                                            <option value="false" class="text-warning">Waiting</option>
-                                                        }
-                                                    </select>
+                                                    @Html.EnumDropDownListFor(m => m.PaymentStatus, new { @class = "form-control" })
                                                 </dd>
                                             </div>
                                         </dl>

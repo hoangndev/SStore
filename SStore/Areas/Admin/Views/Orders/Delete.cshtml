@@ -35,35 +35,62 @@
                             <div id="collapseThree" class="accordion-collapse collapse show" aria-labelledby="headingThree" data-bs-parent="#customerInfomation">
                                 <div class="accordion-body">
                                     <dl class="row mb-0">
-                                        <dt class="col-sm-4 text-nowrap">Order Status:</dt>
-                                        <dd class="col-sm-8 d-flex align-items-center">
-                                            @if (@Model.Status == false)
-                                            {
-                                                <span class="text-danger">Denied <i class="bi bi-x-circle-fill"></i></span>
-                                            }
-                                            else
-                                            {
-                                                <span class="text-warning me-1">Processing</span>
-                                                <div class="spinner-border text-warning" style="width: 14px; height: 14px" role="status">
-                                                    <span class="visually-hidden">Loading...</span>
-                                                </div>
-                                            }
-                                        </dd>
-                                        <dt class="col-sm-4 text-nowrap">Payment Type:</dt>
-                                        <dd class="col-sm-8 font-monospace">
-                                            @Model.PaymentType
-                                        </dd>
-                                        <dt class="col-sm-4 text-nowrap">Payment Status:</dt>
-                                        <dd class="col-sm-8">
-                                            @if (@Model.PaymentStatus == true)
-                                            {
-                                                <span class="text-success">Paid <i class="bi bi-check2-circle"></i></span>
-                                            }
-                                            else
-                                            {
-                                                <span class="text-warning">Waiting... <i class="bi bi-hourglass-split"></i></span>
-                                            }
-                                        </dd>
+                                        <div class="mb-2 row">
+                                            <dt class="col-sm-4 text-nowrap d-flex align-items-center">Order Status:</dt>
+                                            <dd class="col-sm-8 d-flex align-items-center m-0">
+                                                @if (Model.Status.ToString().Equals("Processing"))
+                                                {
+                                                    <div class="text-warning d-flex align-items-center">
+                                                        <div class="spinner-border border-1 me-2" role="status" style="width:17px; height:17px">
+                                                            <span class="visually-hidden">Loading...</span>
+                                                        </div><span>Processing</span>
+                                                    </div>
+                                                }
+                                                else if (Model.Status.ToString().Equals("Success"))
+                                                {
+                                                    <div class="text-success d-flex align-items-center">
+                                                        <i class="bi bi-check2-circle fs-5 me-2"></i><span>Success</span>
+                                                    </div>
+                                                }
+                                                else
+                                                {
+                                                    <div class="text-danger d-flex align-items-center">
+                                                        <i class="bi bi-x-circle fs-5 me-2"></i><span>Denied</span>
+                                                    </div>
+                                                }
+                                            </dd>
+                                        </div>
+                                        <div class="mb-2 row">
+                                            <dt class="col-sm-4 text-nowrap d-flex align-items-center">Payment Type:</dt>
+                                            <dd class="col-sm-8 font-monospace d-flex align-items-center m-0">
+                                                @Model.PaymentType
+                                            </dd>
+                                        </div>
+                                        <div class="row">
+                                            <dt class="col-sm-4 text-nowrap d-flex align-items-center">Payment Status:</dt>
+                                            <dd class="col-sm-8 d-flex align-items-center m-0">
+                                                @if (Model.PaymentStatus.ToString().Equals("Waiting"))
+                                                {
+                                                    <div class="text-warning d-flex align-items-center">
+                                                        <div class="spinner-border border-1 me-2" role="status" style="width:17px; height:17px">
+                                                            <span class="visually-hidden">Loading...</span>
+                                                        </div><span>Waiting</span>
+                                                    </div>
+                                                }
+                                                else if (Model.PaymentStatus.ToString().Equals("Paid"))
+                                                {
+                                                    <div class="text-success d-flex align-items-center">
+                                                        <i class="bi bi-check2-circle fs-5 me-2"></i><span>Paid</span>
+                                                    </div>
+                                                }
+                                                else
+                                                {
+                                                    <div class="text-danger d-flex align-items-center">
+                                                        <i class="bi bi-x-circle fs-5 me-2"></i><span>Denied</span>
+                                                    </div>
+                                                }
+                                            </dd>
+                                        </div>
                                     </dl>
                                 </div>
                             </div>
@@ -95,8 +122,8 @@
                                                     }
                                                     <p class="fw-bold my-1 product-cart-title">@item.Product.ProductName</p>
                                                     @*                                                    <p class="my-1">
-                                                    <span class="fw-bold">Quantity:</span> @item.Quantity
-                                                </p>*@
+                                                            <span class="fw-bold">Quantity:</span> @item.Quantity
+                                                        </p>*@
                                                     <p class="my-1">
                                                         <span class="fw-bold">Price:</span> @(string.Format("{0:C2}", item.Product.Price))
                                                     </p>

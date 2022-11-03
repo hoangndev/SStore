@@ -353,6 +353,10 @@
     <Compile Include="Migrations\202210292023083_UpdateOrderTable3.designer.cs">
       <DependentUpon>202210292023083_UpdateOrderTable3.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202211011937151_UpdateOrderTableColumns.cs" />
+    <Compile Include="Migrations\202211011937151_UpdateOrderTableColumns.designer.cs">
+      <DependentUpon>202211011937151_UpdateOrderTableColumns.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\CaptchaResponse.cs" />
@@ -536,6 +540,8 @@
     <Content Include="Views\Order\Index.cshtml" />
     <Content Include="Views\Order\Details.cshtml" />
     <Content Include="Views\ShoppingCart\Failure.cshtml" />
+    <Content Include="Views\Manage\MemberShip.cshtml" />
+    <Content Include="Views\Home\Policy.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -652,6 +658,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202210292023083_UpdateOrderTable3.resx">
       <DependentUpon>202210292023083_UpdateOrderTable3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202211011937151_UpdateOrderTableColumns.resx">
+      <DependentUpon>202211011937151_UpdateOrderTableColumns.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

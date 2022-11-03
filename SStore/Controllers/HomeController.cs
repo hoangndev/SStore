@@ -39,5 +39,9 @@ namespace SStore.Controllers
             var sliders = db.Slides.OrderByDescending(s => s.Id).ToList();
             return PartialView(sliders);
         }
+        public ActionResult Policy()
+        {
+            return View();
+        }
     }
 }
